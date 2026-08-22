@@ -1,8 +1,23 @@
+import { Navigation } from "./components/Navigation";
+import { HeroSection } from "./sections/HeroSection";
+import { StackSection } from "./sections/StackSection";
+import { ProjectsSection } from "./sections/ProjectsSection";
+import { ActivitySection } from "./sections/ActivitySection";
+import { ContactSection } from "./sections/ContactSection";
+import { ExperienceSection } from "./sections/ExperienceSection";
+
 function App() {
   return (
-    <main>
-      <h1>Shivam Kumar</h1>
-    </main>
+    <div className="min-h-screen bg-(--bg-primary text-(--text-primary) pb-24">
+      <HeroSection />
+      <StackSection />
+      <ProjectsSection />
+      <ExperienceSection />
+
+      <ActivitySection />
+      <ContactSection />
+      <Navigation />
+    </div>
   );
 }
 
