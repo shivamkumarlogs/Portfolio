@@ -10,10 +10,9 @@ function App() {
   return (
     <div className="min-h-screen bg-(--bg-primary text-(--text-primary) pb-24">
       <HeroSection />
-      <StackSection />
       <ProjectsSection />
+      <StackSection />
       <ExperienceSection />
-
       <ActivitySection />
       <ContactSection />
       <Navigation />
