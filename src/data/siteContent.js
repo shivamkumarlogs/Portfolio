@@ -1,8 +1,8 @@
 export const profile = {
   name: "Shivam Kumar",
-  strapline: "React • Node.js • MongoDB",
+  strapline: "Full-Stack Developer",
   heroDescription:
-    "I build responsive web and mobile apps with the MERN stack — from REST APIs to polished, accessible UI. Based in Noida, India.",
+    "I build responsive web and mobile apps with the MERN stack, from REST APIs to polished, accessible UI.",
 };
 
 export const techStack = [
@@ -17,7 +17,6 @@ export const techStack = [
   { name: "Node.js", category: "backend" },
   { name: "Express.js", category: "backend" },
   { name: "REST API", category: "backend" },
-  { name: "Authentication and Authorization", category: "backend" },
   { name: "MongoDB", category: "database" },
   { name: "Mongoose", category: "database" },
   { name: "Git", category: "platform" },
@@ -72,7 +71,7 @@ export const socialLinks = [
     label: "X",
     href: "https://x.com/shivamkumar_dev",
     icon: "x",
-    detail: "Random thoughts and updates.",
+    detail: "Thoughts & updates.",
   },
   {
     label: "LeetCode",

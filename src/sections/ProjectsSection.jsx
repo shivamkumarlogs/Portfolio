@@ -42,20 +42,14 @@ function ProjectCard({ project }) {
   return (
     <article
       className="
-        group
-        relative
-        overflow-hidden
-        rounded-2xl
-        border border-(--border-soft)
-        bg-(--surface)
-        p-5
-        sm:p-7
-        transition-all
-        duration-300
-        hover:-translate-y-0.5
-        hover:border-(--text-muted)/35
-        hover:shadow-[0_18px_50px_rgba(0,0,0,0.08)]
-      "
+    relative
+    overflow-hidden
+    rounded-2xl
+    border border-(--border-soft)
+    bg-(--surface)
+    p-5
+    sm:p-7
+  "
     >
       {/* Green accent line */}
       <div
