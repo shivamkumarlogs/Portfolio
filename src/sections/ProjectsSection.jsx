@@ -10,7 +10,7 @@ export function ProjectsSection() {
         {/* Section Heading */}
         <div className="mb-10 sm:mb-12">
           <p className="mb-3 font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-            What i have built
+            Projects
           </p>
 
           <h2
@@ -23,7 +23,7 @@ export function ProjectsSection() {
               lg:text-5xl
             "
           >
-            Projects
+            Things I've Built
           </h2>
         </div>
 
