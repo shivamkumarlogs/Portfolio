@@ -73,63 +73,72 @@ function ProjectCard({ project }) {
         "
       />
 
-      {/* Header */}
-      <div className="flex items-start justify-between gap-6">
-        <div className="min-w-0">
-          <span
-            className="
-              font-display
-              text-[10px]
-              uppercase
-              tracking-[0.18em]
-              text-(--text-muted)
-            "
-          >
-            {project.eyebrow}
-          </span>
+      {/* Thumbnail */}
+      {project.screenshot && (
+        <div className="w-full overflow-hidden">
+          <img
+            src={project.screenshot}
+            alt={`${project.title} preview`}
+            className="w-full h-auto block"
+          />
+        </div>
+      )}
 
+      {/* Header */}
+      <div className="min-w-0">
+        {/* <span
+    className="
+      font-display
+      text-[10px]
+      uppercase
+      tracking-[0.18em]
+      text-(--text-muted)
+    "
+  >
+    {project.eyebrow}
+  </span> */}
+
+        <div className="mt-1.5 flex items-center justify-between gap-4">
           <h3
             className="
-              mt-1.5
-              font-serif-accent
-              text-2xl
-              tracking-tight
-              text-(--text-primary)
-              sm:text-3xl
-            "
+        font-serif-accent
+        text-2xl
+        tracking-tight
+        text-(--text-primary)
+        sm:text-3xl
+      "
           >
             {project.title}
           </h3>
+
+          {/* Live Status */}
+          {project.spotlight && (
+            <span
+              className="
+          shrink-0
+          inline-flex
+          items-center
+          gap-1.5
+          rounded-full
+          border
+          border-green-500/15
+          bg-green-500/8
+          px-2.5
+          py-1
+          font-display
+          text-[9px]
+          font-medium
+          uppercase
+          tracking-[0.16em]
+          text-green-600
+          dark:text-green-400
+        "
+            >
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+              {project.spotlight}
+            </span>
+          )}
         </div>
-
-        {/* Live Status */}
-        {project.spotlight && (
-          <span
-            className="
-              shrink-0
-              inline-flex
-              items-center
-              gap-1.5
-              rounded-full
-              border
-              border-green-500/15
-              bg-green-500/8
-              px-2.5
-              py-1
-              font-display
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.16em]
-              text-green-600
-              dark:text-green-400
-            "
-          >
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
-
-            {project.spotlight}
-          </span>
-        )}
       </div>
 
       {/* Description */}
@@ -146,7 +155,8 @@ function ProjectCard({ project }) {
       </p>
 
       {/* Bottom Row */}
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="mt-6 flex flex-row items-center justify-between gap-3">
+        {" "}
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
@@ -155,21 +165,36 @@ function ProjectCard({ project }) {
             </Tag>
           ))}
         </div>
-
         {/* Actions */}
-        <div className="flex shrink-0 flex-wrap gap-2">
+        <div className="flex shrink-0 gap-2">
           {project.links.map((link, index) => (
-            <Button
+            <a
               key={link.label}
               href={link.href}
-              variant={index === 0 ? "primary" : "secondary"}
-              compact
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              className={`
+        inline-flex items-center justify-center gap-2 rounded-full
+        font-display text-xs font-medium tracking-wide
+        transition-all duration-200
+        h-10 w-10 sm:h-auto sm:w-auto sm:px-4 sm:py-2
+        ${
+          index === 0
+            ? "bg-(--accent) text-(--accent-fg) hover:opacity-90"
+            : "border border-(--border) text-(--text-primary) hover:bg-(--bg-secondary)"
+        }
+      `}
             >
-              {link.label}
-              <Icon name="external-link" size={12} />
-            </Button>
+              <Icon
+                name={link.label === "GitHub" ? "github" : "external-link"}
+                size={14}
+              />
+              <span className="hidden sm:inline">{link.label}</span>
+            </a>
           ))}
         </div>
+        
       </div>
     </article>
   );

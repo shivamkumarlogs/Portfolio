@@ -9,7 +9,7 @@ export function HeroSection() {
         <div className="flex flex-col gap-5 sm:gap-6">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-(--border) bg-(--bg-secondary) px-3 py-1 text-xs text-(--text-secondary)">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-            Open to freelance & full-time work
+            Open to full-time & freelance work
           </span>
 
           <h1 className="font-serif-accent text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-(--text-primary)">
