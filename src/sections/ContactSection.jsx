@@ -1,7 +1,6 @@
 import { Icon } from "../components/Icon";
 import { Button } from "../components/Button";
 import { socialLinks } from "../data/siteContent";
-import { config } from "../config";
 
 export function ContactSection() {
   const publicSocials = socialLinks.filter((l) => l.icon !== "email");
@@ -19,9 +18,15 @@ export function ContactSection() {
         <div className="space-y-6 sm:space-y-8">
           <div className="rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-8 text-center">
             <p className="text-sm leading-relaxed text-(--text-secondary) max-w-md mx-auto mb-5">
-              I'm always open to new opportunities and collaborations. The best way to reach me is via email.
+              I'm open to new opportunities and collaborations. The best way to
+              reach me is via email.
             </p>
-            <Button variant="primary" href={`mailto:${config.email}`} className="w-full sm:w-auto">
+            <Button
+              variant="primary"
+              href="mailto:shivamkumar.byte@gmail.com"
+              className="w-full sm:w-auto"
+            >
+              {" "}
               Send email
               <Icon name="arrow-right" size={14} />
             </Button>
@@ -43,7 +48,9 @@ export function ContactSection() {
                   <p className="font-display text-sm font-medium text-(--text-primary)">
                     {link.label}
                   </p>
-                  <p className="text-xs text-(--text-muted) truncate">{link.detail}</p>
+                  <p className="text-xs text-(--text-muted) truncate">
+                    {link.detail}
+                  </p>
                 </div>
               </a>
             ))}

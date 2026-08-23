@@ -167,34 +167,21 @@ function ProjectCard({ project }) {
         </div>
         {/* Actions */}
         <div className="flex shrink-0 gap-2">
-          {project.links.map((link, index) => (
-            <a
+          {project.links.map((link) => (
+            <Button
               key={link.label}
               href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={link.label}
-              className={`
-        inline-flex items-center justify-center gap-2 rounded-full
-        font-display text-xs font-medium tracking-wide
-        transition-all duration-200
-        h-10 w-10 sm:h-auto sm:w-auto sm:px-4 sm:py-2
-        ${
-          index === 0
-            ? "bg-(--accent) text-(--accent-fg) hover:opacity-90"
-            : "border border-(--border) text-(--text-primary) hover:bg-(--bg-secondary)"
-        }
-      `}
-            >
-              <Icon
-                name={link.label === "GitHub" ? "github" : "external-link"}
-                size={14}
-              />
-              <span className="hidden sm:inline">{link.label}</span>
-            </a>
+              responsiveIcon
+              icon={(size) => (
+                <Icon
+                  name={link.label === "GitHub" ? "github" : "globe"}
+                  size={size}
+                />
+              )}
+              label={link.label}
+            />
           ))}
         </div>
-        
       </div>
     </article>
   );
