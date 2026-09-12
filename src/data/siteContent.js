@@ -33,29 +33,30 @@ export const socialLinks = [
   },
 
   {
+    label: "Email",
+    href: "mailto:shivamkumar.byte@gmail.com",
+    icon: "email",
+    detail: "Best way to reach me directly.",
+  },
+
+  {
     label: "X",
     href: "https://x.com/shivamkumar_dev",
     icon: "x",
     detail: "Sharing what I build and learn.",
   },
-  {
-    label: "LeetCode",
-    href: "https://leetcode.com/shivamkumartech",
-    icon: "leetcode",
-    detail: "Problem-solving practice.",
-  },
+  // {
+  //   label: "LeetCode",
+  //   href: "https://leetcode.com/shivamkumartech",
+  //   icon: "leetcode",
+  //   detail: "Problem-solving practice.",
+  // },
   // {
   //   label: "LinkedIn",
   //   href: "https://linkedin.com/in/shivamkumartech",
   //   icon: "linkedin",
   //   detail: "Connect with me here.",
   // },
-  {
-    label: "Email",
-    href: "mailto:shivamkumar.byte@gmail.com",
-    icon: "email",
-    detail: "Best way to reach me directly.",
-  },
 ];
 
 export const experience = [
@@ -121,6 +122,4 @@ export const projects = [
       },
     ],
   },
-
-
 ];
