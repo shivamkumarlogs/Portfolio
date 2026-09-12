@@ -4,7 +4,7 @@ import { profile } from "../data/siteContent";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative flex min-h-dvh flex-col">
+    <section id="hero" className="relative items-center flex min-h-dvh flex-col">
       <div className="flex flex-1 items-center">
         <div className="mx-auto w-full max-w-4xl px-4 py-12 lg:px-8">
           <div className="flex flex-col gap-6 sm:gap-7">
@@ -33,11 +33,11 @@ export function HeroSection() {
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Let's work together
+                Let's talk
                 <Icon name="arrow-right" size={14} />
               </Button>
               <Button variant="secondary" href="/Shivam_Kumar_Resume.pdf" className="w-full sm:w-auto">
-                Download resume
+                Resume
                 <Icon name="download" size={14} />
               </Button>
             </div>

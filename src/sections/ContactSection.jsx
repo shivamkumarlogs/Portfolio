@@ -38,7 +38,7 @@ export function ContactSection() {
             </Button>
           </div>
 
-          <div className="grid gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {publicSocials.map((link) => (
               <a
                 key={link.label}
