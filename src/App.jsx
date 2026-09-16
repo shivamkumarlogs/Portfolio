@@ -8,7 +8,7 @@ import { ExperienceSection } from "./sections/ExperienceSection";
 
 function App() {
   return (
-    <div className="min-h-screen bg-(--bg-primary text-(--text-primary) pb-24">
+    <div className="min-h-screen bg-(--bg-primary) text-(--text-primary) pb-24">
       <HeroSection />
       <ProjectsSection />
       <StackSection />

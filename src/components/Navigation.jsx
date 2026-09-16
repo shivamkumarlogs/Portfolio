@@ -9,11 +9,12 @@ function Tooltip({ children }) {
   return (
     <span
       className="
-        pointer-events-none absolute bottom-full left-1/2 mb-5
-        -translate-x-1 translate-y-1
+        pointer-events-none absolute bottom-full left-1/2 mb-2.5
+        -translate-x-1/2 translate-y-1
         whitespace-nowrap rounded-md
+        border border-(--border)
         bg-(--surface)
-        px-2.5 py-1.5
+        px-2.5 py-1
         text-[11px] font-medium
         text-(--text-primary)
         opacity-0
