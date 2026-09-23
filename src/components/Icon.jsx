@@ -124,6 +124,19 @@ export function Icon({ name, size = 18 }) {
         </svg>
       );
 
+    case "arrow-up-right":
+      return (
+        <svg
+          {...props}
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M7 17L17 7M7 7h10v10" />
+        </svg>
+      );
+
     case "external-link":
       return (
         <svg

@@ -40,7 +40,7 @@ export const socialLinks = [
   },
 
   {
-    label: "X",
+    label: "Twitter",
     href: "https://x.com/shivamkumar_dev",
     icon: "x",
     detail: "Sharing what I build and learn.",
