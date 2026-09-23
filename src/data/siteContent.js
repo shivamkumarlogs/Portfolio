@@ -52,9 +52,7 @@ export const socialLinks = [
     icon: "linkedin",
     detail: "Connect with me here.",
   },
-  
 ];
-
 
 export const projects = [
   {

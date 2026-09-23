@@ -16,6 +16,8 @@ function App() {
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[380px] w-[600px] sm:w-[800px] rounded-full bg-gradient-to-b from-zinc-200/40 to-transparent dark:from-zinc-800/20 blur-3xl" />
       </div>
 
+      <Navigation />
+
       <div className="relative z-10">
         <HeroSection />
         <ProjectsSection />
@@ -23,7 +25,6 @@ function App() {
         <ActivitySection />
         <ContactSection />
       </div>
-      <Navigation />
     </div>
   );
 }

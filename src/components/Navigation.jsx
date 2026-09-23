@@ -1,112 +1,115 @@
+import { useState, useEffect } from "react";
 import { useTheme } from "../ThemeContext";
 import { Icon } from "./Icon";
-import { socialLinks } from "../data/siteContent";
 
-const DOCK_BUTTON_CLASS =
-  "group relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-(--text-secondary) transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-(--bg-secondary) hover:text-(--text-primary) active:scale-90 sm:h-11 sm:w-11";
-
-function Tooltip({ children }) {
-  return (
-    <span
-      className="
-        pointer-events-none absolute bottom-full left-1/2 mb-2.5
-        -translate-x-1/2 translate-y-1
-        whitespace-nowrap rounded-md
-        border border-(--border)
-        bg-(--surface)
-        px-2.5 py-1
-        text-[11px] font-medium
-        text-(--text-primary)
-        opacity-0
-        shadow-lg
-        backdrop-blur-xl
-        transition-all duration-150
-        group-hover:translate-y-0
-        group-hover:opacity-100
-      "
-    >
-      {children}
-    </span>
-  );
-}
+const NAV_ITEMS = [
+  { id: "hero", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "blogs", label: "Blogs" },
+];
 
 export function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
+  const [activeTab, setActiveTab] = useState("hero");
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const dockLinks = socialLinks.filter((link) =>
-    ["github", "email", "x", "linkedin"].includes(link.icon)
-  );
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      const scrollPos = window.scrollY + 200;
+      const projectsEl = document.getElementById("projects");
+      const blogsEl =
+        document.getElementById("blogs") || document.getElementById("writing");
+
+      if (blogsEl && scrollPos >= blogsEl.offsetTop) {
+        setActiveTab("blogs");
+      } else if (projectsEl && scrollPos >= projectsEl.offsetTop) {
+        setActiveTab("projects");
+      } else {
+        setActiveTab("hero");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    setActiveTab(id);
+    if (id === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const el =
+        document.getElementById(id) ||
+        (id === "blogs" ? document.getElementById("writing") : null);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
 
   return (
-    <nav
-      className="
-        fixed bottom-8 left-1/2 z-50
-        flex -translate-x-1/2 items-center gap-2
-        rounded-full
-        border border-(--border)
-        bg-(--surface)
-        px-2.5 py-2.5
-        shadow-[0_8px_30px_rgba(0,0,0,0.12)]
-      "
-      aria-label="Site navigation"
+    <header
+      className={`
+        fixed top-0 inset-x-0 z-50 transition-all duration-300
+        ${
+          isScrolled
+            ? "border-b border-(--border-soft) bg-(--bg-primary)/85 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
+        }
+      `}
     >
-      {/* Home */}
-      <button
-        type="button"
-        onClick={() =>
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          })
-        }
-        className={DOCK_BUTTON_CLASS}
-        aria-label="Home"
-      >
-        <Icon name="home" size={18} />
-
-        <Tooltip>Home</Tooltip>
-      </button>
-
-      {/* Social Links */}
-      {dockLinks.map((link) => (
-        <a
-          key={link.label}
-          href={link.href}
-          {...(link.icon !== "email"
-            ? {
-                target: "_blank",
-                rel: "noopener noreferrer",
-              }
-            : {})}
-          className={DOCK_BUTTON_CLASS}
-          aria-label={link.label}
+      <div className="mx-auto flex h-14 sm:h-16 w-full max-w-5xl items-center justify-center px-4 lg:px-8">
+        <nav
+          aria-label="Main Navigation"
+          className="flex items-center gap-1 sm:gap-2"
         >
-          <Icon name={link.icon} size={18} />
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => scrollTo(item.id)}
+                className={`
+                  relative rounded-full px-3 py-1.5 sm:px-4 sm:py-1.5 font-display text-xs sm:text-[13px] font-medium tracking-wide
+                  transition-all duration-200 ease-out active:scale-95
+                  ${
+                    isActive
+                      ? "bg-(--bg-secondary) dark:bg-zinc-800 text-(--text-primary)"
+                      : "text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-secondary)/60"
+                  }
+                `}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </button>
+            );
+          })}
 
-          <Tooltip>{link.label}</Tooltip>
-        </a>
-      ))}
+          {/* Subtle Divider */}
+          <span
+            className="mx-1 h-3.5 w-px shrink-0 bg-(--border)"
+            aria-hidden="true"
+          />
 
-      {/* Divider */}
-      <span
-        className="mx-1.5 h-5 w-px shrink-0 bg-(--border)"
-        aria-hidden="true"
-      />
-
-      {/* Theme Toggle */}
-      <button
-        type="button"
-        onClick={toggleTheme}
-        aria-label={
-          isDark ? "Switch to light theme" : "Switch to dark theme"
-        }
-        className={DOCK_BUTTON_CLASS}
-      >
-        <Icon name={isDark ? "sun" : "moon"} size={18} />
-
-        <Tooltip>{isDark ? "Light theme" : "Dark theme"}</Tooltip>
-      </button>
-    </nav>
+          {/* Theme Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            className="
+              relative flex h-8 w-8 items-center justify-center rounded-full
+              text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-secondary)/60
+              active:scale-90 transition-all duration-200
+            "
+          >
+            <Icon name={isDark ? "sun" : "moon"} size={16} />
+          </button>
+        </nav>
+      </div>
+    </header>
   );
 }
