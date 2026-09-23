@@ -35,7 +35,7 @@ export function Navigation() {
   const isDark = theme === "dark";
 
   const dockLinks = socialLinks.filter((link) =>
-    ["github", "email", "x"].includes(link.icon)
+    ["github", "email", "x", "linkedin"].includes(link.icon)
   );
 
   return (

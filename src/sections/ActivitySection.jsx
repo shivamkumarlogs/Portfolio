@@ -36,7 +36,7 @@ export function ActivitySection() {
           {/* Header */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="font-display text-[10px] uppercase tracking-[0.18em] text-(--text-muted)">
-              GitHub contributions
+              GitHub stats
             </span>
 
             <a
