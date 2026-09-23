@@ -96,7 +96,7 @@ export function HeroSection() {
                   href={link.href}
                   target={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "noopener noreferrer" : undefined}
-                  className="group flex shrink-0 min-w-[120px] lg:min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border border-(--border-soft) bg-(--surface) py-2.5 px-3 transition-all duration-300 hover:border-(--border) hover:bg-(--bg-secondary) hover:-translate-y-0.5"
+                  className="group flex shrink-0 min-w-30 lg:min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border border-(--border-soft) bg-(--surface) py-2.5 px-3 transition-all duration-300 hover:border-(--border) hover:bg-(--bg-secondary) hover:-translate-y-0.5"
                 >
                   <span className="text-(--text-secondary) group-hover:text-(--text-primary) transition-colors">
                     <Icon name={link.icon} size={15} />
