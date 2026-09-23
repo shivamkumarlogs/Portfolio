@@ -2,35 +2,44 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* Light theme — warm paper */
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif-accent: "Instrument Serif", Georgia, serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+}
+
+/* Light theme — clean, warm paper */
 :root {
   --bg-primary: #fafafa;
   --bg-secondary: #f4f4f5;
-  --text-primary: #0a0a0a;
+  --text-primary: #09090b;
   --text-secondary: #52525b;
-  --text-muted: #a1a1aa;
+  --text-muted: #71717a;
   --border: #e4e4e7;
-  --border-soft: rgba(228, 228, 231, 0.6);
-  --accent: #0a0a0a;
+  --border-soft: rgba(228, 228, 231, 0.8);
+  --card-highlight: rgba(0, 0, 0, 0.05);
+  --accent: #09090b;
   --accent-fg: #fafafa;
   --accent-link: #2563eb;
   --surface: #ffffff;
   --surface-raised: #f4f4f5;
 }
 
+/* Dark theme — deep obsidian zinc */
 [data-theme="dark"] {
   --bg-primary: #09090b;
-  --bg-secondary: #111113;
-  --text-primary: #ededed;
+  --bg-secondary: #121215;
+  --text-primary: #f4f4f5;
   --text-secondary: #a1a1aa;
-  --text-muted: #52525b;
-  --border: #1f1f23;
-  --border-soft: rgba(237, 237, 237, 0.08);
-  --accent: #ededed;
+  --text-muted: #71717a;
+  --border: #27272a;
+  --border-soft: rgba(255, 255, 255, 0.07);
+  --card-highlight: rgba(255, 255, 255, 0.12);
+  --accent: #f4f4f5;
   --accent-fg: #09090b;
   --accent-link: #60a5fa;
-  --surface: #141417;
-  --surface-raised: #1f1f23;
+  --surface: #111114;
+  --surface-raised: #18181b;
 }
 
 html {
@@ -43,10 +52,20 @@ body {
   min-height: 100vh;
   background: var(--bg-primary);
   color: var(--text-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.25s ease, color 0.2s ease;
 }
 
-@layer utilities {
-  .font-sans  { font-family: "ABC Diatype", system-ui, sans-serif; }
-  .font-serif { font-family: "Fraunces", Georgia, serif; }
+.font-serif-accent {
+  font-family: "Instrument Serif", Georgia, serif;
+}
+
+.font-display {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+
+.font-sans {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }

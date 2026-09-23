@@ -33,17 +33,20 @@ export function StackSection() {
 
         <div
           className="
-    relative overflow-hidden rounded-2xl
-    border border-(--border-soft) bg-(--surface)
-    p-5 sm:p-7
-  "
+            relative overflow-hidden rounded-2xl
+            border border-(--border-soft) bg-(--surface)
+            p-5 sm:p-7
+            transition-all duration-300
+            hover:border-(--border)
+            hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]
+            dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]
+          "
         >
-          {/* Green accent line */}
+          {/* Subtle top hairline highlight */}
           <div
             className="
               pointer-events-none absolute inset-x-0 top-0 h-px
-              bg-linear-to-r from-transparent via-green-500/70 to-transparent
-              opacity-70
+              bg-linear-to-r from-transparent via-(--card-highlight) to-transparent
             "
           />
 

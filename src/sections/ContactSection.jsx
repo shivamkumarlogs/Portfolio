@@ -16,14 +16,14 @@ export function ContactSection() {
         </h2>
 
         <div className="space-y-6 sm:space-y-8">
-<div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-8 text-center">
-  <div
-    className="
-      pointer-events-none absolute inset-x-0 top-0 h-px
-      bg-linear-to-r from-transparent via-green-500/70 to-transparent
-      opacity-70
-    "
-  />            <p className="text-sm leading-relaxed text-(--text-secondary) max-w-md mx-auto mb-5">
+          <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-8 text-center transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+            {/* Subtle top hairline highlight */}
+            <div
+              className="
+                pointer-events-none absolute inset-x-0 top-0 h-px
+                bg-linear-to-r from-transparent via-(--card-highlight) to-transparent
+              "
+            />            <p className="text-sm leading-relaxed text-(--text-secondary) max-w-md mx-auto mb-5">
               I'm open to new opportunities and collaborations. The best way to
               reach me is via email.
             </p>
