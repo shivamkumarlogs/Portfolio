@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { id: "blogs", label: "Blogs" },
 ];
 
-export function Navigation() {
+export function Nav() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
   const [activeTab, setActiveTab] = useState("hero");
@@ -51,16 +51,7 @@ export function Navigation() {
   };
 
   return (
-    <header
-      className={`
-        fixed top-0 inset-x-0 z-50 transition-all duration-300
-        ${
-          isScrolled
-            ? "border-b border-(--border-soft) bg-(--bg-primary)/85 backdrop-blur-md"
-            : "border-b border-transparent bg-transparent"
-        }
-      `}
-    >
+    <header className="fixed top-0 inset-x-0 z-50">
       <div className="mx-auto flex h-14 sm:h-16 w-full max-w-5xl items-center justify-center px-4 lg:px-8">
         <nav
           aria-label="Main Navigation"
