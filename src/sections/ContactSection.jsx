@@ -1,9 +1,6 @@
-import { Icon } from "../components/Icon";
 import { Button } from "../components/Button";
-import { socialLinks } from "../data/siteContent";
 
 export function ContactSection() {
-  const publicSocials = socialLinks.filter((l) => l.icon !== "email");
 
   return (
     <section id="contact" className="relative">
@@ -23,7 +20,8 @@ export function ContactSection() {
                 pointer-events-none absolute inset-x-0 top-0 h-px
                 bg-linear-to-r from-transparent via-(--card-highlight) to-transparent
               "
-            />            <p className="text-sm leading-relaxed text-(--text-secondary) max-w-md mx-auto mb-5">
+            />{" "}
+            <p className="text-sm leading-relaxed text-(--text-secondary) max-w-md mx-auto mb-5">
               I'm open to new opportunities and collaborations. The best way to
               reach me is via email.
             </p>
@@ -34,32 +32,7 @@ export function ContactSection() {
             >
               {" "}
               Send email
-              <Icon name="arrow-right" size={14} />
             </Button>
-          </div>
-
-          <div className="grid gap-2.5 sm:gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {publicSocials.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex min-h-14 items-center gap-3 sm:gap-4 rounded-2xl border border-(--border-soft) bg-(--surface) p-3.5 sm:p-4 transition-all duration-300 hover:border-(--border) hover:shadow-lg hover:-translate-y-0.5"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-(--border-soft) bg-(--bg-secondary) text-(--text-secondary)">
-                  <Icon name={link.icon} size={18} />
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-sm font-medium text-(--text-primary)">
-                    {link.label}
-                  </p>
-                  <p className="text-xs text-(--text-muted) truncate">
-                    {link.detail}
-                  </p>
-                </div>
-              </a>
-            ))}
           </div>
         </div>
       </div>
