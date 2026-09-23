@@ -45,34 +45,16 @@ export const socialLinks = [
     icon: "x",
     detail: "Sharing what I build and learn.",
   },
-  // {
-  //   label: "LeetCode",
-  //   href: "https://leetcode.com/shivamkumartech",
-  //   icon: "leetcode",
-  //   detail: "Problem-solving practice.",
-  // },
-  // {
-  //   label: "LinkedIn",
-  //   href: "https://linkedin.com/in/shivamkumartech",
-  //   icon: "linkedin",
-  //   detail: "Connect with me here.",
-  // },
+
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/shivamkumartech",
+    icon: "linkedin",
+    detail: "Connect with me here.",
+  },
+  
 ];
 
-export const experience = [
-  {
-    role: "React Native Developer Intern",
-    company: "Mobiloitte",
-    location: "New Delhi, Delhi",
-    period: "Jul 2025 - Oct 2025",
-    points: [
-      "Developed and maintained cross-platform mobile features using React Native under production-grade workflows",
-      "Collaborated with design and backend teams to build responsive UI components and integrate REST APIs",
-      "Debugged and fixed layout responsiveness issues on Android and iOS, eliminating critical UI bugs before release",
-      "Worked with Git & GitHub for version control, code reviews, and feature branching in an agile environment",
-    ],
-  },
-];
 
 export const projects = [
   {

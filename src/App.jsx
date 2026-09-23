@@ -4,7 +4,6 @@ import { StackSection } from "./sections/StackSection";
 import { ProjectsSection } from "./sections/ProjectsSection";
 import { ActivitySection } from "./sections/ActivitySection";
 import { ContactSection } from "./sections/ContactSection";
-import { ExperienceSection } from "./sections/ExperienceSection";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <HeroSection />
       <ProjectsSection />
       <StackSection />
-      <ExperienceSection />
       <ActivitySection />
       <ContactSection />
       <Navigation />
