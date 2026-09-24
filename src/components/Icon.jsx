@@ -248,7 +248,10 @@ export function Icon({ name, size = 18, className = "" }) {
     case "HTML":
       return (
         <svg {...props} aria-hidden="true">
-          <path fill="#E44D26" d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0z" />
+          <path
+            fill="#E44D26"
+            d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0z"
+          />
           <path fill="#F16529" d="M12 1.8v20.4l6.8-1.9 1.5-18.5H12z" />
           <path
             fill="#FFFFFF"
@@ -261,7 +264,10 @@ export function Icon({ name, size = 18, className = "" }) {
     case "CSS":
       return (
         <svg {...props} aria-hidden="true">
-          <path fill="#1572B6" d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0z" />
+          <path
+            fill="#1572B6"
+            d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0z"
+          />
           <path fill="#33A9DC" d="M12 1.8v20.4l6.8-1.9 1.5-18.5H12z" />
           <path
             fill="#FFFFFF"
@@ -306,8 +312,20 @@ export function Icon({ name, size = 18, className = "" }) {
           <circle cx="12" cy="12" r="2.2" fill="#61DAFB" />
           <g fill="none" stroke="#61DAFB" strokeWidth="1.5">
             <ellipse cx="12" cy="12" rx="10" ry="4" />
-            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
-            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+            <ellipse
+              cx="12"
+              cy="12"
+              rx="10"
+              ry="4"
+              transform="rotate(60 12 12)"
+            />
+            <ellipse
+              cx="12"
+              cy="12"
+              rx="10"
+              ry="4"
+              transform="rotate(120 12 12)"
+            />
           </g>
         </svg>
       );
