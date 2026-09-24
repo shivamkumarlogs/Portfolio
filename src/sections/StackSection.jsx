@@ -77,7 +77,7 @@ export function StackSection() {
                       >
                         <Icon
                           name={name}
-                          size="1.2rem"
+                          size={20}
                           className="shrink-0 transition-transform duration-200 group-hover/badge:scale-110"
                         />
                         <span>{name}</span>

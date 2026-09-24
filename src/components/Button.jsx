@@ -10,8 +10,7 @@ const VARIANT_CLASS = {
 
 const RESPONSIVE_ICON_CLASSES =
   "h-10 w-10 text-(--text-secondary) hover:bg-(--bg-secondary) hover:text-(--text-primary) " +
-  "sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:border sm:border-(--border) sm:text-(--text-primary) " +
-  "hover:-translate-y-0 sm:hover:-translate-y-0.5";
+  "sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:border sm:border-(--border) sm:text-(--text-primary)";
 
 export function Button({
   children,

@@ -50,7 +50,7 @@ export const socialLinks = [
 
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/shivamkumarlogs",
+    href: "https://www.linkedin.com/in/shivamkumarlogs/",
     icon: "linkedin",
   },
 ];

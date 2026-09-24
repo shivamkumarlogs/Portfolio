@@ -5,8 +5,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative  mt-14 sm:mt-20 pb-8 sm:pb-8">
-      <div className="mx-auto w-full max-w-5xl px-4  lg:px-8">
+    <footer className="relative mt-14 sm:mt-20 pb-8">
+      <div className="mx-auto w-full max-w-5xl px-4 lg:px-8">
         <div className="flex items-center justify-between gap-4 text-xs text-(--text-muted)">
 
           <div className="flex items-center gap-2">

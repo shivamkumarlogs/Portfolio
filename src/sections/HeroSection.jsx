@@ -94,7 +94,7 @@ export function HeroSection() {
             <div>
               <div
                 title="Global Profile Views (Live)"
-                className="inline-flex items-center gap-1.5  px-2.5 py-1 text-xs font-mono text-(--text-muted) transition-colors hover:text-(--text-secondary) select-none"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono text-(--text-muted) transition-colors hover:text-(--text-secondary) select-none"
               >
                 <Icon name="eye" size={14} />
                 <span className="tabular-nums font-medium">
@@ -144,7 +144,7 @@ export function HeroSection() {
                   }
                   aria-label={link.label}
                   title={link.label}
-                  className="group relative overflow-hidden flex h-11 sm:h-12 items-center justify-center gap-2 sm:gap-2.5 rounded-xl sm:rounded-xl border border-(--border-soft) bg-(--surface) px-2 sm:px-3.5 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 active:scale-[0.98]"
+                  className="group relative overflow-hidden flex h-11 sm:h-12 items-center justify-center gap-2 sm:gap-2.5 rounded-xl border border-(--border-soft) bg-(--surface) px-2 sm:px-3.5 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   <div
                     className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
