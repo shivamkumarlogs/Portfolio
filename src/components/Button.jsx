@@ -3,14 +3,14 @@ const BASE =
 
 const VARIANT_CLASS = {
   primary:
-    "bg-[var(--accent)] text-[var(--accent-fg)] border border-transparent hover:opacity-90",
+    "bg-(--accent) text-(--accent-fg) border border-transparent hover:opacity-90",
   secondary:
-    "bg-transparent text-[var(--text-primary)] border border-[var(--border)] hover:bg-[var(--bg-secondary)]",
+    "bg-transparent text-(--text-primary) border border-(--border) hover:bg-(--bg-secondary)",
 };
 
 const RESPONSIVE_ICON_CLASSES =
-  "h-10 w-10 text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] " +
-  "sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:border sm:border-[var(--border)] sm:text-[var(--text-primary)] " +
+  "h-10 w-10 text-(--text-secondary) hover:bg-(--bg-secondary) hover:text-(--text-primary) " +
+  "sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:border sm:border-(--border) sm:text-(--text-primary) " +
   "hover:-translate-y-0 sm:hover:-translate-y-0.5";
 
 export function Button({

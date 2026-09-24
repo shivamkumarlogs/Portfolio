@@ -29,32 +29,6 @@ export function Icon({ name, size = 18, className = "" }) {
         </svg>
       );
 
-    case "leetcode":
-      return (
-        <svg {...props} aria-hidden="true">
-          <rect
-            x="2"
-            y="2"
-            width="20"
-            height="20"
-            rx="5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          />
-          <text
-            x="12"
-            y="16"
-            textAnchor="middle"
-            fontSize="9"
-            fontWeight="700"
-            fill="currentColor"
-            fontFamily="ui-sans-serif, system-ui, sans-serif"
-          >
-            LC
-          </text>
-        </svg>
-      );
-
     case "linkedin":
       return (
         <svg {...props} aria-hidden="true">
@@ -113,19 +87,6 @@ export function Icon({ name, size = 18, className = "" }) {
         </svg>
       );
 
-    case "arrow-right":
-      return (
-        <svg
-          {...props}
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      );
-
     case "arrow-up-right":
       return (
         <svg
@@ -149,33 +110,6 @@ export function Icon({ name, size = 18, className = "" }) {
           strokeLinejoin="round"
         >
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-        </svg>
-      );
-
-    case "download":
-      return (
-        <svg
-          {...props}
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
-        </svg>
-      );
-
-    case "home":
-      return (
-        <svg
-          {...props}
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
         </svg>
       );
 
