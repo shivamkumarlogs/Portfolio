@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "../ThemeContext";
-
-const GITHUB_USERNAME = "shivamkumartech";
+import { GITHUB_USERNAME } from "../data/siteContent";
 
 const calendarTheme = {
   light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
@@ -41,7 +40,11 @@ export function ActivitySection() {
         const colWidth = width / 53;
         const margin = Math.max(2, Math.round(colWidth * 0.2 * 10) / 10);
         const size = Math.round((colWidth - margin) * 10) / 10;
-        setDimensions({ blockSize: size, blockMargin: margin, isMobile: false });
+        setDimensions({
+          blockSize: size,
+          blockMargin: margin,
+          isMobile: false,
+        });
       }
     };
 

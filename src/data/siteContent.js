@@ -23,33 +23,32 @@ export const techStack = [
   { name: "Postman", category: "platform" },
 ];
 
+export const GITHUB_USERNAME = "shivamkumartech";
+export const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`;
+
 export const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/shivamkumartech",
+    href: GITHUB_URL,
     icon: "github",
-    detail: "Where all my code lives.",
   },
 
   {
     label: "Email",
     href: "mailto:shivamkumar.byte@gmail.com",
     icon: "email",
-    detail: "Best way to reach me directly.",
   },
 
   {
     label: "Twitter",
     href: "https://x.com/shivamkumar_dev",
     icon: "x",
-    detail: "Sharing what I build and learn.",
   },
 
   {
     label: "LinkedIn",
     href: "https://linkedin.com/in/shivamkumartech",
     icon: "linkedin",
-    detail: "Connect with me here.",
   },
 ];
 
