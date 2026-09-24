@@ -57,21 +57,20 @@ export const socialLinks = [
 export const projects = [
   {
     title: "NoteNest",
-    eyebrow: "Full-Stack MERN App",
+    // eyebrow: "Full-Stack MERN App",
     description:
       "A responsive full-stack note-taking platform with a decoupled frontend-backend architecture. Global state managed via React Context API, nested routing with React Router DOM v7, and a modular RESTful API built on a Controller-Model-Route pattern with Mongoose for data integrity.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
     spotlight: "Live",
-    screenshot: "notenest.png",
     links: [
       { label: "Live Demo", href: "https://note-nest-six-beryl.vercel.app/" },
-      { label: "GitHub", href: "https://github.com/shivamkumartech/notenest" },
+      { label: "GitHub", href: "https://github.com/shivamkumartech/else" },
     ],
   },
 
   {
     title: "RecipeFinder",
-    eyebrow: "Web App",
+    // eyebrow: "Web App",
     description:
       "A recipe discovery app integrating TheMealDB's API for instant search, detailed recipe views, and random discovery across 500+ recipes. Fully responsive mobile-first UI built with a custom Tailwind CSS v4 design system, custom data-fetching hooks, and an accessible modal recipe view with keyboard support and skeleton loading states.",
     tags: ["React", "Tailwind CSS", "JavaScript (ES6+)"],
