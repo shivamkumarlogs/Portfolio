@@ -83,19 +83,7 @@ function ProjectCard({ project }) {
 
       {/* Header */}
       <div className="min-w-0">
-        <span
-          className="
-      font-display
-      text-[10px]
-      uppercase
-      tracking-[0.18em]
-      text-(--text-muted)
-    "
-        >
-          {project.eyebrow}
-        </span>
-
-        <div className="mt-1.5 flex items-center justify-between gap-4">
+        <div className=" mt-1 flex items-center justify-between gap-4">
           <h3
             className="
         font-serif-accent

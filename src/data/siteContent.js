@@ -1,8 +1,6 @@
 export const profile = {
   name: "Shivam Kumar",
   strapline: "Full-Stack Developer",
-  heroDescription:
-    "I build products from idea to deployment, from REST APIs to polished, accessible UI.",
 };
 
 export const techStack = [
@@ -55,7 +53,6 @@ export const socialLinks = [
 export const projects = [
   {
     title: "NoteNest",
-    // eyebrow: "Full-Stack MERN App",
     description:
       "A responsive full-stack note-taking platform with a decoupled frontend-backend architecture. Global state managed via React Context API, nested routing with React Router DOM v7, and a modular RESTful API built on a Controller-Model-Route pattern with Mongoose for data integrity.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
@@ -68,10 +65,9 @@ export const projects = [
 
   {
     title: "RecipeFinder",
-    // eyebrow: "Web App",
     description:
       "A recipe discovery app integrating TheMealDB's API for instant search, detailed recipe views, and random discovery across 500+ recipes. Fully responsive mobile-first UI built with a custom Tailwind CSS v4 design system, custom data-fetching hooks, and an accessible modal recipe view with keyboard support and skeleton loading states.",
-    tags: ["React", "Tailwind CSS", "JavaScript (ES6+)"],
+    tags: ["React.js", "Tailwind CSS", "JavaScript"],
     spotlight: "Live",
     screenshot: "recipefinder.png",
     links: [
@@ -88,10 +84,9 @@ export const projects = [
 
   {
     title: "Spotify Clone Backend",
-    eyebrow: "RESTful API",
     description:
       "A comprehensive backend service for a music streaming platform built with Node.js (ES Modules) and Express 5. Features robust dual-token JWT authentication, secure password hashing, and MongoDB integration via Mongoose. Includes advanced capabilities like Nodemailer email services configured with Google OAuth2, plus seamless media uploads managed through Multer and the ImageKit SDK.",
-    tags: ["Node.js", "Express", "MongoDB", "JWT Auth", "ImageKit SDK"],
+    tags: ["Node.js", "Express.js", "MongoDB", "JWT", "ImageKit SDK"],
     links: [
       {
         label: "GitHub",
