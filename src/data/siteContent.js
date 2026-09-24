@@ -26,7 +26,9 @@ export const techStack = [
   { name: "Postman", category: "platform" },
 ];
 
+export const EMAIL = "shivamkumar.byte@gmail.com";
 export const GITHUB_USERNAME = "shivamkumartech";
+
 export const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`;
 
 export const socialLinks = [
@@ -38,7 +40,7 @@ export const socialLinks = [
 
   {
     label: "Email",
-    href: "mailto:shivamkumar.byte@gmail.com",
+    href: `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`,
     icon: "email",
   },
 
