@@ -2,6 +2,19 @@ import { useState, useEffect } from "react";
 import { Icon } from "../components/Icon";
 import { profile, socialLinks } from "../data/siteContent";
 
+function formatBioText(text) {
+  return text.split(/(\*\*.*?\*\*)/g).map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={index} className="font-medium text-(--text-primary)">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
 export function HeroSection() {
   // Global live view counter (real-time, session-deduplicated)
   const [views, setViews] = useState(() => {
@@ -72,9 +85,9 @@ export function HeroSection() {
               >
                 {profile.name}
               </h1>
-              <p className="mt-1 font-display text-sm sm:text-base text-(--text-muted) tracking-wide">
+              {/* <p className="mt-1 font-display text-sm sm:text-base text-(--text-muted) tracking-wide">
                 {profile.strapline}
-              </p>
+              </p> */}
             </div>
 
             {/* Top Right: View Count Badge */}
@@ -96,56 +109,14 @@ export function HeroSection() {
 
           {/* Story / Bullet Points */}
           <ul className="space-y-3 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
-            <li className="flex items-start gap-2.5">
-              <span className="text-(--text-muted) select-none mt-1.5 text-xs">
-                •
-              </span>
-              <span>
-                I&rsquo;m a{" "}
-                <strong className="font-medium text-(--text-primary)">
-                  Full-Stack Developer
-                </strong>{" "}
-                passionate about crafting digital products where thoughtful
-                design meets clean, scalable code.
-              </span>
-            </li>
-
-            <li className="flex items-start gap-2.5">
-              <span className="text-(--text-muted) select-none mt-1.5 text-xs">
-                •
-              </span>
-              <span>
-                I design and develop modern interfaces and robust backend APIs
-                with{" "}
-                <strong className="font-medium text-(--text-primary)">
-                  React
-                </strong>
-                ,{" "}
-                <strong className="font-medium text-(--text-primary)">
-                  Node.js
-                </strong>
-                ,{" "}
-                <strong className="font-medium text-(--text-primary)">
-                  Express
-                </strong>
-                , and{" "}
-                <strong className="font-medium text-(--text-primary)">
-                  MongoDB
-                </strong>{" "}
-                focusing on usability, performance, and clean architecture.
-              </span>
-            </li>
-
-            <li className="flex items-start gap-2.5">
-              <span className="text-(--text-muted) select-none mt-1.5 text-xs">
-                •
-              </span>
-              <span>
-                I enjoy transforming ideas into polished products, refining
-                interaction details, and creating intuitive, reliable
-                experiences from database schema to UI.
-              </span>
-            </li>
+            {profile.about?.map((point, index) => (
+              <li key={index} className="flex items-start gap-2.5">
+                <span className="text-(--text-muted) select-none mt-1.5 text-xs">
+                  •
+                </span>
+                <span>{formatBioText(point)}</span>
+              </li>
+            ))}
           </ul>
 
           <div className="pt-2">

@@ -1,6 +1,11 @@
 export const profile = {
   name: "Shivam Kumar",
   strapline: "Full-Stack Developer",
+  about: [
+    "I'm a **Full-Stack Developer** passionate about crafting digital products where thoughtful design meets clean, scalable code.",
+    "I design and develop modern interfaces and robust backend APIs with **React**, **Node.js**, **Express**, and **MongoDB** focusing on usability, performance, and clean architecture.",
+    "I enjoy transforming ideas into polished products, refining interaction details, and creating intuitive, reliable experiences from database schema to UI.",
+  ],
 };
 
 export const techStack = [
@@ -39,13 +44,13 @@ export const socialLinks = [
 
   {
     label: "Twitter",
-    href: "https://x.com/shivamkumar_dev",
+    href: "https://x.com/shivamkumarlogs",
     icon: "x",
   },
 
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/shivamkumartech",
+    href: "https://linkedin.com/in/shivamkumarlogs",
     icon: "linkedin",
   },
 ];

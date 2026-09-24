@@ -127,15 +127,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Description */}
-      <p
-        className="
-          mt-3
-          max-w-3xl
-          text-sm
-          leading-6
-          text-(--text-secondary)
-        "
-      >
+      <p className="mt-3 text-sm leading-6 text-(--text-secondary)">
         {project.description}
       </p>
 
