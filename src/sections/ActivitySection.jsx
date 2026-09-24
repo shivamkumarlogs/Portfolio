@@ -115,7 +115,7 @@ export function ActivitySection() {
           </p>
 
           {/* Calendar: Mobile scrolls to latest commits; Desktop stretches to fill width without empty sides */}
-          <div ref={containerRef} className="w-full">
+          <div ref={containerRef} className="w-full text-(--text-muted)">
             <div
               ref={scrollRef}
               className={`w-full ${
@@ -124,7 +124,7 @@ export function ActivitySection() {
                   : "overflow-hidden"
               }`}
             >
-              <div className={dimensions.isMobile ? "shrink-0" : "w-full"}>
+              <div className={dimensions.isMobile ? "shrink-0" : "w-full"} >
                 <GitHubCalendar
                   username={GITHUB_USERNAME}
                   colorScheme={theme === "dark" ? "dark" : "light"}
@@ -132,7 +132,7 @@ export function ActivitySection() {
                   blockSize={dimensions.blockSize}
                   blockMargin={dimensions.blockMargin}
                   blockRadius={2.5}
-                  showMonthLabels={false}
+                  showMonthLabels={true}
                   showWeekdayLabels={false}
                   showColorLegend={false}
                   showTotalCount={false}
