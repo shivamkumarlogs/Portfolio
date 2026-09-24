@@ -3,33 +3,66 @@ import { Icon } from "../components/Icon";
 import { profile, socialLinks } from "../data/siteContent";
 
 export function HeroSection() {
-  const [views, setViews] = useState(0);
-
-  // Realistic persistent view counter
-  useEffect(() => {
+  // Global live view counter (real-time, session-deduplicated)
+  const [views, setViews] = useState(() => {
     try {
-      const stored = localStorage.getItem("portfolio_views_count");
-      let current = stored ? parseInt(stored, 10) : 1024;
-      if (!sessionStorage.getItem("portfolio_view_counted")) {
-        current += 1;
-        localStorage.setItem("portfolio_views_count", current.toString());
-        sessionStorage.setItem("portfolio_view_counted", "true");
-      }
-      setViews(current);
+      const cached = localStorage.getItem("portfolio_views_count");
+      return cached !== null ? parseInt(cached, 10) : 0;
     } catch {
-      setViews(0);
+      return 0;
     }
+  });
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function syncViews() {
+      try {
+        const hasCounted = sessionStorage.getItem("portfolio_view_counted");
+        const action = hasCounted ? "get" : "hit";
+        const url = `https://countapi.mileshilliard.com/api/v1/${action}/shivamkumar-portfolio-views`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Counter response not ok");
+        const data = await res.json();
+
+        if (mounted && typeof data?.value === "number") {
+          setViews(data.value);
+          localStorage.setItem("portfolio_views_count", data.value.toString());
+          if (!hasCounted) {
+            sessionStorage.setItem("portfolio_view_counted", "true");
+          }
+        }
+      } catch (err) {
+        console.warn("View counter fallback active:", err);
+      }
+    }
+
+    syncViews();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative pt-24 sm:pt-28 pb-12"
+      className="relative min-h-[calc(100svh-1rem)] flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-10"
       aria-labelledby="hero-title"
     >
-      <div className="mx-auto w-full max-w-5xl px-4 lg:px-8">
+      <div className="mx-auto w-full max-w-5xl px-4 lg:px-8 flex-1 flex flex-col justify-center">
         {/* Main Card / Container with subtle craft border */}
-        <div className="space-y-8">
+        <div className="space-y-8 my-auto">
           {/* Header Block: Name + Role + View Count & Status */}
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -47,10 +80,10 @@ export function HeroSection() {
             {/* Top Right: View Count Badge */}
             <div>
               <div
-                title="Total Profile Views"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-(--border-soft) bg-(--surface) px-2.5 py-1 text-xs font-mono text-(--text-muted) shadow-xs transition-colors hover:border-(--border) hover:text-(--text-secondary)"
+                title="Global Profile Views (Live)"
+                className="inline-flex items-center gap-1.5  px-2.5 py-1 text-xs font-mono text-(--text-muted) transition-colors hover:text-(--text-secondary) select-none"
               >
-                <Icon name="eye" size={13} />
+                <Icon name="eye" size={14} />
                 <span className="tabular-nums font-medium">
                   {views.toLocaleString()}
                 </span>
@@ -161,6 +194,25 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Bottom Scroll Cue */}
+      <div
+        className={`mx-auto w-full max-w-5xl px-6 lg:px-8 pt-6 flex justify-center transition-all duration-300 ${
+          hasScrolled ? "opacity-0 pointer-events-none -translate-y-2" : "opacity-100"
+        }`}
+        aria-hidden={hasScrolled}
+      >
+        <a
+          href="#projects"
+          tabIndex={hasScrolled ? -1 : 0}
+          className="group inline-flex flex-col items-center gap-1 text-xs font-mono text-(--text-muted) transition-colors duration-200 hover:text-(--text-primary)"
+        >
+          <span className="tracking-widest uppercase text-[10px] sm:text-[11px]">Explore</span>
+          <span className="text-xs transition-transform duration-300 group-hover:translate-y-1">
+            ↓
+          </span>
+        </a>
       </div>
     </section>
   );

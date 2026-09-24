@@ -6,10 +6,10 @@ export function ContactSection() {
     <section id="contact" className="relative">
       <div className="mx-auto w-full max-w-5xl px-4 pb-14 pt-14 sm:pb-24 sm:pt-24 lg:px-8">
         <p className="mb-3 font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-          Connect
+          Get in touch
         </p>
         <h2 className="mb-8 font-serif-accent text-2xl tracking-tight text-(--text-primary) sm:mb-10 sm:text-4xl lg:text-5xl">
-          Get in touch
+          Let’s build something great together
         </h2>
 
         <div className="space-y-6 sm:space-y-8">

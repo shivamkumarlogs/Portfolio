@@ -5,7 +5,7 @@ import { projects } from "../data/siteContent";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="relative">
+    <section id="projects" className="relative scroll-mt-16 sm:scroll-mt-20">
       <div className="mx-auto w-full max-w-5xl px-4 pb-14 pt-14 sm:pb-24 sm:pt-24 lg:px-8">
         {/* Section Heading */}
         <div className="mb-10 sm:mb-12">
