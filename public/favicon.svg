@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <linearGradient id="monogram" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e4e4e7" />
+    </linearGradient>
+  </defs>
+  <style>
+    .favicon-tile {
+      fill: url(#bg);
+      stroke: #27272a;
+    }
+    @media (prefers-color-scheme: dark) {
+      .favicon-tile {
+        stroke: #52525b;
+      }
+    }
+  </style>
+  <rect class="favicon-tile" x="2" y="2" width="60" height="60" rx="16" stroke-width="2.5" />
+  <path d="M43 23 C43 17 38.5 14.5 32 14.5 C24.5 14.5 20 18.5 20 25.5 C20 33.5 44 30.5 44 38.5 C44 45.5 39.5 49.5 32 49.5 C25.5 49.5 21 47 21 41"
+        fill="none" stroke="url(#monogram)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
