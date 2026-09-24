@@ -1,10 +1,10 @@
 import { techStack } from "../data/siteContent";
+import { Icon } from "../components/Icon";
 
 const categories = [
   { key: "language", label: "Languages" },
   { key: "frontend", label: "Frontend" },
   { key: "backend", label: "Backend" },
-  { key: "database", label: "Database" },
   { key: "mobile", label: "Mobile" },
   { key: "platform", label: "Tools & Platforms" },
 ];
@@ -22,7 +22,7 @@ export function StackSection() {
   const grouped = groupByCategory();
 
   return (
-    <section id="stack" className="relative">
+    <section id="stack" className="relative scroll-mt-16 sm:scroll-mt-20">
       <div className="mx-auto w-full max-w-5xl px-4 pb-14 pt-14 sm:pb-24 sm:pt-24 lg:px-8">
         <p className="mb-3 font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
           Tech Stack
@@ -55,32 +55,35 @@ export function StackSection() {
               const names = grouped[cat.key];
               if (!names.length) return null;
               return (
-                <div key={cat.key} className="py-4 first:pt-0 last:pb-0">
-                  <div className="mb-2 flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-sm font-semibold text-(--text-primary) sm:text-base">
-                      {cat.label}
-                    </h3>
-                    <span className="font-display text-xs text-(--text-muted)">
-                      {names.length}
-                    </span>
-                  </div>
-                  <ul className="flex list-none flex-wrap items-center gap-x-1 gap-y-1.5 p-0 m-0">
-                    {names.map((name, i) => (
-                      <li key={name} className="inline-flex items-center">
-                        <span className="font-display text-sm text-(--text-primary) sm:text-[15px]">
-                          {name}
-                        </span>
-                        {i < names.length - 1 && (
-                          <span
-                            className="mx-1.5 text-(--text-muted)"
-                            aria-hidden="true"
-                          >
-                            ·
-                          </span>
-                        )}
-                      </li>
+                <div
+                  key={cat.key}
+                  className="flex flex-col gap-2.5 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:gap-6 sm:py-4.5"
+                >
+                  <h3 className="w-full shrink-0 font-display text-sm font-semibold text-(--text-primary) sm:w-40 sm:text-base">
+                    {cat.label}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    {names.map((name) => (
+                      <span
+                        key={name}
+                        className="
+                          group/badge inline-flex items-center gap-2.5 rounded-lg
+                          border border-(--border-soft) bg-(--bg-secondary)/60
+                          px-3 py-1.5 font-display text-xs sm:text-[13px] font-medium text-(--text-primary)
+                          transition-all duration-200
+                          hover:-translate-y-0.5 hover:border-(--border)
+                          hover:bg-(--surface-raised) hover:shadow-sm
+                        "
+                      >
+                        <Icon
+                          name={name}
+                          size="1.2rem"
+                          className="shrink-0 transition-transform duration-200 group-hover/badge:scale-110"
+                        />
+                        <span>{name}</span>
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               );
             })}
