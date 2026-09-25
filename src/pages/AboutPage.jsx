@@ -136,12 +136,11 @@ export function AboutPage() {
             aria-hidden="true"
           />
 
-          {/* Live Dot + Contributions Counter + GitHub Profile Link */}
           <div className="mb-5 flex flex-wrap items-center justify-between gap-2.5">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-(--text-primary)">
               <span>
                 {totalCount !== null
-                  ? `${totalCount.toLocaleString()} contributions this year`
+                  ? `${totalCount.toLocaleString()} Contributions this year`
                   : "Contributions this year"}
               </span>
             </div>
@@ -204,7 +203,7 @@ export function AboutPage() {
             aria-hidden="true"
           />
 
-          <div className="flex flex-col divide-y divide-(--border-soft)">
+          <div className="flex flex-col divide-y divide-dashed divide-(--border-soft)">
             {categories.map((cat) => {
               const names = groupedStack[cat.key];
               if (!names || !names.length) return null;
@@ -213,7 +212,7 @@ export function AboutPage() {
                   key={cat.key}
                   className="flex flex-col gap-2.5 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:gap-6 sm:py-4.5"
                 >
-                  <h3 className="w-full shrink-0 font-display text-sm font-semibold text-(--text-primary) sm:w-44 sm:text-base">
+                  <h3 className="w-full shrink-0 font-display text-sm font-semibold text-(--text-muted) sm:w-44 sm:text-base">
                     {cat.label}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2">
