@@ -115,10 +115,6 @@ export function AboutPage() {
         <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
           About Me
         </p>
-        <h1 className="font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight text-(--text-primary) font-medium">
-          Background & Philosophy
-        </h1>
-
         <div className="space-y-3 pt-2 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans max-w-3xl">
           {profile.about?.map((point, index) => (
             <p key={index}>{formatBioText(point)}</p>
@@ -126,15 +122,80 @@ export function AboutPage() {
         </div>
       </section>
 
+      {/* GitHub Contributions Activity */}
+      <section className="space-y-4">
+        <div className="space-y-1">
+          <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+            GitHub Activity
+          </p>
+        </div>
+
+        <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
+            aria-hidden="true"
+          />
+
+          {/* Live Dot + Contributions Counter + GitHub Profile Link */}
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-(--text-primary)">
+              <span>
+                {totalCount !== null
+                  ? `${totalCount.toLocaleString()} contributions this year`
+                  : "Contributions this year"}
+              </span>
+            </div>
+
+            <a
+              href={`https://github.com/${GITHUB_USERNAME}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--border-soft) bg-(--bg-secondary)/50 text-xs font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all active:scale-95"
+            >
+              <Icon name="github" size={14} />
+              <span>View profile</span>
+              <span className="text-(--text-muted) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                ↗
+              </span>
+            </a>
+          </div>
+
+          <div ref={containerRef} className="w-full text-(--text-muted)">
+            <div
+              ref={scrollRef}
+              className={`w-full ${
+                dimensions.isMobile
+                  ? "flex overflow-x-auto pb-1 scrollbar-none"
+                  : "overflow-hidden"
+              }`}
+            >
+              <div className={dimensions.isMobile ? "shrink-0" : "w-full"}>
+                <GitHubCalendar
+                  username={GITHUB_USERNAME}
+                  colorScheme={theme === "dark" ? "dark" : "light"}
+                  theme={calendarTheme}
+                  blockSize={dimensions.blockSize}
+                  blockMargin={dimensions.blockMargin}
+                  blockRadius={2.5}
+                  showMonthLabels={true}
+                  showWeekdayLabels={false}
+                  showColorLegend={false}
+                  showTotalCount={false}
+                  transformData={handleTransformData}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Categorized Tech Stack */}
       <section className="space-y-4">
         <div className="space-y-1">
           <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-            Technologies
+            Technologies I Work With
           </p>
-          <h2 className="font-serif-accent text-2xl sm:text-3xl tracking-tight text-(--text-primary)">
-            What I Work With
-          </h2>
         </div>
 
         <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
@@ -180,59 +241,6 @@ export function AboutPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* GitHub Contributions Activity */}
-      <section className="space-y-4">
-        <div className="space-y-1">
-          <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-            Activity
-          </p>
-          <h2 className="font-serif-accent text-2xl sm:text-3xl tracking-tight text-(--text-primary)">
-            GitHub Contributions
-          </h2>
-        </div>
-
-        <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
-            aria-hidden="true"
-          />
-
-          <p className="mb-4 font-display text-sm font-medium text-(--text-primary) sm:text-base">
-            {totalCount !== null
-              ? `${totalCount.toLocaleString()} contributions this year`
-              : "Contributions this year"}
-          </p>
-
-          <div ref={containerRef} className="w-full text-(--text-muted)">
-            <div
-              ref={scrollRef}
-              className={`w-full ${
-                dimensions.isMobile
-                  ? "flex overflow-x-auto pb-1 scrollbar-none"
-                  : "overflow-hidden"
-              }`}
-            >
-              <div className={dimensions.isMobile ? "shrink-0" : "w-full"}>
-                <GitHubCalendar
-                  username={GITHUB_USERNAME}
-                  colorScheme={theme === "dark" ? "dark" : "light"}
-                  theme={calendarTheme}
-                  blockSize={dimensions.blockSize}
-                  blockMargin={dimensions.blockMargin}
-                  blockRadius={2.5}
-                  showMonthLabels={true}
-                  showWeekdayLabels={false}
-                  showColorLegend={false}
-                  showTotalCount={false}
-                  transformData={handleTransformData}
-                  style={{ width: "100%" }}
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>
