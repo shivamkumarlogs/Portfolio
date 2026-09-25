@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Icon } from "../components/Icon";
 import { profile, socialLinks, EMAIL } from "../data/siteContent";
 
