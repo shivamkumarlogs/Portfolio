@@ -9,32 +9,31 @@ export function BlogsPage() {
           Writing
         </h1>
         <p className="text-sm text-(--text-muted)">
-          Thoughts on full-stack architecture, backend systems, and web performance.
+          Thoughts on full-stack architecture, backend systems, and web
+          performance.
         </p>
       </header>
 
       {/* Pure Typographic List */}
-      {/* In BlogsPage.jsx */}
-<div className="pt-2 divide-y divide-dashed divide-(--border-soft)">
-  {blogs.map((post) => (
-    <a
-      key={post.title}
-      href={post.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-3.5 sm:py-4 transition-colors cursor-pointer"
-    >
-      <span className="text-sm sm:text-base text-(--text-primary) group-hover:text-(--text-muted) transition-colors">
-        {post.title}
-      </span>
+      <div className="pt-2 divide-y divide-dashed divide-(--border-soft)">
+        {blogs.map((post) => (
+          <a
+            key={post.title}
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-3.5 sm:py-4 transition-colors cursor-pointer"
+          >
+            <span className="text-sm sm:text-base text-(--text-primary) group-hover:text-(--text-muted) transition-colors">
+              {post.title}
+            </span>
 
-      <span className="shrink-0 text-xs sm:text-sm text-(--text-muted) tracking-tight">
-        {post.date} · {post.readTime}
-      </span>
-    </a>
-  ))}
-</div>
-
+            <span className="shrink-0 text-xs sm:text-sm text-(--text-muted) tracking-tight">
+              {post.date} · {post.readTime}
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }

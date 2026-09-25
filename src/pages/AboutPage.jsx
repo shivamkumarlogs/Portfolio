@@ -115,7 +115,7 @@ export function AboutPage() {
         <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
           About Me
         </p>
-        <div className="space-y-3 pt-2 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans max-w-3xl">
+        <div className="space-y-3 pt-2 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
           {profile.about?.map((point, index) => (
             <p key={index}>{formatBioText(point)}</p>
           ))}

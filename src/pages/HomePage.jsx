@@ -111,7 +111,7 @@ export function HomePage() {
         </div>
 
         {/* Crisp Mission Statement */}
-        <p className="text-base sm:text-lg leading-relaxed text-(--text-secondary) max-w-2xl">
+        <p className="text-base sm:text-lg leading-relaxed text-(--text-secondary)">
           Crafting digital products where thoughtful interface design meets clean,
           scalable full-stack architecture. Building with React, Node.js, Express, and MongoDB.
         </p>
@@ -133,7 +133,6 @@ export function HomePage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all"
           >
-            <Icon name="paperclip" size={15} />
             <span>Resume</span>
             <Icon name="arrow-up-right" size={14} className="text-(--text-muted)" />
           </a>

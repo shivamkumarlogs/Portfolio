@@ -11,10 +11,7 @@ export function ProjectsPage() {
         <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
           Selected Work
         </p>
-        <h1 className="font-serif-accent text-3xl sm:text-4xl lg:text-5xl tracking-tight text-(--text-primary) font-medium">
-          Projects & Architecture
-        </h1>
-        <p className="text-sm sm:text-base text-(--text-secondary) max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed">
           Full-stack platforms and backend systems focusing on clean architecture,
           performant APIs, and accessible modern interfaces.
         </p>
@@ -108,7 +105,7 @@ export function ProjectsPage() {
           href={`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1.5 font-medium text-(--text-primary) hover:text-(--accent-link) transition-colors"
+          className="group inline-flex items-center gap-1.5 font-medium text-(--text-primary) hover:text-(--text-muted) transition-colors"
         >
           <span>Let's talk</span>
           <span className="transition-transform duration-200 group-hover:translate-x-0.5">
