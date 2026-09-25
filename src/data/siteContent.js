@@ -105,31 +105,22 @@ export const projects = [
 
 export const blogs = [
   {
-    slug: "building-decoupled-rest-apis",
-    title: "Architecting Decoupled REST APIs with Express 5 and Mongoose",
-    excerpt:
-      "A deep dive into structuring scalable Node.js backends using the Controller-Model-Route pattern, validation layers, and clean error handling.",
-    date: "Sep 2026",
-    readTime: "5 min read",
-    tags: ["Node.js", "Express 5", "MongoDB", "Architecture"],
+    title: "The localStorage Authentication Trap",
+    url: "https://x.com/shivamkumarlogs/status/2101948014638285027?s=20",
+    date: "Sep 21, 2026",
+    readTime: "8 min",
   },
   {
-    slug: "dual-token-jwt-authentication",
-    title: "Secure Dual-Token Authentication with Refresh Token Rotation",
-    excerpt:
-      "Implementing safe stateless authentication with short-lived access tokens, encrypted refresh tokens, and cookie protection against XSS and CSRF.",
-    date: "Aug 2026",
-    readTime: "7 min read",
-    tags: ["Security", "JWT", "Auth", "Backend"],
+    title: "3 Lines Every Express Backend Needs",
+    url: "https://x.com/shivamkumarlogs/status/2101327586987282443?s=20",
+    date: "Sep 19, 2026",
+    readTime: "5 min",
   },
   {
-    slug: "modern-react-design-systems",
-    title: "Crafting Fluid Micro-Interactions with React & Tailwind CSS",
-    excerpt:
-      "How to design tactile, native-feeling web interfaces using subtle CSS transitions, dark-mode tokens, and adaptive floating navigation.",
-    date: "Jul 2026",
-    readTime: "4 min read",
-    tags: ["React", "Tailwind CSS", "UI/UX"],
+    title: "3 simple JavaScript bugs that drove me crazy",
+    url: "https://x.com/shivamkumarlogs/status/2100100355300417571?s=20",
+    date: "Sep 16, 2026",
+    readTime: "5 min",
   },
 ];
 
