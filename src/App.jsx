@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { AboutPage } from "./pages/AboutPage";
+import { BlogsPage } from "./pages/BlogsPage";
 
 export default function App() {
   return (
@@ -11,14 +12,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route
-          path="/blogs"
-          element={
-            <div className="py-12 text-center text-(--text-muted)">
-              Blogs page loading...
-            </div>
-          }
-        />
+        <Route path="/blogs" element={<BlogsPage />} />
       </Route>
     </Routes>
   );
