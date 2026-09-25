@@ -27,7 +27,7 @@ export const techStack = [
 ];
 
 export const EMAIL = "shivamkumar.byte@gmail.com";
-export const GITHUB_USERNAME = "shivamkumartech";
+export const GITHUB_USERNAME = "shivamkumarlogs";
 
 export const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`;
 
@@ -53,14 +53,15 @@ export const socialLinks = [
 
 export const projects = [
   {
-    title: "NoteNest",
+    title: "AI Code Reviewer",
     description:
-      "A responsive full-stack note-taking platform with a decoupled frontend-backend architecture. Global state managed via React Context API, nested routing with React Router DOM v7, and a modular RESTful API built on a Controller-Model-Route pattern with Mongoose for data integrity.",
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      "An intelligent full-stack web application that uses Google Gemini to review developer source code and provide feedback on code quality, potential bugs, security risks, performance, and possible improvements.",
+    tags: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Google Gemini"],
     spotlight: "Live",
+    screenshot: "aicodereviewer.png",
     links: [
-      { label: "Live Demo", href: "https://note-nest-six-beryl.vercel.app/" },
-      { label: "GitHub", href: "https://github.com/shivamkumartech/else" },
+      { label: "Live Demo", href: "https://ai-code-reviewer-ecru-xi.vercel.app/" },
+      { label: "GitHub", href: "https://github.com/shivamkumarlogs/AI-Code-Reviewer" },
     ],
   },
 
@@ -68,7 +69,7 @@ export const projects = [
     title: "RecipeFinder",
     description:
       "A recipe discovery app integrating TheMealDB's API for instant search, detailed recipe views, and random discovery across 500+ recipes. Fully responsive mobile-first UI built with a custom Tailwind CSS v4 design system, custom data-fetching hooks, and an accessible modal recipe view with keyboard support and skeleton loading states.",
-    tags: ["React.js", "Tailwind CSS", "JavaScript"],
+    tags: ["React.js", "Tailwind CSS"],
     spotlight: "Live",
     screenshot: "recipefinder.png",
     links: [
@@ -78,7 +79,7 @@ export const projects = [
       },
       {
         label: "GitHub",
-        href: "https://github.com/shivamkumartech/recipefinder",
+        href: "https://github.com/shivamkumarlogs/recipefinder",
       },
     ],
   },
@@ -91,7 +92,7 @@ export const projects = [
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/shivamkumartech/Spotify-Clone-Backend",
+        href: "https://github.com/shivamkumarlogs/Spotify-Clone-Backend",
       },
     ],
   },
