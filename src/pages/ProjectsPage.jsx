@@ -1,7 +1,7 @@
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import { Tag } from "../components/Tag";
-import { projects } from "../data/siteContent";
+import { projects, EMAIL } from "../data/siteContent";
 
 export function ProjectsPage() {
   return (
@@ -99,6 +99,22 @@ export function ProjectsPage() {
             </div>
           </article>
         ))}
+      </div>
+
+      {/* Bottom CTA Sign-Off */}
+      <div className="pt-8 sm:pt-10 border-t border-(--border-soft)/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm text-(--text-muted)">
+        <span>Have an interesting project in mind or want to collaborate?</span>
+        <a
+          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1.5 font-medium text-(--text-primary) hover:text-(--accent-link) transition-colors"
+        >
+          <span>Let's talk</span>
+          <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+            →
+          </span>
+        </a>
       </div>
     </div>
   );
