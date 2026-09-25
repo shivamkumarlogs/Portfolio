@@ -1,6 +1,6 @@
 import { blogs } from "../data/siteContent";
 
-export function BlogsPage() {
+export function WritingPage() {
   return (
     <div className="space-y-8 sm:space-y-10 animate-fade-in max-w-3xl">
       {/* Quiet Header */}

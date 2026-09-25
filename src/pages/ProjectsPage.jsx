@@ -102,7 +102,7 @@ export function ProjectsPage() {
       <div className="pt-8 sm:pt-10 border-t border-(--border-soft)/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm text-(--text-muted)">
         <span>Have an interesting project in mind or want to collaborate?</span>
         <a
-          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`}
+          href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
           target="_blank"
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-1.5 font-medium text-(--text-primary) hover:text-(--text-muted) transition-colors"

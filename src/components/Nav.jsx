@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { to: "/", label: "Home", icon: "home", end: true },
   { to: "/projects", label: "Projects", icon: "projects" },
   { to: "/about", label: "About", icon: "about" },
-  { to: "/blogs", label: "Blogs", icon: "blogs" },
+  { to: "/writing", label: "Writing", icon: "blogs" },
 ];
 
 export function Nav() {
