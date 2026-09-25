@@ -39,12 +39,6 @@ export const socialLinks = [
   },
 
   {
-    label: "Email",
-    href: `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`,
-    icon: "email",
-  },
-
-  {
     label: "Twitter",
     href: "https://x.com/shivamkumarlogs",
     icon: "x",

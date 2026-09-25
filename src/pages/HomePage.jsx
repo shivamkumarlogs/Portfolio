@@ -51,30 +51,6 @@ export function HomePage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const navCards = [
-    {
-      title: "Projects",
-      desc: "Full-stack apps, system architectures, and live demos",
-      to: "/projects",
-      badge: "3 Live",
-      icon: "projects",
-    },
-    {
-      title: "About & Stack",
-      desc: "Background, development philosophy, and GitHub activity",
-      to: "/about",
-      badge: "Profile",
-      icon: "about",
-    },
-    {
-      title: "Writing",
-      desc: "Articles, technical notes, and architecture breakdowns",
-      to: "/blogs",
-      badge: "Articles",
-      icon: "blogs",
-    },
-  ];
-
   return (
     <div className="space-y-12 sm:space-y-16 animate-fade-in">
       {/* Top Header & Identity */}
@@ -112,20 +88,48 @@ export function HomePage() {
 
         {/* Crisp Mission Statement */}
         <p className="text-base sm:text-lg leading-relaxed text-(--text-secondary)">
-          Crafting digital products where thoughtful interface design meets clean,
-          scalable full-stack architecture. Building with React, Node.js, Express, and MongoDB.
+          Crafting digital products where thoughtful interface design meets
+          clean, scalable full-stack architecture. Building with React, Node.js,
+          Express, and MongoDB.
         </p>
 
         {/* Quick Actions & Social Handles */}
         <div className="flex flex-wrap items-center gap-2.5 pt-1">
-          <button
-            type="button"
-            onClick={handleCopyEmail}
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all cursor-pointer"
-          >
-            <Icon name={copied ? "check" : "copy"} size={15} />
-            <span>{copied ? "Copied to clipboard!" : EMAIL}</span>
-          </button>
+          {/* Dual Action: Send Email + Copy Address */}
+          <div className="inline-flex items-center rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium transition-all hover:border-(--border) hover:bg-(--surface-raised) shadow-2xs">
+            <a
+              href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 pl-3.5 pr-2.5 py-2 text-(--text-primary) transition-colors"
+            >
+              Get in touch
+            </a>
+
+            <span className="h-4 w-px bg-(--border-soft)" aria-hidden="true" />
+
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              aria-label="Copy email address"
+              title={copied ? "Copied to clipboard!" : `Copy ${EMAIL}`}
+              className="flex h-8 w-8 items-center justify-center rounded-r-xl text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-secondary)/60 active:scale-90 transition-all cursor-pointer"
+            >
+              {copied ? (
+                <Icon
+                  name="check"
+                  size={15}
+                  className="text-emerald-500 dark:text-emerald-400"
+                />
+              ) : (
+                <Icon
+                  name="copy"
+                  size={15}
+                  className="transition-transform duration-200 hover:scale-110"
+                />
+              )}
+            </button>
+          </div>
 
           <a
             href="/Shivam_Kumar_Resume.pdf"
@@ -134,7 +138,11 @@ export function HomePage() {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all"
           >
             <span>Resume</span>
-            <Icon name="arrow-up-right" size={14} className="text-(--text-muted)" />
+            <Icon
+              name="arrow-up-right"
+              size={14}
+              className="text-(--text-muted)"
+            />
           </a>
 
           {socialLinks.map((link) => (
@@ -149,44 +157,6 @@ export function HomePage() {
             >
               <Icon name={link.icon} size={17} />
             </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Directory Launcher Section */}
-      <section className="space-y-4">
-        <h2 className="text-xs font-mono tracking-widest uppercase text-(--text-muted)">
-          Directory
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-          {navCards.map((card) => (
-            <Link
-              key={card.to}
-              to={card.to}
-              className="group relative p-5 rounded-2xl border border-(--border-soft) bg-(--surface) hover:border-(--border) hover:bg-(--surface-raised) transition-all duration-200 flex flex-col justify-between gap-4"
-            >
-              <div className="flex items-center justify-between">
-                <span className="p-2 rounded-xl bg-(--bg-secondary) text-(--text-secondary) group-hover:text-(--text-primary) transition-colors">
-                  <Icon name={card.icon} size={18} />
-                </span>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-(--bg-secondary) text-(--text-muted)">
-                  {card.badge}
-                </span>
-              </div>
-
-              <div>
-                <div className="flex items-center gap-1.5 text-base font-display font-medium text-(--text-primary) group-hover:text-(--accent-link) transition-colors">
-                  <span>{card.title}</span>
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
-                <p className="mt-1 text-xs text-(--text-muted) leading-relaxed">
-                  {card.desc}
-                </p>
-              </div>
-            </Link>
           ))}
         </div>
       </section>
