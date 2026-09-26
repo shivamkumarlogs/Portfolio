@@ -1,118 +1,160 @@
+import { useState } from "react";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import { Tag } from "../components/Tag";
 import { projects, EMAIL } from "../data/siteContent";
 
 export function ProjectsPage() {
+  const [activeTab, setActiveTab] = useState("personal");
+
+  const filteredProjects = projects.filter((project) => {
+    if (activeTab === "freelance") {
+      return project.type === "freelance";
+    }
+    return project.type !== "freelance";
+  });
+
   return (
     <div className="space-y-10 sm:space-y-12 animate-fade-in">
       {/* Page Header */}
-      <header className="space-y-3">
-        <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-          Selected Work
-        </p>
-        <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed">
-          Full-stack platforms and backend systems focusing on clean architecture,
-          performant APIs, and accessible modern interfaces.
-        </p>
+      <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="space-y-1">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-(--text-primary)">
+            Selected Work
+          </h1>
+          <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed">
+            A few projects that capture how I design, build, and ship products.
+          </p>
+        </div>
+
+        {/* Segmented Pill Toggle */}
+        <div className="shrink-0 self-start sm:self-center inline-flex items-center p-1 rounded-full bg-(--surface-raised) border border-(--border-soft) shadow-2xs">
+          <button
+            type="button"
+            onClick={() => setActiveTab("personal")}
+            className={`px-3.5 py-1 text-xs sm:text-sm rounded-full transition-all duration-200 cursor-pointer ${
+              activeTab === "personal"
+                ? "bg-(--surface) text-(--text-primary) font-medium shadow-xs"
+                : "text-(--text-muted) hover:text-(--text-primary)"
+            }`}
+          >
+            Personal
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("freelance")}
+            className={`px-3.5 py-1 text-xs sm:text-sm rounded-full transition-all duration-200 cursor-pointer ${
+              activeTab === "freelance"
+                ? "bg-(--surface) text-(--text-primary) font-medium shadow-xs"
+                : "text-(--text-muted) hover:text-(--text-primary)"
+            }`}
+          >
+            Freelance
+          </button>
+        </div>
       </header>
 
       {/* Projects List */}
       <div className="space-y-6">
-        {projects.map((project) => (
-          <article
-            key={project.title}
-            className="
-              relative overflow-hidden rounded-2xl
-              border border-(--border-soft) bg-(--surface)
-              p-5 sm:p-7 transition-all duration-300
-              hover:border-(--border)
-              hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]
-              dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]
-            "
-          >
-            {/* Subtle top hairline highlight */}
-            <div
-              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
-              aria-hidden="true"
-            />
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project) => (
+            <article
+              key={project.title}
+              className="
+                relative overflow-hidden rounded-2xl
+                border border-(--border-soft) bg-(--surface)
+                p-5 sm:p-7 transition-all duration-300
+                hover:border-(--border)
+                hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]
+                dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]
+              "
+            >
+              {/* Subtle top hairline highlight */}
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
+                aria-hidden="true"
+              />
 
-            {/* Thumbnail preview if available */}
-            {project.screenshot && (
-              <div className="w-full overflow-hidden rounded-xl mb-5 border border-(--border-soft)">
-                <img
-                  src={project.screenshot}
-                  alt={`${project.title} preview`}
-                  className="w-full h-auto block"
-                />
-              </div>
-            )}
-
-            {/* Header: Title + Live Badge */}
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="font-serif-accent text-2xl sm:text-3xl tracking-tight text-(--text-primary)">
-                {project.title}
-              </h2>
-
-              {project.spotlight && (
-                <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/10 px-2.5 py-1 font-display text-[10px] font-medium uppercase tracking-[0.16em] text-green-600 dark:text-green-400">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
-                  {project.spotlight}
-                </span>
-              )}
-            </div>
-
-            {/* Description */}
-            <p className="mt-3 text-sm leading-6 text-(--text-secondary)">
-              {project.description}
-            </p>
-
-            {/* Bottom Row: Tags + Links */}
-            <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <Tag key={tag} muted>
-                    {tag}
-                  </Tag>
-                ))}
-              </div>
-
-              <div className="flex shrink-0 gap-2">
-                {project.links.map((link) => (
-                  <Button
-                    key={link.label}
-                    href={link.href}
-                    responsiveIcon
-                    icon={(size) => (
-                      <Icon
-                        name={link.label === "GitHub" ? "github" : "globe"}
-                        size={size}
-                      />
-                    )}
-                    label={link.label}
+              {/* Thumbnail preview if available */}
+              {project.screenshot && (
+                <div className="w-full overflow-hidden rounded-xl mb-5 border border-(--border-soft)">
+                  <img
+                    src={project.screenshot}
+                    alt={`${project.title} preview`}
+                    className="w-full h-auto block"
                   />
-                ))}
+                </div>
+              )}
+
+              {/* Header: Title + Live Badge */}
+              <div className="flex items-center justify-between gap-4">
+                <h2 className="font-serif-accent text-2xl sm:text-3xl tracking-tight text-(--text-primary)">
+                  {project.title}
+                </h2>
+
+                {project.spotlight && (
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/10 px-2.5 py-1 font-display text-[10px] font-medium uppercase tracking-[0.16em] text-green-600 dark:text-green-400">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                    {project.spotlight}
+                  </span>
+                )}
               </div>
-            </div>
-          </article>
-        ))}
+
+              {/* Description */}
+              <p className="mt-3 text-sm leading-6 text-(--text-secondary)">
+                {project.description}
+              </p>
+
+              {/* Bottom Row: Tags + Links */}
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <Tag key={tag} muted>
+                      {tag}
+                    </Tag>
+                  ))}
+                </div>
+
+                <div className="flex shrink-0 gap-2">
+                  {project.links.map((link) => (
+                    <Button
+                      key={link.label}
+                      href={link.href}
+                      responsiveIcon
+                      icon={(size) => (
+                        <Icon
+                          name={link.label === "GitHub" ? "github" : "globe"}
+                          size={size}
+                        />
+                      )}
+                      label={link.label}
+                    />
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))
+        ) : (
+          <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-8 sm:p-12 text-center transition-all">
+            <h3 className="font-semibold text-base sm:text-lg text-(--text-primary) mb-1.5">
+              Open for Freelance & Contract Work
+            </h3>
+            <p className="max-w-md mx-auto text-xs sm:text-sm text-(--text-secondary) leading-relaxed mb-6">
+              I collaborate with founders, startups, and teams to build high-performance web applications, scalable backend APIs, and responsive interfaces from scratch.
+            </p>
+            <a
+              href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-(--text-primary) text-(--bg-primary) text-xs sm:text-sm font-medium hover:opacity-90 active:scale-95 transition-all shadow-xs"
+            >
+              <span>Start a conversation</span>
+              <span>→</span>
+            </a>
+          </div>
+        )}
       </div>
 
-      {/* Bottom CTA Sign-Off */}
-      <div className="pt-8 sm:pt-10 border-t border-(--border-soft)/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm text-(--text-muted)">
-        <span>Have an interesting project in mind or want to collaborate?</span>
-        <a
-          href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1.5 font-medium text-(--text-primary) hover:text-(--text-muted) transition-colors"
-        >
-          <span>Let's talk</span>
-          <span className="transition-transform duration-200 group-hover:translate-x-0.5">
-            →
-          </span>
-        </a>
-      </div>
     </div>
   );
 }

@@ -3,14 +3,13 @@ import { blogs } from "../data/siteContent";
 export function WritingPage() {
   return (
     <div className="space-y-8 sm:space-y-10 animate-fade-in max-w-3xl">
-      {/* Quiet Header */}
-      <header className="space-y-2">
-        <h1 className="font-serif-accent text-3xl sm:text-4xl tracking-tight text-(--text-primary) font-medium">
+      {/* Page Header */}
+      <header className="space-y-1">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-(--text-primary)">
           Writing
         </h1>
-        <p className="text-sm text-(--text-muted)">
-          Thoughts on full-stack architecture, backend systems, and web
-          performance.
+        <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed">
+          Thoughts on full-stack architecture, backend systems, and web performance.
         </p>
       </header>
 
