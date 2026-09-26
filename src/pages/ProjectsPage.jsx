@@ -16,7 +16,7 @@ export function ProjectsPage() {
   });
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 sm:space-y-12 animate-fade-in">
       {/* Page Header */}
       <header className="flex flex-col sm:flex-row sm:items-stretch sm:justify-between gap-4">
         <div className="flex flex-col justify-center space-y-1">
