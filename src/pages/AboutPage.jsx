@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "../ThemeContext";
 import { Icon } from "../components/Icon";
+import { SegmentedToggle } from "../components/SegmentedToggle";
 import { profile, techStack, GITHUB_USERNAME } from "../data/siteContent";
 
 function formatBioText(text) {
@@ -44,6 +45,7 @@ const calendarTheme = {
 export function AboutPage() {
   const { theme } = useTheme();
   const groupedStack = groupByCategory();
+  const [bioTab, setBioTab] = useState("developer");
 
   // GitHub Calendar state
   const containerRef = useRef(null);
@@ -112,140 +114,218 @@ export function AboutPage() {
   }, [dimensions.isMobile]);
 
   return (
-    <div className="space-y-12 sm:space-y-16 animate-fade-in">
-      {/* Header & Story */}
-      <section className="space-y-4">
-        <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-          About Me
-        </p>
-        <div className="space-y-3 pt-2 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
-          {profile.about?.map((point, index) => (
-            <p key={index}>{formatBioText(point)}</p>
-          ))}
-        </div>
-      </section>
-
-      {/* GitHub Contributions Activity */}
-      <section className="space-y-4">
-        <div className="space-y-1">
-          <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-            GitHub Activity
+    <div className="space-y-10 sm:space-y-12 animate-fade-in">
+      {/* Page Header */}
+      <header className="flex flex-col sm:flex-row sm:items-stretch sm:justify-between gap-4">
+        <div className="flex flex-col justify-center space-y-1">
+          <h1 className="text-xl font-bold tracking-tight text-(--text-primary)">
+            About
+          </h1>
+          <p className="text-sm text-(--text-secondary) leading-relaxed transition-opacity duration-200">
+            {bioTab === "developer"
+              ? "Engineering background, technical craft, and full-stack architecture."
+              : "A few things that inspire and recharge me away from the screen."}
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
-            aria-hidden="true"
-          />
+        {/* Segmented Pill Toggle */}
+        <SegmentedToggle
+          value={bioTab}
+          onChange={setBioTab}
+          options={[
+            { value: "developer", label: "Developer" },
+            { value: "beyond", label: "Beyond Code" },
+          ]}
+        />
+      </header>
 
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-2.5">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-(--text-primary)">
-              <span>
-                {totalCount !== null
-                  ? `${totalCount.toLocaleString()} Contributions this year`
-                  : "Contributions this year"}
-              </span>
-            </div>
-
-            <a
-              href={`https://github.com/${GITHUB_USERNAME}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--border-soft) bg-(--bg-secondary)/50 text-xs font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all active:scale-95"
-            >
-              <Icon name="github" size={14} />
-              <span>View profile</span>
-              <span className="text-(--text-muted) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                ↗
-              </span>
-            </a>
+      {/* Developer Story vs Beyond Code View */}
+      <section className="space-y-4">
+        {bioTab === "developer" ? (
+          <div className="space-y-3 pt-1 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
+            {profile.about?.map((point, index) => (
+              <p key={index}>{formatBioText(point)}</p>
+            ))}
           </div>
-
-          <div ref={containerRef} className="w-full text-(--text-muted)">
-            <div
-              ref={scrollRef}
-              className={`w-full ${
-                dimensions.isMobile
-                  ? "flex overflow-x-auto pb-1 scrollbar-none"
-                  : "overflow-hidden"
-              }`}
-            >
-              <div className={dimensions.isMobile ? "shrink-0" : "w-full"}>
-                <GitHubCalendar
-                  username={GITHUB_USERNAME}
-                  colorScheme={theme === "dark" ? "dark" : "light"}
-                  theme={calendarTheme}
-                  blockSize={dimensions.blockSize}
-                  blockMargin={dimensions.blockMargin}
-                  blockRadius={2.5}
-                  showMonthLabels={true}
-                  showWeekdayLabels={false}
-                  showColorLegend={false}
-                  showTotalCount={false}
-                  transformData={handleTransformData}
-                  style={{ width: "100%" }}
-                />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
+              <div className="flex items-center justify-between text-(--text-muted)">
+                <span className="font-display text-[10px] uppercase tracking-wider">
+                  Soundtrack & Focus
+                </span>
+                <span className="text-sm">🎧</span>
               </div>
+              <p className="text-sm text-(--text-secondary) leading-relaxed">
+                Usually locked into deep flow state with lo-fi beats, ambient electronic, or instrumental synthwave.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
+              <div className="flex items-center justify-between text-(--text-muted)">
+                <span className="font-display text-[10px] uppercase tracking-wider">
+                  Curiosity & Reading
+                </span>
+                <span className="text-sm">📚</span>
+              </div>
+              <p className="text-sm text-(--text-secondary) leading-relaxed">
+                Fascinated by system design architecture, open-source maintainers' journeys, and modern web performance.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
+              <div className="flex items-center justify-between text-(--text-muted)">
+                <span className="font-display text-[10px] uppercase tracking-wider">
+                  Workspace & Tools
+                </span>
+                <span className="text-sm">⌨️</span>
+              </div>
+              <p className="text-sm text-(--text-secondary) leading-relaxed">
+                A clean desk setup, VS Code with dark theme, a tactile mechanical keyboard, and hot coffee.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
+              <div className="flex items-center justify-between text-(--text-muted)">
+                <span className="font-display text-[10px] uppercase tracking-wider">
+                  Offline & Downtime
+                </span>
+                <span className="text-sm">🌿</span>
+              </div>
+              <p className="text-sm text-(--text-secondary) leading-relaxed">
+                Taking quiet walks to unplug from screens, casual gaming, and spending quality time with family.
+              </p>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
-      {/* Categorized Tech Stack */}
-      <section className="space-y-4">
-        <div className="space-y-1">
-          <p className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
-            Technologies I Work With
-          </p>
-        </div>
+      {/* Technical Sections: Only shown in Developer tab */}
+      {bioTab === "developer" && (
+        <>
+          {/* GitHub Contributions Activity */}
+          <section className="space-y-4">
+            <div className="space-y-1">
+              <h2 className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+                GitHub Activity
+              </h2>
+            </div>
 
-        <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 hover:border-(--border) hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
-            aria-hidden="true"
-          />
+            <div className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 ">
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
+                aria-hidden="true"
+              />
 
-          <div className="flex flex-col divide-y divide-dashed divide-(--border-soft)">
-            {categories.map((cat) => {
-              const names = groupedStack[cat.key];
-              if (!names || !names.length) return null;
-              return (
-                <div
-                  key={cat.key}
-                  className="flex flex-col gap-2.5 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:gap-6 sm:py-4.5"
+              <div className="mb-5 flex flex-wrap items-center justify-between gap-2.5">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-(--text-primary)">
+                  <span>
+                    {totalCount !== null
+                      ? `${totalCount.toLocaleString()} Contributions this year`
+                      : "Contributions this year"}
+                  </span>
+                </div>
+
+                <a
+                  href={`https://github.com/${GITHUB_USERNAME}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--border-soft) bg-(--bg-secondary)/50 text-xs font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all active:scale-95"
                 >
-                  <h3 className="w-full shrink-0 font-display text-sm font-semibold text-(--text-muted) sm:w-44 sm:text-base">
-                    {cat.label}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-2">
-                    {names.map((name) => (
-                      <span
-                        key={name}
-                        className="
-                          group/badge inline-flex items-center gap-2 rounded-lg
-                          border border-(--border-soft) bg-(--bg-secondary)/60
-                          px-2.5 py-1.5 font-display text-xs sm:text-[13px] font-medium text-(--text-primary)
-                          transition-all duration-200
-                          hover:-translate-y-0.5 hover:border-(--border)
-                          hover:bg-(--surface-raised) hover:shadow-xs
-                        "
-                      >
-                        <Icon
-                          name={name}
-                          size={18}
-                          className="shrink-0 transition-transform duration-200 group-hover/badge:scale-110"
-                        />
-                        <span>{name}</span>
-                      </span>
-                    ))}
+                  <Icon name="github" size={14} />
+                  <span>View profile</span>
+                  <span className="text-(--text-muted) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    ↗
+                  </span>
+                </a>
+              </div>
+
+              <div ref={containerRef} className="w-full text-(--text-muted)">
+                <div
+                  ref={scrollRef}
+                  className={`w-full ${
+                    dimensions.isMobile
+                      ? "flex overflow-x-auto pb-1 scrollbar-none"
+                      : "overflow-hidden"
+                  }`}
+                >
+                  <div className={dimensions.isMobile ? "shrink-0" : "w-full"}>
+                    <GitHubCalendar
+                      username={GITHUB_USERNAME}
+                      colorScheme={theme === "dark" ? "dark" : "light"}
+                      theme={calendarTheme}
+                      blockSize={dimensions.blockSize}
+                      blockMargin={dimensions.blockMargin}
+                      blockRadius={2.5}
+                      showMonthLabels={true}
+                      showWeekdayLabels={false}
+                      showColorLegend={false}
+                      showTotalCount={false}
+                      transformData={handleTransformData}
+                      style={{ width: "100%" }}
+                    />
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
+          </section>
+
+          {/* Categorized Tech Stack */}
+          <section className="space-y-4">
+            <div className="space-y-1">
+              <h2 className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+                Technologies I Work With
+              </h2>
+            </div>
+
+            <div className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) p-5 sm:p-7 transition-all duration-300 ">
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
+                aria-hidden="true"
+              />
+
+              <div className="flex flex-col divide-y divide-dashed divide-(--border-soft)">
+                {categories.map((cat) => {
+                  const names = groupedStack[cat.key];
+                  if (!names || !names.length) return null;
+                  return (
+                    <div
+                      key={cat.key}
+                      className="flex flex-col gap-2.5 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-center sm:gap-6 sm:py-4.5"
+                    >
+                      <h3 className="w-full shrink-0 font-display text-sm font-semibold text-(--text-muted) sm:w-44 sm:text-base">
+                        {cat.label}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-2">
+                        {names.map((name) => (
+                          <span
+                            key={name}
+                            className="
+                              group/badge inline-flex items-center gap-2 rounded-lg
+                              border border-(--border-soft) bg-(--bg-secondary)/60
+                              px-2.5 py-1.5 font-display text-xs sm:text-[13px] font-medium text-(--text-primary)
+                              transition-all duration-200
+                              hover:-translate-y-0.5 hover:border-(--border)
+                              hover:bg-(--surface-raised) hover:shadow-xs
+                            "
+                          >
+                            <Icon
+                              name={name}
+                              size={18}
+                              className="shrink-0 transition-transform duration-200 group-hover/badge:scale-110"
+                            />
+                            <span>{name}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
+import { SegmentedToggle } from "../components/SegmentedToggle";
 import { Tag } from "../components/Tag";
 import { projects, EMAIL } from "../data/siteContent";
 
@@ -29,31 +30,15 @@ export function ProjectsPage() {
           </p>
         </div>
 
-        {/* Segmented Pill Toggle matching height of Title + Subtitle */}
-        <div className="shrink-0 self-stretch sm:self-auto flex items-stretch p-1 rounded-full bg-(--surface-raised) border border-(--border-soft) shadow-2xs gap-1 min-h-11">
-          <button
-            type="button"
-            onClick={() => setActiveTab("personal")}
-            className={`flex-1 sm:flex-initial sm:min-w-28 px-5 sm:px-6 flex items-center justify-center text-xs sm:text-sm font-medium rounded-full transition-all duration-200 cursor-pointer ${
-              activeTab === "personal"
-                ? "bg-(--surface) text-(--text-primary) shadow-xs"
-                : "text-(--text-muted) hover:text-(--text-primary)"
-            }`}
-          >
-            Personal
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("freelance")}
-            className={`flex-1 sm:flex-initial sm:min-w-28 px-5 sm:px-6 flex items-center justify-center text-xs sm:text-sm font-medium rounded-full transition-all duration-200 cursor-pointer ${
-              activeTab === "freelance"
-                ? "bg-(--surface) text-(--text-primary) shadow-xs"
-                : "text-(--text-muted) hover:text-(--text-primary)"
-            }`}
-          >
-            Freelance
-          </button>
-        </div>
+        {/* Segmented Pill Toggle */}
+        <SegmentedToggle
+          value={activeTab}
+          onChange={setActiveTab}
+          options={[
+            { value: "personal", label: "Personal" },
+            { value: "freelance", label: "Freelance" },
+          ]}
+        />
       </header>
 
       {/* Projects List */}
@@ -63,12 +48,9 @@ export function ProjectsPage() {
             <article
               key={project.title}
               className="
-                relative overflow-hidden rounded-2xl
+                relative overflow-hidden rounded-xl
                 border border-(--border-soft) bg-(--surface)
                 p-5 sm:p-7 transition-all duration-300
-                hover:border-(--border)
-                hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]
-                dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]
               "
             >
               {/* Subtle top hairline highlight */}
@@ -137,12 +119,12 @@ export function ProjectsPage() {
             </article>
           ))
         ) : (
-          <div className="relative overflow-hidden rounded-2xl border border-(--border-soft) bg-(--surface) p-8 sm:p-12 text-center transition-all">
+          <div className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) p-8 sm:p-12 text-center transition-all">
             <h3 className="font-semibold text-base sm:text-lg text-(--text-primary) mb-1.5">
               Open for Freelance & Contract Work
             </h3>
-            <p className="max-w-md mx-auto text-xs sm:text-sm text-(--text-secondary) leading-relaxed mb-6">
-              I collaborate with founders, startups, and teams to build high-performance web applications, scalable backend APIs, and responsive interfaces from scratch.
+            <p className="mx-auto text-xs sm:text-sm text-(--text-secondary) leading-relaxed mb-6">
+              I collaborate with founders, startups, and teams to build high-performance web applications, <br/>scalable backend APIs, and responsive interfaces from scratch.
             </p>
             <a
               href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
@@ -150,9 +132,8 @@ export function ProjectsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-(--text-primary) text-(--bg-primary) text-xs sm:text-sm font-medium hover:opacity-90 active:scale-95 transition-all shadow-xs"
             >
-              <span>Start a conversation</span>
-              <span>→</span>
-            </a>
+                <span>Start a conversation</span>
+              </a>
           </div>
         )}
       </div>
