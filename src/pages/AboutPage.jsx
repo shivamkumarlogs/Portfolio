@@ -142,7 +142,7 @@ export function AboutPage() {
       {/* Developer Story vs Beyond Code View */}
       <section className="space-y-4">
         {bioTab === "developer" ? (
-          <div className="space-y-3 pt-1 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
+          <div className="space-y-3 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
             {profile.about?.map((point, index) => (
               <p key={index}>{formatBioText(point)}</p>
             ))}

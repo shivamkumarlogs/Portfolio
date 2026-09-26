@@ -21,7 +21,7 @@ export function WritingPage() {
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-3.5 sm:py-4 transition-colors cursor-pointer"
+            className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-3.5 sm:py-4 first:pt-0 transition-colors cursor-pointer"
           >
             <span className="text-sm sm:text-base text-(--text-primary) group-hover:text-(--text-muted) transition-colors">
               {post.title}
