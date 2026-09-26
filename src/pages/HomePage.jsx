@@ -147,15 +147,14 @@ export function HomePage() {
 
           {/* Social Links (GitHub, X, LinkedIn) */}
           {socialLinks.map((link) => {
-            const displayLabel = link.icon === "x" ? "X" : link.label;
             return (
               <a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={displayLabel}
-                aria-label={displayLabel}
+                title={link.label}
+                aria-label={link.label}
                 className="shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
               >
                 <Icon
@@ -163,7 +162,7 @@ export function HomePage() {
                   size={15}
                   className="shrink-0 text-(--text-secondary)"
                 />
-                <span className="hidden sm:inline">{displayLabel}</span>
+                <span className="hidden sm:inline">{link.label}</span>
                 <Icon
                   name="arrow-up-right"
                   size={13}

@@ -5,10 +5,10 @@ export function WritingPage() {
     <div className="space-y-8 sm:space-y-10 animate-fade-in max-w-3xl">
       {/* Page Header */}
       <header className="space-y-1">
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-(--text-primary)">
+        <h1 className="text-xl font-bold tracking-tight text-(--text-primary)">
           Writing
         </h1>
-        <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed">
+        <p className="text-sm text-(--text-secondary) leading-relaxed">
           Thoughts on full-stack architecture, backend systems, and web performance.
         </p>
       </header>

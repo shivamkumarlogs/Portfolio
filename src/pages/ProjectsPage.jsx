@@ -15,26 +15,28 @@ export function ProjectsPage() {
   });
 
   return (
-    <div className="space-y-10 sm:space-y-12 animate-fade-in">
+    <div className="space-y-8 animate-fade-in">
       {/* Page Header */}
-      <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="space-y-1">
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-(--text-primary)">
+      <header className="flex flex-col sm:flex-row sm:items-stretch sm:justify-between gap-4">
+        <div className="flex flex-col justify-center space-y-1">
+          <h1 className="text-xl font-bold tracking-tight text-(--text-primary)">
             Selected Work
           </h1>
-          <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed">
-            A few projects that capture how I design, build, and ship products.
+          <p className="text-sm text-(--text-secondary) leading-relaxed transition-opacity duration-200">
+            {activeTab === "personal"
+              ? "A few projects that capture how I design, build, and ship products."
+              : "Client projects, freelance builds, and contract engineering work."}
           </p>
         </div>
 
-        {/* Segmented Pill Toggle */}
-        <div className="shrink-0 self-start sm:self-center inline-flex items-center p-1 rounded-full bg-(--surface-raised) border border-(--border-soft) shadow-2xs">
+        {/* Segmented Pill Toggle matching height of Title + Subtitle */}
+        <div className="shrink-0 self-stretch sm:self-auto flex items-stretch p-1 rounded-full bg-(--surface-raised) border border-(--border-soft) shadow-2xs gap-1 min-h-[44px]">
           <button
             type="button"
             onClick={() => setActiveTab("personal")}
-            className={`px-3.5 py-1 text-xs sm:text-sm rounded-full transition-all duration-200 cursor-pointer ${
+            className={`flex-1 sm:flex-initial sm:min-w-28 px-5 sm:px-6 flex items-center justify-center text-xs sm:text-sm font-medium rounded-full transition-all duration-200 cursor-pointer ${
               activeTab === "personal"
-                ? "bg-(--surface) text-(--text-primary) font-medium shadow-xs"
+                ? "bg-(--surface) text-(--text-primary) shadow-xs"
                 : "text-(--text-muted) hover:text-(--text-primary)"
             }`}
           >
@@ -43,9 +45,9 @@ export function ProjectsPage() {
           <button
             type="button"
             onClick={() => setActiveTab("freelance")}
-            className={`px-3.5 py-1 text-xs sm:text-sm rounded-full transition-all duration-200 cursor-pointer ${
+            className={`flex-1 sm:flex-initial sm:min-w-28 px-5 sm:px-6 flex items-center justify-center text-xs sm:text-sm font-medium rounded-full transition-all duration-200 cursor-pointer ${
               activeTab === "freelance"
-                ? "bg-(--surface) text-(--text-primary) font-medium shadow-xs"
+                ? "bg-(--surface) text-(--text-primary) shadow-xs"
                 : "text-(--text-muted) hover:text-(--text-primary)"
             }`}
           >
@@ -106,7 +108,7 @@ export function ProjectsPage() {
               </p>
 
               {/* Bottom Row: Tags + Links */}
-              <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+              <div className="mt-6 flex flex-row items-center justify-between gap-3 pt-2">
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <Tag key={tag} muted>
