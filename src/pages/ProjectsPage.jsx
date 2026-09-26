@@ -72,7 +72,7 @@ export function ProjectsPage() {
 
               {/* Header: Title + Live Badge */}
               <div className="flex items-center justify-between gap-4">
-                <h2 className="font-serif-accent text-2xl sm:text-3xl tracking-tight text-(--text-primary)">
+                <h2 className="font-bold text-xl tracking-tight text-(--text-primary)">
                   {project.title}
                 </h2>
 

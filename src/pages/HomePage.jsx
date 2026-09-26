@@ -65,7 +65,7 @@ export function HomePage() {
               <span>Available for opportunities</span>
             </div>
 
-            <h1 className="font-serif-accent text-4xl sm:text-5xl lg:text-6xl tracking-tight text-(--text-primary) font-medium">
+            <h1 className="font-bold text-2xl sm:text-2xl lg:text-3xl tracking-tight text-(--text-primary)">
               {profile.name}
             </h1>
             <p className="font-display text-base sm:text-lg text-(--text-muted) tracking-wide">
