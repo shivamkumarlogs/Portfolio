@@ -148,54 +148,8 @@ export function AboutPage() {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
-              <div className="flex items-center justify-between text-(--text-muted)">
-                <span className="font-display text-[10px] uppercase tracking-wider">
-                  Soundtrack & Focus
-                </span>
-                <span className="text-sm">🎧</span>
-              </div>
-              <p className="text-sm text-(--text-secondary) leading-relaxed">
-                Usually locked into deep flow state with lo-fi beats, ambient electronic, or instrumental synthwave.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
-              <div className="flex items-center justify-between text-(--text-muted)">
-                <span className="font-display text-[10px] uppercase tracking-wider">
-                  Curiosity & Reading
-                </span>
-                <span className="text-sm">📚</span>
-              </div>
-              <p className="text-sm text-(--text-secondary) leading-relaxed">
-                Fascinated by system design architecture, open-source maintainers' journeys, and modern web performance.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
-              <div className="flex items-center justify-between text-(--text-muted)">
-                <span className="font-display text-[10px] uppercase tracking-wider">
-                  Workspace & Tools
-                </span>
-                <span className="text-sm">⌨️</span>
-              </div>
-              <p className="text-sm text-(--text-secondary) leading-relaxed">
-                A clean desk setup, VS Code with dark theme, a tactile mechanical keyboard, and hot coffee.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl border border-(--border-soft) bg-(--surface) space-y-1.5 transition-all hover:border-(--border)">
-              <div className="flex items-center justify-between text-(--text-muted)">
-                <span className="font-display text-[10px] uppercase tracking-wider">
-                  Offline & Downtime
-                </span>
-                <span className="text-sm">🌿</span>
-              </div>
-              <p className="text-sm text-(--text-secondary) leading-relaxed">
-                Taking quiet walks to unplug from screens, casual gaming, and spending quality time with family.
-              </p>
-            </div>
+          <div>
+            <h1 className="font-extrabold text-4xl">Currently, UI design is in making, then coding</h1>
           </div>
         )}
       </section>
