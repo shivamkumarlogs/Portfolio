@@ -93,70 +93,85 @@ export function HomePage() {
         </p>
 
         {/* Quick Actions & Social Handles */}
-        <div className="flex flex-wrap items-center gap-2.5 pt-1">
+        <div className="w-full flex items-center gap-1.5 sm:gap-2.5 pt-1">
           {/* Dual Action: Send Email + Copy Address */}
-          <div className="inline-flex items-center rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium transition-all hover:border-(--border) hover:bg-(--surface-raised) shadow-2xs">
+          <div className="flex-[1.3] sm:flex-[1.2] min-w-max h-9 sm:h-10 flex items-center justify-between rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium transition-all hover:border-(--border) hover:bg-(--surface-raised) shadow-2xs">
             <a
               href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 pl-3.5 pr-2.5 py-2 text-(--text-primary) transition-colors"
+              className="flex-1 flex items-center justify-center pl-3 sm:pl-3.5 pr-2 py-2 text-(--text-primary) whitespace-nowrap transition-colors"
             >
-              Get in touch
+              <span>Get in touch</span>
             </a>
 
-            <span className="h-4 w-px bg-(--border-soft)" aria-hidden="true" />
+            <span className="h-4 w-px bg-(--border-soft) shrink-0" aria-hidden="true" />
 
             <button
               type="button"
               onClick={handleCopyEmail}
               aria-label="Copy email address"
               title={copied ? "Copied to clipboard!" : `Copy ${EMAIL}`}
-              className="flex h-8 w-8 items-center justify-center rounded-r-xl text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-secondary)/60 active:scale-90 transition-all cursor-pointer"
+              className="flex h-8 w-7 sm:w-8 shrink-0 items-center justify-center rounded-r-xl text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-secondary)/60 active:scale-90 transition-all cursor-pointer"
             >
               {copied ? (
                 <Icon
                   name="check"
-                  size={15}
+                  size={14}
                   className="text-emerald-500 dark:text-emerald-400"
                 />
               ) : (
                 <Icon
                   name="copy"
-                  size={15}
+                  size={14}
                   className="transition-transform duration-200 hover:scale-110"
                 />
               )}
             </button>
           </div>
 
+          {/* Resume Button */}
           <a
             href="/Shivam_Kumar_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all"
+            className="flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
           >
             <span>Resume</span>
             <Icon
               name="arrow-up-right"
-              size={14}
-              className="text-(--text-muted)"
+              size={13}
+              className="text-(--text-muted) shrink-0"
             />
           </a>
 
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={link.label}
-              aria-label={link.label}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-(--border-soft) bg-(--surface) text-(--text-secondary) hover:text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all"
-            >
-              <Icon name={link.icon} size={17} />
-            </a>
-          ))}
+          {/* Social Links (GitHub, X, LinkedIn) */}
+          {socialLinks.map((link) => {
+            const displayLabel = link.icon === "x" ? "X" : link.label;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={displayLabel}
+                aria-label={displayLabel}
+                className="shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+              >
+                <Icon
+                  name={link.icon}
+                  size={15}
+                  className="shrink-0 text-(--text-secondary)"
+                />
+                <span className="hidden sm:inline">{displayLabel}</span>
+                <Icon
+                  name="arrow-up-right"
+                  size={13}
+                  className="hidden sm:inline text-(--text-muted) shrink-0"
+                />
+              </a>
+            );
+          })}
         </div>
       </section>
     </div>
