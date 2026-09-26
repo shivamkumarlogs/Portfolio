@@ -57,7 +57,10 @@ export function AboutPage() {
 
   const handleTransformData = useCallback((data) => {
     const total = data.reduce((acc, curr) => acc + (curr.count || 0), 0);
-    setTotalCount(total);
+    // Defer state update so it doesn't trigger synchronously while GitHubCalendar is rendering
+    queueMicrotask(() => {
+      setTotalCount((prev) => (prev === total ? prev : total));
+    });
     return data;
   }, []);
 

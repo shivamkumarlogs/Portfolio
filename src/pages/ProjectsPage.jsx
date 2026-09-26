@@ -30,7 +30,7 @@ export function ProjectsPage() {
         </div>
 
         {/* Segmented Pill Toggle matching height of Title + Subtitle */}
-        <div className="shrink-0 self-stretch sm:self-auto flex items-stretch p-1 rounded-full bg-(--surface-raised) border border-(--border-soft) shadow-2xs gap-1 min-h-[44px]">
+        <div className="shrink-0 self-stretch sm:self-auto flex items-stretch p-1 rounded-full bg-(--surface-raised) border border-(--border-soft) shadow-2xs gap-1 min-h-11">
           <button
             type="button"
             onClick={() => setActiveTab("personal")}
