@@ -70,9 +70,9 @@ export function Bookshelf() {
                           loading="eager"
                         />
                         {/* Book spine hinge shadow on the left edge */}
-                        <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/45 via-black/15 to-transparent pointer-events-none" />
+                        <div className="absolute inset-y-0 left-0 w-3 bg-linear-to-r from-black/45 via-black/15 to-transparent pointer-events-none" />
                         {/* Subtle tactile surface sheen */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
                       </div>
                     </div>
 
@@ -82,7 +82,7 @@ export function Bookshelf() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${book.title} by ${book.author}`}
-                      className="relative block outline-none focus-visible:ring-2 focus-visible:ring-(--accent-link) transition-all duration-300 ease-out rounded-t-[2px] z-40 transform-gpu will-change-transform"
+                      className="relative block outline-none focus-visible:ring-2 focus-visible:ring-(--accent-link) transition-all duration-300 ease-out rounded-t-[2px] z-40 transform-gpu will-change-transform cursor-pointer"
                       style={{
                         width: `${book.width}px`,
                         height: `${book.height}px`,
@@ -92,6 +92,17 @@ export function Bookshelf() {
                         boxShadow: isHovered
                           ? "0 22px 34px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12)"
                           : "0 4px 10px -2px rgba(0, 0, 0, 0.3)",
+                      }}
+                      onClick={(e) => {
+                        // On touchscreens without fine pointer hover, reveal cover on first tap
+                        if (
+                          hoveredId !== book.title &&
+                          typeof window !== "undefined" &&
+                          window.matchMedia("(hover: none)").matches
+                        ) {
+                          e.preventDefault();
+                          setHoveredId(book.title);
+                        }
                       }}
                       onMouseEnter={() => setHoveredId(book.title)}
                       onMouseLeave={() => setHoveredId(null)}
