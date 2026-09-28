@@ -148,7 +148,7 @@ export function HomePage() {
           </a>
 
           {/* Social Links (GitHub, X, LinkedIn) */}
-          {socialLinks.map(({ label, href, icon: IconComponent }) => (
+          {socialLinks.map(({ label, href, icon }) => (
             <a
               key={label}
               href={href}
@@ -156,17 +156,35 @@ export function HomePage() {
               rel="noopener noreferrer"
               title={label}
               aria-label={label}
-              className="shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+              className="group shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
             >
-              <IconComponent
-                size={14}
-                className="shrink-0 text-(--text-secondary)"
-              />
+              {typeof icon === "string" ? (
+                <img
+                  src={icon}
+                  alt=""
+                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 object-contain transition-transform duration-200 group-hover:scale-110 ${
+                    label === "GitHub" || label.startsWith("X")
+                      ? "dark:invert"
+                      : ""
+                  }`}
+                  loading="lazy"
+                />
+              ) : (
+                (() => {
+                  const IconComp = icon;
+                  return (
+                    <IconComp
+                      size={14}
+                      className="shrink-0 text-(--text-secondary) transition-transform duration-200 group-hover:scale-110"
+                    />
+                  );
+                })()
+              )}
               <span className="hidden sm:inline">{label}</span>
               <Icon
                 name="arrow-up-right"
                 size={13}
-                className="hidden sm:inline text-(--text-muted) shrink-0"
+                className="hidden sm:inline text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>
           ))}

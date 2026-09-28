@@ -264,12 +264,21 @@ export function AboutPage() {
                               hover:bg-(--surface-raised) hover:shadow-xs
                             "
                           >
-                            <img
-                              src={tech.icon}
-                              alt=""
-                              className="w-4.5 h-4.5 shrink-0 object-contain transition-transform duration-200 group-hover/badge:scale-110"
-                              loading="lazy"
-                            />
+                            {typeof tech.icon === "string" ? (
+                              <img
+                                src={tech.icon}
+                                alt=""
+                                className={`w-4.5 h-4.5 shrink-0 object-contain transition-transform duration-200 group-hover/badge:scale-110 ${
+                                  tech.name === "GitHub" ? "dark:invert" : ""
+                                }`}
+                                loading="lazy"
+                              />
+                            ) : (
+                              <tech.icon
+                                size={17}
+                                className="shrink-0 transition-transform duration-200 group-hover/badge:scale-110"
+                              />
+                            )}
                             <span>{tech.name}</span>
                           </span>
                         ))}
