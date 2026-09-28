@@ -9,7 +9,7 @@ const VARIANT_CLASS = {
 };
 
 const RESPONSIVE_ICON_CLASSES =
-  "h-10 w-10 text-(--text-secondary) hover:bg-(--bg-secondary) hover:text-(--text-primary) " +
+  "min-h-0 h-10 w-10 text-(--text-secondary) hover:bg-(--bg-secondary) hover:text-(--text-primary) " +
   "sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:border sm:border-(--border) sm:text-(--text-primary)";
 
 export function Button({
