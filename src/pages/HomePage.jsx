@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaPaperclip } from "react-icons/fa6";
 import { Icon } from "../components/Icon";
 import { profile, socialLinks, EMAIL } from "../data/siteContent";
 
@@ -137,6 +138,7 @@ export function HomePage() {
             rel="noopener noreferrer"
             className="flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
           >
+            <FaPaperclip size={12} className="text-(--text-muted) shrink-0" />
             <span>Resume</span>
             <Icon
               name="arrow-up-right"
@@ -146,31 +148,28 @@ export function HomePage() {
           </a>
 
           {/* Social Links (GitHub, X, LinkedIn) */}
-          {socialLinks.map((link) => {
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={link.label}
-                aria-label={link.label}
-                className="shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
-              >
-                <Icon
-                  name={link.icon}
-                  size={15}
-                  className="shrink-0 text-(--text-secondary)"
-                />
-                <span className="hidden sm:inline">{link.label}</span>
-                <Icon
-                  name="arrow-up-right"
-                  size={13}
-                  className="hidden sm:inline text-(--text-muted) shrink-0"
-                />
-              </a>
-            );
-          })}
+          {socialLinks.map(({ label, href, icon: IconComponent }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={label}
+              aria-label={label}
+              className="shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+            >
+              <IconComponent
+                size={14}
+                className="shrink-0 text-(--text-secondary)"
+              />
+              <span className="hidden sm:inline">{label}</span>
+              <Icon
+                name="arrow-up-right"
+                size={13}
+                className="hidden sm:inline text-(--text-muted) shrink-0"
+              />
+            </a>
+          ))}
         </div>
       </section>
     </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { GitHubCalendar } from "react-github-calendar";
+import { FaGithub } from "react-icons/fa6";
 import { useTheme } from "../ThemeContext";
-import { Icon } from "../components/Icon";
 import { SegmentedToggle } from "../components/SegmentedToggle";
 import { Bookshelf } from "../components/Bookshelf";
 import { profile, techStack, GITHUB_USERNAME } from "../data/siteContent";
@@ -32,7 +32,7 @@ function groupByCategory() {
   categories.forEach((c) => (map[c.key] = []));
   techStack.forEach((item) => {
     if (map[item.category]) {
-      map[item.category].push(item.name);
+      map[item.category].push(item);
     }
   });
   return map;
@@ -187,7 +187,7 @@ export function AboutPage() {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--border-soft) bg-(--bg-secondary)/50 text-xs font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all active:scale-95"
                 >
-                  <Icon name="github" size={14} />
+                  <FaGithub size={14} />
                   <span>View profile</span>
                   <span className="text-(--text-muted) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     ↗
@@ -241,8 +241,8 @@ export function AboutPage() {
 
               <div className="flex flex-col divide-y divide-dashed divide-(--border-soft)">
                 {categories.map((cat) => {
-                  const names = groupedStack[cat.key];
-                  if (!names || !names.length) return null;
+                  const items = groupedStack[cat.key];
+                  if (!items || !items.length) return null;
                   return (
                     <div
                       key={cat.key}
@@ -252,9 +252,9 @@ export function AboutPage() {
                         {cat.label}
                       </h3>
                       <div className="flex flex-wrap items-center gap-2">
-                        {names.map((name) => (
+                        {items.map((tech) => (
                           <span
-                            key={name}
+                            key={tech.name}
                             className="
                               group/badge inline-flex items-center gap-2 rounded-lg
                               border border-(--border-soft) bg-(--bg-secondary)/60
@@ -264,12 +264,13 @@ export function AboutPage() {
                               hover:bg-(--surface-raised) hover:shadow-xs
                             "
                           >
-                            <Icon
-                              name={name}
-                              size={18}
-                              className="shrink-0 transition-transform duration-200 group-hover/badge:scale-110"
+                            <img
+                              src={tech.icon}
+                              alt=""
+                              className="w-4.5 h-4.5 shrink-0 object-contain transition-transform duration-200 group-hover/badge:scale-110"
+                              loading="lazy"
                             />
-                            <span>{name}</span>
+                            <span>{tech.name}</span>
                           </span>
                         ))}
                       </div>

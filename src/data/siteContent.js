@@ -1,3 +1,5 @@
+import { FaGithub, FaXTwitter, FaLinkedin } from "react-icons/fa6";
+
 export const profile = {
   name: "Shivam Kumar",
   strapline: "Full-Stack Developer",
@@ -9,21 +11,81 @@ export const profile = {
 };
 
 export const techStack = [
-  { name: "JavaScript", category: "language" },
-  { name: "HTML", category: "language" },
-  { name: "CSS", category: "language" },
-  { name: "Java", category: "language" },
-  { name: "React.js", category: "frontend" },
-  { name: "Tailwind CSS", category: "frontend" },
-  { name: "React Router", category: "frontend" },
-  { name: "React Native", category: "mobile" },
-  { name: "Node.js", category: "backend" },
-  { name: "Express.js", category: "backend" },
-  { name: "MongoDB", category: "backend" },
-  { name: "JWT", category: "backend" },
-  { name: "Git", category: "platform" },
-  { name: "GitHub", category: "platform" },
-  { name: "Postman", category: "platform" },
+  {
+    name: "JavaScript",
+    category: "language",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    name: "HTML",
+    category: "language",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  },
+  {
+    name: "CSS",
+    category: "language",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  },
+  {
+    name: "Java",
+    category: "language",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    name: "React.js",
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Tailwind CSS",
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  },
+  {
+    name: "React Router",
+    category: "frontend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg",
+  },
+  {
+    name: "React Native",
+    category: "mobile",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Node.js",
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Express.js",
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  },
+  {
+    name: "MongoDB",
+    category: "backend",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    name: "JWT",
+    category: "backend",
+    icon: "https://cdn.worldvectorlogo.com/logos/jwt-3.svg",
+  },
+  {
+    name: "Git",
+    category: "platform",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  {
+    name: "GitHub",
+    category: "platform",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  },
+  {
+    name: "Postman",
+    category: "platform",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+  },
 ];
 
 export const EMAIL = "shivamkumar.byte@gmail.com";
@@ -35,19 +97,19 @@ export const socialLinks = [
   {
     label: "GitHub",
     href: GITHUB_URL,
-    icon: "github",
+    icon: FaGithub,
   },
 
   {
     label: "X (Twitter)",
     href: "https://x.com/shivamkumarlogs",
-    icon: "x",
+    icon: FaXTwitter,
   },
 
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shivamkumarlogs/",
-    icon: "linkedin",
+    icon: FaLinkedin,
   },
 ];
 
