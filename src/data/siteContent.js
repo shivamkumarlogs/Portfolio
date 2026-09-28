@@ -54,6 +54,7 @@ export const socialLinks = [
 export const projects = [
   {
     title: "AI Code Reviewer",
+    type: "personal",
     description:
       "An intelligent full-stack web application that uses Google Gemini to review developer source code and provide feedback on code quality, potential bugs, security risks, performance, and possible improvements.",
     tags: [
@@ -64,7 +65,7 @@ export const projects = [
       "Google Gemini",
     ],
     spotlight: "Live",
-    screenshot: "aicodereviewer.png",
+    screenshot: "/aicodereviewer.png",
     links: [
       {
         label: "Live Demo",
@@ -79,11 +80,12 @@ export const projects = [
 
   {
     title: "RecipeFinder",
+    type: "personal",
     description:
       "A recipe discovery app integrating TheMealDB's API for instant search, detailed recipe views, and random discovery across 500+ recipes. Fully responsive mobile-first UI built with a custom Tailwind CSS v4 design system, custom data-fetching hooks, and an accessible modal recipe view with keyboard support and skeleton loading states.",
     tags: ["React.js", "Tailwind CSS"],
     spotlight: "Live",
-    screenshot: "recipefinder.png",
+    screenshot: "/recipefinder.png",
     links: [
       {
         label: "Live Demo",
@@ -98,6 +100,7 @@ export const projects = [
 
   {
     title: "Spotify Clone Backend",
+    type: "personal",
     description:
       "A comprehensive backend service for a music streaming platform built with Node.js (ES Modules) and Express 5. Features robust dual-token JWT authentication, secure password hashing, and MongoDB integration via Mongoose. Includes advanced capabilities like Nodemailer email services configured with Google OAuth2, plus seamless media uploads managed through Multer and the ImageKit SDK.",
     tags: ["Node.js", "Express.js", "MongoDB", "JWT", "ImageKit SDK"],
