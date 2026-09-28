@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaPaperclip } from "react-icons/fa6";
+import { TiDocumentText } from "react-icons/ti";
 import { Icon } from "../components/Icon";
 import { profile, socialLinks, EMAIL } from "../data/siteContent";
 
@@ -136,19 +136,22 @@ export function HomePage() {
             href="/Shivam_Kumar_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+            className="group flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
           >
-            <FaPaperclip size={12} className="text-(--text-muted) shrink-0" />
+            <TiDocumentText 
+              size={16}
+              className="text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:scale-110"
+            />
             <span>Resume</span>
             <Icon
               name="arrow-up-right"
               size={13}
-              className="text-(--text-muted) shrink-0"
+              className="text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </a>
 
           {/* Social Links (GitHub, X, LinkedIn) */}
-          {socialLinks.map(({ label, href, icon }) => (
+          {socialLinks.map(({ label, href, icon: IconComponent }) => (
             <a
               key={label}
               href={href}
@@ -158,28 +161,10 @@ export function HomePage() {
               aria-label={label}
               className="group shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
             >
-              {typeof icon === "string" ? (
-                <img
-                  src={icon}
-                  alt=""
-                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 object-contain transition-transform duration-200 group-hover:scale-110 ${
-                    label === "GitHub" || label.startsWith("X")
-                      ? "dark:invert"
-                      : ""
-                  }`}
-                  loading="lazy"
-                />
-              ) : (
-                (() => {
-                  const IconComp = icon;
-                  return (
-                    <IconComp
-                      size={14}
-                      className="shrink-0 text-(--text-secondary) transition-transform duration-200 group-hover:scale-110"
-                    />
-                  );
-                })()
-              )}
+              <IconComponent
+                size={14}
+                className="shrink-0 text-(--text-secondary) group-hover:text-(--text-primary) transition-all duration-200 group-hover:scale-110"
+              />
               <span className="hidden sm:inline">{label}</span>
               <Icon
                 name="arrow-up-right"

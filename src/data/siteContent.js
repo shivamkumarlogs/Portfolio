@@ -1,3 +1,5 @@
+import { FaGithub, FaXTwitter, FaLinkedin } from "react-icons/fa6";
+
 export const profile = {
   name: "Shivam Kumar",
   strapline: "Full-Stack Developer",
@@ -95,19 +97,19 @@ export const socialLinks = [
   {
     label: "GitHub",
     href: GITHUB_URL,
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    icon: FaGithub,
   },
 
   {
     label: "X (Twitter)",
     href: "https://x.com/shivamkumarlogs",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg",
+    icon: FaXTwitter,
   },
 
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shivamkumarlogs/",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+    icon: FaLinkedin,
   },
 ];
 
