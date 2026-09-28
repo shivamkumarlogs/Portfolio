@@ -92,7 +92,7 @@ export function AboutPage() {
     const observer = new ResizeObserver(updateSize);
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [bioTab]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -112,7 +112,7 @@ export function AboutPage() {
       clearTimeout(t1);
       clearTimeout(t2);
     };
-  }, [dimensions.isMobile]);
+  }, [dimensions.isMobile, bioTab, totalCount]);
 
   return (
     <div className="space-y-8 sm:space-y-12 animate-fade-in">

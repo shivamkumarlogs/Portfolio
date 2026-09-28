@@ -184,6 +184,7 @@ export function Icon({ name, size = 18, className = "" }) {
 
     case "blogs":
     case "book":
+    case "Book":
       return (
         <svg
           {...props}
@@ -488,22 +489,6 @@ export function Icon({ name, size = 18, className = "" }) {
         </svg>
       );
 
-    case "book":
-    case "Book":
-      return (
-        <svg
-          {...props}
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-          <path d="M8 7h8" strokeWidth="1.5" />
-          <path d="M8 11h6" strokeWidth="1.5" />
-        </svg>
-      );
 
     default:
       return null;
