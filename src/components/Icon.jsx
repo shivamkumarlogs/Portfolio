@@ -504,7 +504,7 @@ export function Icon({ name, size = 18, className = "" }) {
           <path d="M8 11h6" strokeWidth="1.5" />
         </svg>
       );
-    
+
     default:
       return null;
   }

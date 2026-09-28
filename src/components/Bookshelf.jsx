@@ -8,29 +8,51 @@ export function Bookshelf() {
   const TILT_ANGLE = 13;
 
   return (
-    <div className="w-full select-none py-6">
-      {/* Scrollable on small screens, full width of whole page on tablet & desktop */}
-      <div className="w-full overflow-x-auto pb-6 pt-10 scrollbar-none">
-        <div className="w-full flex flex-col min-w-[560px] sm:min-w-full">
-          
-          {/* Upper Shelf Area: Left Wall + Books */}
-          <div className="relative flex items-end w-full">
-            
-            {/* Left Wall / Bookend: Aligned flush with page's left content margin */}
-            <div className="relative z-10 flex flex-col items-end shrink-0">
-              <div
-                className="w-2 sm:w-2.5 rounded-tl-sm rounded-tr-none bg-gradient-to-r from-(--text-muted)/30 via-(--border) to-(--text-muted)/40 border-l border-t border-(--border) shadow-xs"
-                style={{ height: "295px" }}
-                aria-hidden="true"
-              >
-                <div className="w-full h-full border-r border-black/10 dark:border-white/5" />
-              </div>
-            </div>
+    <section className="space-y-4">
+      {/* Section Header matching GitHub Activity & Tech Stack */}
+      <div className="space-y-1">
+        <h2 className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+          Bookshelf
+        </h2>
+      </div>
 
-            {/* Leaning Books Cluster - pl-[56px] aligns the top of the first book flush against the left wall */}
-            <div className="relative flex items-end pl-[56px] sm:pl-[58px] z-20">
-              {books.map((book) => {
+      {/* The Card IS the Bookshelf: Left border is the wall, bottom border is the shelf */}
+      <div className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) transition-all duration-300">
+        {/* Signature Hairline Card Highlight */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
+          aria-hidden="true"
+        />
+
+        {/* Books sitting directly on the card floor, framed with ample headroom */}
+        <div className="w-full overflow-x-auto pt-20 sm:pt-24 pb-0 scrollbar-none">
+          <div className="w-full flex items-end min-w-[560px]">
+            {/* Books Cluster: pl-[59px] aligns the top-left of the first book flush against the left wall of the bookshelf */}
+            <div className="relative flex items-end pl-[59px] z-20">
+              {books.map((book, index) => {
                 const isHovered = hoveredId === book.title;
+                const isFirst = index === 0;
+                const isSecond = index === 1;
+
+                // Book top shifts to the left by height * tan(13deg)
+                const topShiftX = Math.round(book.height * Math.tan((TILT_ANGLE * Math.PI) / 180));
+
+                // Precise tooltip alignment so long titles on leftmost books never clip into the left wall
+                let tooltipStyle = { left: `calc(50% - ${topShiftX}px)` };
+                let tooltipTransform = "-translate-x-1/2";
+                let beakClass = "left-1/2 -translate-x-1/2";
+
+                if (isFirst) {
+                  // The Great Gatsby: starts 8px from left card wall, beak points at 19px (Gatsby's top)
+                  tooltipStyle = { left: "-51px" };
+                  tooltipTransform = "translate-x-0";
+                  beakClass = "left-[12px]";
+                } else if (isSecond) {
+                  // Don't Believe Everything You Think: starts 8px from left card wall, beak points at 65px (Book 2's top)
+                  tooltipStyle = { left: "-92px" };
+                  tooltipTransform = "translate-x-0";
+                  beakClass = "left-[57px]";
+                }
 
                 return (
                   <div
@@ -38,26 +60,31 @@ export function Bookshelf() {
                     className="relative group transition-transform duration-300 ease-out"
                     style={{
                       zIndex: isHovered ? 40 : 20,
-                      marginRight: "2px",
+                      marginRight: "3px",
                     }}
                     onMouseEnter={() => setHoveredId(book.title)}
                     onMouseLeave={() => setHoveredId(null)}
                   >
-                    {/* Floating Title & Author Tooltip on Hover */}
-                    <div
-                      className={`absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none transition-all duration-200 z-50 whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-medium shadow-xl border border-(--border) bg-(--surface) text-(--text-primary) ${
-                        isHovered
-                          ? "opacity-100 -translate-y-1 scale-100"
-                          : "opacity-0 translate-y-2 scale-95"
-                      }`}
-                    >
-                      <div className="font-semibold">{book.title}</div>
-                      <div className="text-[11px] text-(--text-muted) font-normal">
-                        by {book.author}
+                    {/* Floating Title & Author Tooltip: Anchored precisely over tilted book top */}
+                    {isHovered && (
+                      <div
+                        className="absolute -top-12 pointer-events-none z-50"
+                        style={tooltipStyle}
+                      >
+                        <div
+                          className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-medium shadow-xl border border-zinc-800 dark:border-zinc-200 bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 animate-in fade-in zoom-in-95 duration-150 ${tooltipTransform}`}
+                        >
+                          <div className="font-semibold">{book.title}</div>
+                          <div className="text-[11px] text-zinc-400 dark:text-zinc-500 font-normal">
+                            by {book.author}
+                          </div>
+                          {/* Tooltip beak pointing precisely to top of book spine */}
+                          <div
+                            className={`absolute top-full -mt-px border-4 border-transparent border-t-zinc-900 dark:border-t-zinc-100 ${beakClass}`}
+                          />
+                        </div>
                       </div>
-                      {/* Tooltip beak */}
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-(--border)" />
-                    </div>
+                    )}
 
                     {/* Book Spine Anchor: Solid cover color, clean uniform design */}
                     <a
@@ -77,7 +104,7 @@ export function Bookshelf() {
                           : "0 4px 10px -2px rgba(0, 0, 0, 0.3)",
                       }}
                     >
-                      {/* Unified Spine Title: 1 consistent font, cleanly centered, no edges or decorations */}
+                      {/* Unified Spine Title: 1 consistent font, cleanly centered */}
                       <div className="absolute inset-0 flex items-center justify-center py-7 px-1 overflow-hidden pointer-events-none">
                         <span
                           className="font-display font-medium text-[9.5px] sm:text-[10px] uppercase whitespace-nowrap text-center"
@@ -99,22 +126,11 @@ export function Bookshelf() {
               })}
             </div>
 
-            {/* Empty shelf space extending all the way across to the right edge of the page */}
-            <div className="flex-1 min-w-[60px]" />
+            {/* Empty shelf space extending to the right inside the card */}
+            <div className="flex-1 min-w-[40px]" />
           </div>
-
-          {/* Clean Modern Shelf Plank: Stretches 100% across the whole page width */}
-          <div className="relative w-full z-10">
-            {/* Shelf Plank Top Highlight & Thickness */}
-            <div className="h-2.5 sm:h-3 w-full rounded-xs bg-gradient-to-r from-(--text-muted)/25 via-(--border) to-(--border-soft) border-t border-b border-(--border) shadow-xs">
-              <div className="h-0.5 w-full bg-white/20 dark:bg-white/10" />
-            </div>
-            {/* Shelf Under-Shadow */}
-            <div className="h-4 w-full bg-gradient-to-b from-black/15 via-black/5 to-transparent dark:from-black/45 dark:via-black/15 dark:to-transparent blur-[2px]" />
-          </div>
-
         </div>
       </div>
-    </div>
+    </section>
   );
 }
