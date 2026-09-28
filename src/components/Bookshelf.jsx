@@ -33,9 +33,9 @@ export function Bookshelf() {
 
         {/* Books sitting directly on the card floor, framed with ample headroom */}
         <div className="w-full overflow-x-auto pt-20 sm:pt-24 pb-0 scrollbar-none">
-          <div className="w-full flex items-end min-w-[560px]">
-            {/* Books Cluster: pl-[59px] aligns the top-left of the first book flush against the left wall of the bookshelf */}
-            <div className="relative flex items-end pl-[59px] z-20">
+          <div className="w-full flex items-end min-w-140">
+            {/* Books Cluster: pl-14.75 aligns the top-left of the first book flush against the left wall of the bookshelf */}
+            <div className="relative flex items-end pl-14.75 z-20">
               {SHELF_BOOKS.map((book) => {
                 const isHovered = hoveredId === book.title;
 
@@ -61,7 +61,7 @@ export function Bookshelf() {
                         height: `${book.height}px`,
                       }}
                     >
-                      <div className="relative w-full h-full rounded-r-md rounded-l-[2px] overflow-hidden shadow-[0_22px_40px_-10px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-zinc-900 pointer-events-none select-none">
+                      <div className="relative w-full h-full rounded-r-md rounded-l-xs overflow-hidden shadow-[0_22px_40px_-10px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-zinc-900 pointer-events-none select-none">
                         <img
                           src={book.cover}
                           alt=""
@@ -82,7 +82,7 @@ export function Bookshelf() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${book.title} by ${book.author}`}
-                      className="relative block outline-none focus-visible:ring-2 focus-visible:ring-(--accent-link) transition-all duration-300 ease-out rounded-t-[2px] z-40 transform-gpu will-change-transform cursor-pointer"
+                      className="relative block outline-none focus-visible:ring-2 focus-visible:ring-(--accent-link) transition-all duration-300 ease-out rounded-t-xs z-40 transform-gpu will-change-transform cursor-pointer"
                       style={{
                         width: `${book.width}px`,
                         height: `${book.height}px`,
@@ -132,7 +132,7 @@ export function Bookshelf() {
             </div>
 
             {/* Empty shelf space extending to the right inside the card */}
-            <div className="flex-1 min-w-[40px]" />
+            <div className="flex-1 min-w-10" />
           </div>
         </div>
       </div>

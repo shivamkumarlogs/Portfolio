@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TiDocumentText } from "react-icons/ti";
+import { GrDocumentText } from "react-icons/gr";
 import { Icon } from "../components/Icon";
 import { profile, socialLinks, EMAIL } from "../data/siteContent";
 
@@ -136,13 +136,15 @@ export function HomePage() {
             href="/Shivam_Kumar_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+            className="group flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-2 sm:gap-5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
           >
-            <TiDocumentText 
-              size={16}
-              className="text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:scale-110"
-            />
-            <span>Resume</span>
+            <span className="inline-flex items-center gap-1.5">
+              <GrDocumentText
+                size={14}
+                className="text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:scale-110"
+              />
+              <span>Resume</span>
+            </span>
             <Icon
               name="arrow-up-right"
               size={13}
@@ -159,13 +161,15 @@ export function HomePage() {
               rel="noopener noreferrer"
               title={label}
               aria-label={label}
-              className="group shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-1 sm:gap-1.5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+              className="group shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-2 sm:gap-5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
             >
-              <IconComponent
-                size={14}
-                className="shrink-0 text-(--text-secondary) group-hover:text-(--text-primary) transition-all duration-200 group-hover:scale-110"
-              />
-              <span className="hidden sm:inline">{label}</span>
+              <span className="inline-flex items-center gap-1.5">
+                <IconComponent
+                  size={14}
+                  className="shrink-0 text-(--text-secondary) group-hover:text-(--text-primary) transition-all duration-200 group-hover:scale-110"
+                />
+                <span className="hidden sm:inline">{label}</span>
+              </span>
               <Icon
                 name="arrow-up-right"
                 size={13}

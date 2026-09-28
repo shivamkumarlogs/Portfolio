@@ -1,4 +1,4 @@
-import { FaGithub, FaXTwitter, FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 
 export const profile = {
   name: "Shivam Kumar",
@@ -109,7 +109,7 @@ export const socialLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shivamkumarlogs/",
-    icon: FaLinkedin,
+    icon: FaLinkedinIn ,
   },
 ];
 
