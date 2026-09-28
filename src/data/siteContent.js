@@ -56,12 +56,24 @@ export const projects = [
     title: "AI Code Reviewer",
     description:
       "An intelligent full-stack web application that uses Google Gemini to review developer source code and provide feedback on code quality, potential bugs, security risks, performance, and possible improvements.",
-    tags: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Google Gemini"],
+    tags: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Tailwind CSS",
+      "Google Gemini",
+    ],
     spotlight: "Live",
     screenshot: "aicodereviewer.png",
     links: [
-      { label: "Live Demo", href: "https://ai-code-reviewer-ecru-xi.vercel.app/" },
-      { label: "GitHub", href: "https://github.com/shivamkumarlogs/AI-Code-Reviewer" },
+      {
+        label: "Live Demo",
+        href: "https://ai-code-reviewer-ecru-xi.vercel.app/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/shivamkumarlogs/AI-Code-Reviewer",
+      },
     ],
   },
 
@@ -119,3 +131,141 @@ export const blogs = [
   },
 ];
 
+export const books = [
+  {
+    id: "great-gatsby",
+    title: "The Great Gatsby",
+    shortTitle: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    category: "Classic Literature",
+    year: "1925",
+    color: "#0d1b2a", // Scribner midnight celestial blue
+    accentColor: "#f5d061", // art deco gold foil
+    textColor: "#fef3c7",
+    fontFamily: "serif",
+    height: 254,
+    width: 38,
+    status: "Masterpiece",
+    takeaway: "A hauntingly beautiful critique of the American Dream, illusion, longing, and the green light at the end of the dock.",
+    link: "https://www.goodreads.com/book/show/4671.The_Great_Gatsby",
+  },
+  {
+    id: "dont-believe-everything",
+    title: "Don't Believe Everything You Think",
+    shortTitle: "Don't Believe Everything You Think",
+    author: "Joseph Nguyen",
+    category: "Mindset & Psychology",
+    year: "2022",
+    color: "#f5f0e8", // minimalist zen ivory bone paper
+    accentColor: "#dc2626", // iconic zen crimson dot
+    textColor: "#18181b", // stark black ink
+    fontFamily: "sans",
+    height: 228,
+    width: 36,
+    status: "Transformative",
+    takeaway: "Suffering is not created by what happens to us, but by our unexamined thinking about what happens.",
+    link: "https://www.goodreads.com/book/show/63098555-don-t-believe-everything-you-think",
+  },
+  {
+    id: "dont-love-you-anymore",
+    title: "I Don't Love You Anymore",
+    shortTitle: "I Don't Love You Anymore",
+    author: "Rithvik Singh",
+    category: "Poetry & Healing",
+    year: "2023",
+    color: "#2a1c22", // dusty rose-charcoal
+    accentColor: "#fda4af", // rose gold foil
+    textColor: "#fae8eb",
+    fontFamily: "sans",
+    height: 218,
+    width: 35,
+    status: "Poetic",
+    takeaway: "Moving on is not about forgetting; it is about choosing yourself when someone else stopped choosing you.",
+    link: "https://www.goodreads.com/book/show/198754124-i-don-t-love-you-anymore",
+  },
+  {
+    id: "siddhartha",
+    title: "Siddhartha",
+    shortTitle: "Siddhartha",
+    author: "Hermann Hesse",
+    category: "Philosophical Fiction",
+    year: "1922",
+    color: "#3a2414", // earthen river saffron ochre
+    accentColor: "#f59e0b", // Buddhist saffron gold foil
+    textColor: "#fef3c7",
+    fontFamily: "serif",
+    height: 236,
+    width: 37,
+    status: "Spiritual Classic",
+    takeaway: "Wisdom cannot be taught or transferred through words alone; it must be found and lived through personal experience.",
+    link: "https://www.goodreads.com/book/show/52036.Siddhartha",
+  },
+  {
+    id: "old-man-sea",
+    title: "The Old Man and the Sea",
+    shortTitle: "The Old Man and the Sea",
+    author: "Ernest Hemingway",
+    category: "Literary Classic",
+    year: "1952",
+    color: "#0f232b", // classic oceanic marine teal
+    accentColor: "#5eead4", // sea-spray silver-mint foil
+    textColor: "#f0fdfa",
+    fontFamily: "serif",
+    height: 226,
+    width: 36,
+    status: "Nobel Prize",
+    takeaway: "Man is not made for defeat. A man can be destroyed, but not defeated.",
+    link: "https://www.goodreads.com/book/show/2165.The_Old_Man_and_the_Sea",
+  },
+  {
+    id: "metamorphosis",
+    title: "The Metamorphosis",
+    shortTitle: "The Metamorphosis",
+    author: "Franz Kafka",
+    category: "Existential Classic",
+    year: "1915",
+    color: "#141416", // stark Kafkaesque obsidian charcoal
+    accentColor: "#b91c1c", // stark modernist crimson
+    textColor: "#f5f5f5",
+    fontFamily: "mono",
+    height: 232,
+    width: 36,
+    status: "Existential Classic",
+    takeaway: "An unsettling exploration of alienation, familial burden, and what it truly means to be human in a transactional world.",
+    link: "https://www.goodreads.com/book/show/485894.The_Metamorphosis",
+  },
+  {
+    id: "the-alchemist",
+    title: "The Alchemist",
+    shortTitle: "The Alchemist",
+    author: "Paulo Coelho",
+    category: "Philosophical Fiction",
+    year: "1988",
+    color: "#4e2415", // HarperOne desert Moroccan terracotta
+    accentColor: "#facc15", // radiant desert sun gold
+    textColor: "#fef9c3",
+    fontFamily: "serif",
+    height: 242,
+    width: 39,
+    status: "Timeless",
+    takeaway: "When you want something, all the universe conspires in helping you to achieve it. Listen to your heart and follow the omens.",
+    link: "https://www.goodreads.com/book/show/18144590-the-alchemist",
+  },
+  {
+    id: "project-hail-mary",
+    title: "Project Hail Mary",
+    shortTitle: "Project Hail Mary",
+    author: "Andy Weir",
+    category: "Hard Sci-Fi",
+    year: "2021",
+    color: "#0a0c12", // deep space vacuum black
+    accentColor: "#facc15", // orbital bright solar yellow
+    textColor: "#fde047", // high-contrast solar yellow
+    fontFamily: "sans",
+    height: 256,
+    width: 44,
+    status: "Sci-Fi Favorite",
+    takeaway: "A triumphant celebration of scientific ingenuity, cross-species friendship, and human resilience against cosmic odds.",
+    link: "https://www.goodreads.com/book/show/54493401-project-hail-mary",
+  },
+];

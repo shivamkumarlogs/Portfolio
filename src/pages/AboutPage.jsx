@@ -3,6 +3,7 @@ import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "../ThemeContext";
 import { Icon } from "../components/Icon";
 import { SegmentedToggle } from "../components/SegmentedToggle";
+import { Bookshelf } from "../components/Bookshelf";
 import { profile, techStack, GITHUB_USERNAME } from "../data/siteContent";
 
 function formatBioText(text) {
@@ -148,8 +149,8 @@ export function AboutPage() {
             ))}
           </div>
         ) : (
-          <div>
-            <h1 className="font-extrabold text-4xl">Currently, UI design is in making, then coding</h1>
+          <div className="pt-2">
+            <Bookshelf />
           </div>
         )}
       </section>
