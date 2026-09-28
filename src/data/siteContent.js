@@ -140,6 +140,7 @@ export const books = [
     height: 254,
     width: 38,
     link: "https://www.amazon.com/dp/0743273567",
+    cover: "/books/great-gatsby.jpg",
   },
   {
     title: "Don't Believe Everything You Think",
@@ -149,6 +150,7 @@ export const books = [
     height: 228,
     width: 36,
     link: "https://www.amazon.com/dp/B09TZ4LZF9",
+    cover: "/books/dont-believe-everything.jpg",
   },
   {
     title: "I Don't Love You Anymore",
@@ -158,6 +160,7 @@ export const books = [
     height: 218,
     width: 35,
     link: "https://www.amazon.com/dp/9356299105",
+    cover: "/books/dont-love-you-anymore.jpg",
   },
   {
     title: "Siddhartha",
@@ -167,6 +170,7 @@ export const books = [
     height: 236,
     width: 37,
     link: "https://www.amazon.com/dp/0553208845",
+    cover: "/books/siddhartha.jpg",
   },
   {
     title: "The Old Man and the Sea",
@@ -176,6 +180,7 @@ export const books = [
     height: 226,
     width: 36,
     link: "https://www.amazon.com/dp/0684801221",
+    cover: "/books/old-man-sea.jpg",
   },
   {
     title: "The Metamorphosis",
@@ -185,6 +190,7 @@ export const books = [
     height: 232,
     width: 36,
     link: "https://www.amazon.com/dp/0486290301",
+    cover: "/books/metamorphosis.jpg",
   },
   {
     title: "The Alchemist",
@@ -194,6 +200,7 @@ export const books = [
     height: 242,
     width: 39,
     link: "https://www.amazon.com/dp/0062315005",
+    cover: "/books/the-alchemist.jpg",
   },
   {
     title: "Project Hail Mary",
@@ -203,5 +210,7 @@ export const books = [
     height: 256,
     width: 44,
     link: "https://www.amazon.com/dp/0593135202",
+    cover: "/books/project-hail-mary.jpg",
   },
 ];
+
