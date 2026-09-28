@@ -6,10 +6,23 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif-accent: "Instrument Serif", Georgia, serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
+  --animate-fade-in: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Light theme — clean, warm paper */
 :root {
+  color-scheme: light;
   --bg-primary: #fafafa;
   --bg-secondary: #f4f4f5;
   --text-primary: #09090b;
@@ -27,6 +40,7 @@
 
 /* Dark theme — deep obsidian zinc */
 [data-theme="dark"] {
+  color-scheme: dark;
   --bg-primary: #09090b;
   --bg-secondary: #121215;
   --text-primary: #f4f4f5;
@@ -68,5 +82,15 @@ body {
   display: none;
   width: 0;
   height: 0;
+}
+
+/* Standalone cross-browser scrollbar hiding utility */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
