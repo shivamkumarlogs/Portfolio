@@ -255,7 +255,7 @@ export const books = [
     height: 242,
     width: 39,
     link: "https://www.amazon.com/dp/0062315005",
-    cover: "/books/the-alchemist.jpg",
+    cover: "/books/the-alchemist.png",
   },
   {
     title: "Project Hail Mary",

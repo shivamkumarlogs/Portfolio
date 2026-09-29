@@ -117,7 +117,7 @@ export function Bookshelf() {
                             ? "0px 0px"
                             : "calc(22px * var(--shelf-scale)) 0px"
                           : "0px 0px",
-                        transform: `translateY(${isHovered ? "calc(-12px * var(--shelf-scale))" : "0px"})`,
+                        transform: `translateY(${isHovered ? "calc(-14px * var(--shelf-scale))" : "0px"})`,
                       }}
                     >
                       <div className="relative w-full h-full rounded-r-md rounded-l-xs overflow-hidden shadow-[0_22px_40px_-10px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-zinc-900 select-none">
