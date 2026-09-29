@@ -162,16 +162,16 @@ export function Bookshelf() {
                       onFocus={() => handleMouseEnter(book.title)}
                       onBlur={() => handleMouseLeave(book.title)}
                     >
-                      {/* Unified Spine Title: 1 consistent font, cleanly centered */}
-                      <div className="absolute inset-0 flex items-center justify-center py-7 px-1 overflow-hidden pointer-events-none">
+                      {/* Unified Spine Title: natural Title Case with optimal tracking & visibility */}
+                      <div className="absolute inset-0 flex items-center justify-center py-5 px-1 overflow-hidden pointer-events-none">
                         <span
-                          className="font-display font-medium text-[8px] sm:text-[10px] uppercase whitespace-nowrap text-center"
+                          className="font-display font-bold text-[8.5px] sm:text-[14px] whitespace-nowrap text-center"
                           style={{
                             color: book.textColor,
                             writingMode: "vertical-rl",
                             transform: "rotate(180deg)",
-                            letterSpacing: "0.14em",
-                            maxHeight: `calc(${book.height - 40}px * var(--shelf-scale))`,
+                            letterSpacing: "0.04em",
+                            maxHeight: `calc(${book.height - 20}px * var(--shelf-scale))`,
                             overflow: "hidden",
                           }}
                         >
