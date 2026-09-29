@@ -59,10 +59,10 @@ export function Bookshelf() {
   }, []);
 
   return (
-    <section className="space-y-4">
-      {/* Section Header matching GitHub Activity & Tech Stack */}
-      <div className="space-y-1">
-        <h2 className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+    <section className="space-y-2.5">
+      {/* Section Header: quiet portfolio label */}
+      <div>
+        <h2 className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-(--text-muted)">
           Bookshelf
         </h2>
       </div>
@@ -79,7 +79,7 @@ export function Bookshelf() {
         />
 
         {/* Books sitting directly on the card floor, framed with ample headroom */}
-        <div className="w-full overflow-x-auto pt-14 sm:pt-24 pb-0 scrollbar-none [--shelf-scale:0.72] sm:[--shelf-scale:1]">
+        <div className="w-full overflow-x-auto pt-8 pb-0 scrollbar-none [--shelf-scale:0.72] sm:[--shelf-scale:1]">
           <div className="w-full flex items-end min-w-0 sm:min-w-140">
             {/* Books Cluster: aligns the top-left of the first book flush against the left wall of the bookshelf */}
             <div

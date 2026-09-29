@@ -159,9 +159,9 @@ export function AboutPage() {
       {bioTab === "developer" && (
         <>
           {/* GitHub Contributions Activity */}
-          <section className="space-y-4">
-            <div className="space-y-1">
-              <h2 className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+          <section className="space-y-2.5">
+            <div>
+              <h2 className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-(--text-muted)">
                 GitHub Activity
               </h2>
             </div>
@@ -226,9 +226,9 @@ export function AboutPage() {
           </section>
 
           {/* Categorized Tech Stack */}
-          <section className="space-y-4">
-            <div className="space-y-1">
-              <h2 className="font-display text-xs uppercase tracking-[0.2em] text-(--text-muted)">
+          <section className="space-y-2.5">
+            <div>
+              <h2 className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-(--text-muted)">
                 Technologies I Work With
               </h2>
             </div>

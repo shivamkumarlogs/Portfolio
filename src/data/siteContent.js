@@ -218,16 +218,6 @@ export const books = [
     cover: "/books/dont-believe-everything.jpg",
   },
   {
-    title: "I Don't Love You Anymore",
-    author: "Rithvik Singh",
-    color: "#2a1c22",
-    textColor: "#fae8eb",
-    height: 218,
-    width: 35,
-    link: "https://www.amazon.com/dp/9356299105",
-    cover: "/books/dont-love-you-anymore.jpg",
-  },
-  {
     title: "Siddhartha",
     author: "Hermann Hesse",
     color: "#3a2414",
