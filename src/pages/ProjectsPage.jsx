@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import { SegmentedToggle } from "../components/SegmentedToggle";
@@ -6,7 +6,18 @@ import { Tag } from "../components/Tag";
 import { projects, EMAIL } from "../data/siteContent";
 
 export function ProjectsPage() {
-  const [activeTab, setActiveTab] = useState("personal");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTab = searchParams.get("tab") === "freelance" ? "freelance" : "personal";
+
+  const handleTabChange = (newTab) => {
+    const nextParams = new URLSearchParams(searchParams);
+    if (newTab === "personal") {
+      nextParams.delete("tab");
+    } else {
+      nextParams.set("tab", newTab);
+    }
+    setSearchParams(nextParams, { replace: true });
+  };
 
   const filteredProjects = projects.filter((project) => {
     if (activeTab === "freelance") {
@@ -33,7 +44,7 @@ export function ProjectsPage() {
         {/* Segmented Pill Toggle */}
         <SegmentedToggle
           value={activeTab}
-          onChange={setActiveTab}
+          onChange={handleTabChange}
           options={[
             { value: "personal", label: "Personal" },
             { value: "freelance", label: "Freelance" },

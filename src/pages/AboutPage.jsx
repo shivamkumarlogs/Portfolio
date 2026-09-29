@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
 import { GitHubCalendar } from "react-github-calendar";
 import { FaGithub } from "react-icons/fa6";
 import { useTheme } from "../ThemeContext";
@@ -46,7 +47,18 @@ const calendarTheme = {
 export function AboutPage() {
   const { theme } = useTheme();
   const groupedStack = groupByCategory();
-  const [bioTab, setBioTab] = useState("developer");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const bioTab = searchParams.get("tab") === "beyond" ? "beyond" : "developer";
+
+  const handleTabChange = (newTab) => {
+    const nextParams = new URLSearchParams(searchParams);
+    if (newTab === "developer") {
+      nextParams.delete("tab");
+    } else {
+      nextParams.set("tab", newTab);
+    }
+    setSearchParams(nextParams, { replace: true });
+  };
 
   // GitHub Calendar state
   const containerRef = useRef(null);
@@ -132,7 +144,7 @@ export function AboutPage() {
         {/* Segmented Pill Toggle */}
         <SegmentedToggle
           value={bioTab}
-          onChange={setBioTab}
+          onChange={handleTabChange}
           options={[
             { value: "developer", label: "Developer" },
             { value: "beyond", label: "Beyond Code" },
