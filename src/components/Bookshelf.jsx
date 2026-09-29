@@ -1,10 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { books } from "../data/siteContent";
 
-// Uniform lean angle matching the portfolio bookshelf aesthetic
 const TILT_ANGLE = 13;
 
-// Precompute static dimensions once at module initialization to avoid runtime recalculations
 const SHELF_BOOKS = books.map((book) => ({
   ...book,
   coverWidth: Math.round(book.height * 0.65),
@@ -34,7 +32,6 @@ export function Bookshelf() {
     }
   };
 
-  // Close active book when tapping anywhere outside on mobile / touch
   useEffect(() => {
     if (!hoveredId) return;
 
@@ -60,28 +57,23 @@ export function Bookshelf() {
 
   return (
     <section className="space-y-2.5">
-      {/* Section Header: quiet portfolio label */}
       <div>
         <h2 className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-(--text-muted)">
-          Bookshelf
+          Books i've read
         </h2>
       </div>
 
-      {/* The Card IS the Bookshelf: Left border is the wall, bottom border is the shelf */}
       <div
         ref={shelfRef}
         className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) transition-all duration-300"
       >
-        {/* Signature Hairline Card Highlight */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
           aria-hidden="true"
         />
 
-        {/* Books sitting directly on the card floor, framed with ample headroom */}
         <div className="w-full overflow-x-auto pt-8 pb-0 scrollbar-none [--shelf-scale:0.72] sm:[--shelf-scale:1]">
           <div className="w-full flex items-end min-w-0 sm:min-w-140">
-            {/* Books Cluster: aligns the top-left of the first book flush against the left wall of the bookshelf */}
             <div
               className="relative flex items-end z-20"
               style={{
@@ -99,12 +91,11 @@ export function Bookshelf() {
                     className="relative group"
                     style={{
                       zIndex: isHovered ? 50 : isClosing ? 40 : 20,
-                      marginRight: "calc(3px * var(--shelf-scale))",
+                      marginRight: "calc(2px * var(--shelf-scale))",
                     }}
                     onMouseEnter={() => handleMouseEnter(book.title)}
                     onMouseLeave={() => handleMouseLeave(book.title)}
                   >
-                    {/* The Real Book Cover: emerges cleanly elevated to match spine height, completely in front of all spines */}
                     <a
                       href={book.link}
                       target="_blank"
@@ -124,9 +115,9 @@ export function Bookshelf() {
                         translate: isHovered
                           ? isLast
                             ? "0px 0px"
-                            : "calc(26px * var(--shelf-scale)) 0px"
+                            : "calc(22px * var(--shelf-scale)) 0px"
                           : "0px 0px",
-                        transform: `translateY(${isHovered ? "calc(-14px * var(--shelf-scale))" : "0px"})`,
+                        transform: `translateY(${isHovered ? "calc(-12px * var(--shelf-scale))" : "0px"})`,
                       }}
                     >
                       <div className="relative w-full h-full rounded-r-md rounded-l-xs overflow-hidden shadow-[0_22px_40px_-10px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-zinc-900 select-none">
@@ -158,7 +149,7 @@ export function Bookshelf() {
                         transform: `skewX(${TILT_ANGLE}deg) translateY(${isHovered ? "calc(-14px * var(--shelf-scale))" : "0px"})`,
                         transformOrigin: "bottom center",
                         boxShadow: isHovered
-                          ? "0 22px 34px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12)"
+                          ? "0 16px 28px -8px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.10)"
                           : "0 4px 10px -2px rgba(0, 0, 0, 0.3)",
                       }}
                       onClick={(e) => {
