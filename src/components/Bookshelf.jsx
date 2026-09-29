@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { books } from "../data/siteContent";
 
 // Uniform lean angle matching the portfolio bookshelf aesthetic
@@ -13,6 +13,50 @@ const SHELF_BOOKS = books.map((book) => ({
 
 export function Bookshelf() {
   const [hoveredId, setHoveredId] = useState(null);
+  const [closingId, setClosingId] = useState(null);
+  const closeTimerRef = useRef(null);
+  const shelfRef = useRef(null);
+
+  const handleMouseEnter = (title) => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+    }
+    setHoveredId(title);
+  };
+
+  const handleMouseLeave = (title) => {
+    if (hoveredId === title) {
+      setClosingId(title);
+      closeTimerRef.current = setTimeout(() => {
+        setClosingId(null);
+      }, 320);
+      setHoveredId(null);
+    }
+  };
+
+  // Close active book when tapping anywhere outside on mobile / touch
+  useEffect(() => {
+    if (!hoveredId) return;
+
+    const handleClickOutside = (e) => {
+      if (shelfRef.current && !shelfRef.current.contains(e.target)) {
+        setClosingId(hoveredId);
+        closeTimerRef.current = setTimeout(() => {
+          setClosingId(null);
+        }, 320);
+        setHoveredId(null);
+      }
+    };
+
+    window.addEventListener("pointerdown", handleClickOutside);
+    return () => window.removeEventListener("pointerdown", handleClickOutside);
+  }, [hoveredId]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   return (
     <section className="space-y-4">
@@ -24,7 +68,10 @@ export function Bookshelf() {
       </div>
 
       {/* The Card IS the Bookshelf: Left border is the wall, bottom border is the shelf */}
-      <div className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) transition-all duration-300">
+      <div
+        ref={shelfRef}
+        className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) transition-all duration-300"
+      >
         {/* Signature Hairline Card Highlight */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
@@ -32,36 +79,57 @@ export function Bookshelf() {
         />
 
         {/* Books sitting directly on the card floor, framed with ample headroom */}
-        <div className="w-full overflow-x-auto pt-20 sm:pt-24 pb-0 scrollbar-none">
-          <div className="w-full flex items-end min-w-140">
-            {/* Books Cluster: pl-14.75 aligns the top-left of the first book flush against the left wall of the bookshelf */}
-            <div className="relative flex items-end pl-14.75 z-20">
-              {SHELF_BOOKS.map((book) => {
+        <div className="w-full overflow-x-auto pt-14 sm:pt-24 pb-0 scrollbar-none [--shelf-scale:0.72] sm:[--shelf-scale:1]">
+          <div className="w-full flex items-end min-w-0 sm:min-w-140">
+            {/* Books Cluster: aligns the top-left of the first book flush against the left wall of the bookshelf */}
+            <div
+              className="relative flex items-end z-20"
+              style={{
+                paddingLeft: "calc(59px * var(--shelf-scale))",
+              }}
+            >
+              {SHELF_BOOKS.map((book, index) => {
                 const isHovered = hoveredId === book.title;
+                const isClosing = closingId === book.title;
+                const isLast = index === SHELF_BOOKS.length - 1;
 
                 return (
                   <div
                     key={book.title}
                     className="relative group"
                     style={{
-                      zIndex: isHovered ? 40 : 20,
-                      marginRight: "3px",
+                      zIndex: isHovered ? 50 : isClosing ? 40 : 20,
+                      marginRight: "calc(3px * var(--shelf-scale))",
                     }}
+                    onMouseEnter={() => handleMouseEnter(book.title)}
+                    onMouseLeave={() => handleMouseLeave(book.title)}
                   >
-                    {/* The Real Book Cover: emerges upward and outward from behind the spine on hover */}
-                    <div
-                      aria-hidden="true"
-                      className={`absolute bottom-0 left-0 transition-all duration-300 ease-out z-30 pointer-events-none transform-gpu will-change-[transform,opacity] ${
+                    {/* The Real Book Cover: emerges cleanly elevated to match spine height, completely in front of all spines */}
+                    <a
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${book.title} cover`}
+                      tabIndex={isHovered ? 0 : -1}
+                      className={`absolute bottom-0 ${
+                        isLast ? "right-0 sm:right-auto sm:left-0" : "left-0"
+                      } transition-all duration-300 ease-out z-50 pointer-events-none transform-gpu will-change-[transform,opacity] ${
                         isHovered
-                          ? "opacity-100 translate-x-7 -translate-y-9 scale-100"
-                          : "opacity-0 translate-x-0 translate-y-0 scale-95"
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-95"
                       }`}
                       style={{
-                        width: `${book.coverWidth}px`,
-                        height: `${book.height}px`,
+                        width: `calc(${book.coverWidth}px * var(--shelf-scale))`,
+                        height: `calc(${book.height}px * var(--shelf-scale))`,
+                        translate: isHovered
+                          ? isLast
+                            ? "0px 0px"
+                            : "calc(26px * var(--shelf-scale)) 0px"
+                          : "0px 0px",
+                        transform: `translateY(${isHovered ? "calc(-14px * var(--shelf-scale))" : "0px"})`,
                       }}
                     >
-                      <div className="relative w-full h-full rounded-r-md rounded-l-xs overflow-hidden shadow-[0_22px_40px_-10px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-zinc-900 pointer-events-none select-none">
+                      <div className="relative w-full h-full rounded-r-md rounded-l-xs overflow-hidden shadow-[0_22px_40px_-10px_rgba(0,0,0,0.65),0_0_0_1px_rgba(255,255,255,0.12)] bg-zinc-900 select-none">
                         <img
                           src={book.cover}
                           alt=""
@@ -74,7 +142,7 @@ export function Bookshelf() {
                         {/* Subtle tactile surface sheen */}
                         <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
                       </div>
-                    </div>
+                    </a>
 
                     {/* Book Spine Anchor: Tilted hit-box matches visual spine geometry for 100% reliable hover */}
                     <a
@@ -82,43 +150,37 @@ export function Bookshelf() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${book.title} by ${book.author}`}
-                      className="relative block outline-none focus-visible:ring-2 focus-visible:ring-(--accent-link) transition-all duration-300 ease-out rounded-t-xs z-40 transform-gpu will-change-transform cursor-pointer"
+                      className="relative block outline-none focus-visible:ring-2 focus-visible:ring-(--accent-link) transition-all duration-300 ease-out rounded-t-xs z-30 transform-gpu will-change-transform cursor-pointer"
                       style={{
-                        width: `${book.width}px`,
-                        height: `${book.height}px`,
+                        width: `calc(${book.width}px * var(--shelf-scale))`,
+                        height: `calc(${book.height}px * var(--shelf-scale))`,
                         backgroundColor: book.color,
-                        transform: `skewX(${TILT_ANGLE}deg) translateY(${isHovered ? -14 : 0}px)`,
+                        transform: `skewX(${TILT_ANGLE}deg) translateY(${isHovered ? "calc(-14px * var(--shelf-scale))" : "0px"})`,
                         transformOrigin: "bottom center",
                         boxShadow: isHovered
                           ? "0 22px 34px -6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12)"
                           : "0 4px 10px -2px rgba(0, 0, 0, 0.3)",
                       }}
                       onClick={(e) => {
-                        // On touchscreens without fine pointer hover, reveal cover on first tap
-                        if (
-                          hoveredId !== book.title &&
-                          typeof window !== "undefined" &&
-                          window.matchMedia("(hover: none)").matches
-                        ) {
+                        // On first tap, reveal cover; on second tap, follow link
+                        if (hoveredId !== book.title) {
                           e.preventDefault();
-                          setHoveredId(book.title);
+                          handleMouseEnter(book.title);
                         }
                       }}
-                      onMouseEnter={() => setHoveredId(book.title)}
-                      onMouseLeave={() => setHoveredId(null)}
-                      onFocus={() => setHoveredId(book.title)}
-                      onBlur={() => setHoveredId(null)}
+                      onFocus={() => handleMouseEnter(book.title)}
+                      onBlur={() => handleMouseLeave(book.title)}
                     >
                       {/* Unified Spine Title: 1 consistent font, cleanly centered */}
                       <div className="absolute inset-0 flex items-center justify-center py-7 px-1 overflow-hidden pointer-events-none">
                         <span
-                          className="font-display font-medium text-[9.5px] sm:text-[10px] uppercase whitespace-nowrap text-center"
+                          className="font-display font-medium text-[8px] sm:text-[10px] uppercase whitespace-nowrap text-center"
                           style={{
                             color: book.textColor,
                             writingMode: "vertical-rl",
                             transform: "rotate(180deg)",
                             letterSpacing: "0.14em",
-                            maxHeight: book.textMaxHeight,
+                            maxHeight: `calc(${book.height - 40}px * var(--shelf-scale))`,
                             overflow: "hidden",
                           }}
                         >
@@ -132,11 +194,10 @@ export function Bookshelf() {
             </div>
 
             {/* Empty shelf space extending to the right inside the card */}
-            <div className="flex-1 min-w-10" />
+            <div className="flex-1 min-w-8 sm:min-w-10" />
           </div>
         </div>
       </div>
     </section>
   );
 }
-
