@@ -212,7 +212,7 @@ export function AboutPage() {
                 ref={calendarRef}
                 className="w-full overflow-x-auto pb-1 scrollbar-none text-(--text-muted)"
               >
-                <div className={dimensions.isScrollable ? "min-w-[720px]" : "w-full"}>
+                <div className={dimensions.isScrollable ? "min-w-180" : "w-full"}>
                   <GitHubCalendar
                     username={GITHUB_USERNAME}
                     colorScheme={theme === "dark" ? "dark" : "light"}
