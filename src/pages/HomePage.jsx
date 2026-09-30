@@ -87,7 +87,10 @@ export function HomePage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span>Open for full-time & freelance work</span>
+          <span>
+            Open to full-time opportunities, freelance work and product
+            collaborations.
+          </span>
         </div>
 
         {/* Quick Actions & Social Handles */}
