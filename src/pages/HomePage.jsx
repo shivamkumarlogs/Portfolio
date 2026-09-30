@@ -52,20 +52,12 @@ export function HomePage() {
   };
 
   return (
-    <div className="space-y-12 sm:space-y-16 animate-fade-in">
+    <div className="pt-24 space-y-12 sm:space-y-16 animate-fade-in">
       {/* Top Header & Identity */}
-      <section className="space-y-6">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="space-y-2">
-            {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span>Available for opportunities</span>
-            </div>
+      <section className="space-y-8">
+        <div className="flex flex-wrap items-center justify-between gap-4">
 
+          <div className="space-y-2">
             <h1 className="font-bold text-2xl lg:text-3xl tracking-tight text-(--text-primary)">
               {profile.name}
             </h1>
@@ -76,21 +68,19 @@ export function HomePage() {
 
           {/* Live View Count */}
           <div
-            title="Global Profile Views (Live)"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-(--border-soft) bg-(--surface) text-xs font-mono text-(--text-muted) select-none"
+            title="Portfolio Views"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full  text-xs font-mono text-(--text-muted) select-none"
           >
             <Icon name="eye" size={14} />
             <span className="tabular-nums font-medium">
               {views.toLocaleString()} views
             </span>
           </div>
+
         </div>
 
-        {/* Crisp Mission Statement */}
         <p className="text-base sm:text-lg leading-relaxed text-(--text-secondary)">
-          Crafting digital products where thoughtful interface design meets
-          clean, scalable full-stack architecture. Building with React, Node.js,
-          Express, and MongoDB.
+          {profile.summary}
         </p>
 
         {/* Quick Actions & Social Handles */}
@@ -106,7 +96,10 @@ export function HomePage() {
               <span>Get in touch</span>
             </a>
 
-            <span className="h-4 w-px bg-(--border-soft) shrink-0" aria-hidden="true" />
+            <span
+              className="h-4 w-px bg-(--border-soft) shrink-0"
+              aria-hidden="true"
+            />
 
             <button
               type="button"

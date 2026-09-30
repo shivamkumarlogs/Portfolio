@@ -2,7 +2,9 @@ import { FaGithub, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 
 export const profile = {
   name: "Shivam Kumar",
-  strapline: "Full-Stack Developer",
+  strapline: "Software Developer",
+  summary:
+    "Crafting digital products where thoughtful interface design meets clean, scalable full-stack architecture. Building with React, Node.js, Express, and MongoDB.",
   about: [
     "I'm a **Full-Stack Developer** passionate about crafting digital products where thoughtful design meets clean, scalable code.",
     "I design and develop modern interfaces and robust backend APIs with **React**, **Node.js**, **Express**, and **MongoDB** focusing on usability, performance, and clean architecture.",
