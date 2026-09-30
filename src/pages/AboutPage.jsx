@@ -60,34 +60,41 @@ export function AboutPage() {
     setSearchParams(nextParams, { replace: true });
   };
 
-  // GitHub Calendar state
-  const containerRef = useRef(null);
-  const scrollRef = useRef(null);
+  // GitHub Calendar state: clean single-ref architecture
+  const calendarRef = useRef(null);
   const [totalCount, setTotalCount] = useState(null);
   const [dimensions, setDimensions] = useState({
     blockSize: 11,
     blockMargin: 3,
-    isMobile: false,
+    isScrollable: false,
   });
+
+  const scrollToLatest = useCallback(() => {
+    const el = calendarRef.current;
+    if (el && el.scrollWidth > el.clientWidth) {
+      el.scrollTo({ left: el.scrollWidth - el.clientWidth, behavior: "instant" });
+    }
+  }, []);
 
   const handleTransformData = useCallback((data) => {
     const total = data.reduce((acc, curr) => acc + (curr.count || 0), 0);
-    // Defer state update so it doesn't trigger synchronously while GitHubCalendar is rendering
     queueMicrotask(() => {
       setTotalCount((prev) => (prev === total ? prev : total));
+      requestAnimationFrame(scrollToLatest);
     });
     return data;
-  }, []);
+  }, [scrollToLatest]);
 
   useEffect(() => {
+    const el = calendarRef.current;
+    if (!el) return;
+
     const updateSize = () => {
-      if (!containerRef.current) return;
-      const width = containerRef.current.offsetWidth;
+      const width = el.offsetWidth;
       if (width <= 0) return;
 
-      const isMobile = width < 640;
-      if (isMobile) {
-        setDimensions({ blockSize: 11, blockMargin: 3, isMobile: true });
+      if (width < 720) {
+        setDimensions({ blockSize: 11, blockMargin: 3, isScrollable: true });
       } else {
         const colWidth = width / 53;
         const margin = Math.max(2, Math.round(colWidth * 0.2 * 10) / 10);
@@ -95,36 +102,19 @@ export function AboutPage() {
         setDimensions({
           blockSize: size,
           blockMargin: margin,
-          isMobile: false,
+          isScrollable: false,
         });
       }
     };
 
     updateSize();
-    const observer = new ResizeObserver(updateSize);
-    if (containerRef.current) observer.observe(containerRef.current);
+    const observer = new ResizeObserver(() => {
+      updateSize();
+      scrollToLatest();
+    });
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [bioTab]);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || !dimensions.isMobile) return;
-
-    const scrollToLatest = () => {
-      if (el) {
-        el.scrollLeft = el.scrollWidth - el.clientWidth;
-      }
-    };
-
-    scrollToLatest();
-    const t1 = setTimeout(scrollToLatest, 150);
-    const t2 = setTimeout(scrollToLatest, 600);
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [dimensions.isMobile, bioTab, totalCount]);
+  }, [bioTab, scrollToLatest]);
 
   return (
     <div className="space-y-8 sm:space-y-12 animate-fade-in">
@@ -155,11 +145,19 @@ export function AboutPage() {
       {/* Developer Story vs Beyond Code View */}
       <section className="space-y-4">
         {bioTab === "developer" ? (
-          <div className="space-y-3 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
+          <ul className="space-y-3 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
             {profile.about?.map((point, index) => (
-              <p key={index}>{formatBioText(point)}</p>
+              <li key={index} className="flex items-start gap-2.5 sm:gap-3">
+                <span
+                  className="select-none text-(--text-muted) leading-relaxed text-base"
+                  aria-hidden="true"
+                >
+                  •
+                </span>
+                <span className="flex-1">{formatBioText(point)}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : (
           <div className="pt-2">
             <Bookshelf />
@@ -186,11 +184,13 @@ export function AboutPage() {
 
               <div className="mb-5 flex flex-wrap items-center justify-between gap-2.5">
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-(--text-primary)">
-                  <span>
-                    {totalCount !== null
-                      ? `${totalCount.toLocaleString()} Contributions this year`
-                      : "Contributions this year"}
-                  </span>
+                  {totalCount !== null ? (
+                    <span>{totalCount.toLocaleString()} Contributions this year</span>
+                  ) : (
+                    <span className="inline-flex items-center gap-2">
+                      <span className="h-4 w-36 rounded-md bg-(--border-soft) animate-pulse" />
+                    </span>
+                  )}
                 </div>
 
                 <a
@@ -207,31 +207,26 @@ export function AboutPage() {
                 </a>
               </div>
 
-              <div ref={containerRef} className="w-full text-(--text-muted)">
-                <div
-                  ref={scrollRef}
-                  className={`w-full ${
-                    dimensions.isMobile
-                      ? "flex overflow-x-auto pb-1 scrollbar-none"
-                      : "overflow-hidden"
-                  }`}
-                >
-                  <div className={dimensions.isMobile ? "shrink-0" : "w-full"}>
-                    <GitHubCalendar
-                      username={GITHUB_USERNAME}
-                      colorScheme={theme === "dark" ? "dark" : "light"}
-                      theme={calendarTheme}
-                      blockSize={dimensions.blockSize}
-                      blockMargin={dimensions.blockMargin}
-                      blockRadius={2.5}
-                      showMonthLabels={true}
-                      showWeekdayLabels={false}
-                      showColorLegend={false}
-                      showTotalCount={false}
-                      transformData={handleTransformData}
-                      style={{ width: "100%" }}
-                    />
-                  </div>
+              {/* Responsive Calendar Container */}
+              <div
+                ref={calendarRef}
+                className="w-full overflow-x-auto pb-1 scrollbar-none text-(--text-muted)"
+              >
+                <div className={dimensions.isScrollable ? "min-w-[720px]" : "w-full"}>
+                  <GitHubCalendar
+                    username={GITHUB_USERNAME}
+                    colorScheme={theme === "dark" ? "dark" : "light"}
+                    theme={calendarTheme}
+                    blockSize={dimensions.blockSize}
+                    blockMargin={dimensions.blockMargin}
+                    blockRadius={2.5}
+                    showMonthLabels={true}
+                    showWeekdayLabels={false}
+                    showColorLegend={false}
+                    showTotalCount={false}
+                    transformData={handleTransformData}
+                    style={{ width: "100%" }}
+                  />
                 </div>
               </div>
             </div>
