@@ -52,7 +52,7 @@ export function HomePage() {
   };
 
   return (
-    <div className="pt-24 space-y-12 sm:space-y-16 animate-fade-in">
+    <div className="pt-12 sm:pt-24 space-y-12 sm:space-y-16 animate-fade-in">
       {/* Top Header & Identity */}
       <section className="space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">

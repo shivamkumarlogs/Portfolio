@@ -1,39 +1,71 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import {
+  HiOutlineHome,
+  HiHome,
+  HiOutlineFolder,
+  HiFolder,
+  HiOutlineUser,
+  HiUser,
+  HiOutlineDocumentText,
+  HiDocumentText,
+  HiOutlineSun,
+  HiOutlineMoon,
+} from "react-icons/hi2";
 import { useTheme } from "../ThemeContext";
-import { Icon } from "./Icon";
 
 const NAV_ITEMS = [
-  { to: "/", label: "Home", icon: "home", end: true },
-  { to: "/projects", label: "Projects", icon: "projects" },
-  { to: "/about", label: "About", icon: "about" },
-  { to: "/writing", label: "Writing", icon: "blogs" },
+  {
+    to: "/",
+    label: "Home",
+    outlineIcon: HiOutlineHome,
+    solidIcon: HiHome,
+    end: true,
+  },
+  {
+    to: "/projects",
+    label: "Projects",
+    outlineIcon: HiOutlineFolder,
+    solidIcon: HiFolder,
+  },
+  {
+    to: "/about",
+    label: "About",
+    outlineIcon: HiOutlineUser,
+    solidIcon: HiUser,
+  },
+  {
+    to: "/writing",
+    label: "Writing",
+    outlineIcon: HiOutlineDocumentText,
+    solidIcon: HiDocumentText,
+  },
 ];
 
 export function Nav() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Collapse labels when scrolled down past 35px
-      setIsScrolled(window.scrollY > 35);
+      // Collapse labels strictly to only icons when scrolled down past 20px
+      setIsScrolled(window.scrollY > 20);
     };
+
+    // Check immediately on mount in case page is restored with scroll offset
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Show text labels if user is near top OR hovering over the dock
-  const showLabels = !isScrolled || isHovered;
+  // When scrolled down, strictly show only icons on all devices
+  const showLabels = !isScrolled;
 
   return (
     <nav
       aria-label="Main Navigation"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       className="fixed bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-out"
     >
       <div
@@ -50,6 +82,7 @@ export function Nav() {
             key={item.to}
             to={item.to}
             end={item.end}
+            title={item.label}
             className={({ isActive }) => `
               group relative flex flex-col items-center justify-center rounded-full
               transition-all duration-200 ease-out active:scale-95
@@ -61,32 +94,36 @@ export function Nav() {
               }
             `}
           >
-            {({ isActive }) => (
-              <>
-                <Icon
-                  name={item.icon}
-                  size={18}
-                  className={`transition-transform duration-200 ${
-                    isActive ? "scale-105" : "group-hover:scale-110"
-                  }`}
-                />
+            {({ isActive }) => {
+              const IconComponent = isActive
+                ? item.solidIcon
+                : item.outlineIcon;
+              return (
+                <>
+                  <IconComponent
+                    size={18}
+                    className={`transition-transform duration-200 ${
+                      isActive ? "scale-105" : "group-hover:scale-110"
+                    }`}
+                  />
 
-                {/* Collapsible Label */}
-                <span
-                  className={`
-                    font-display text-[10px] sm:text-[11px] font-medium tracking-tight leading-none
-                    transition-all duration-300 ease-out
-                    ${
-                      showLabels
-                        ? "max-h-4 opacity-100 mt-1"
-                        : "max-h-0 opacity-0 mt-0 pointer-events-none"
-                    }
-                  `}
-                >
-                  {item.label}
-                </span>
-              </>
-            )}
+                  {/* Collapsible Label */}
+                  <span
+                    className={`
+                      font-display text-[10px] sm:text-[11px] font-medium tracking-tight leading-none
+                      transition-all duration-300 ease-out
+                      ${
+                        showLabels
+                          ? "max-h-4 opacity-100 mt-1"
+                          : "max-h-0 opacity-0 mt-0 pointer-events-none"
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </span>
+                </>
+              );
+            }}
           </NavLink>
         ))}
 
@@ -100,6 +137,7 @@ export function Nav() {
         <button
           type="button"
           onClick={toggleTheme}
+          title={isDark ? "Switch to light mode" : "Switch to dark mode"}
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           className={`
             relative flex flex-col items-center justify-center rounded-full
@@ -109,11 +147,17 @@ export function Nav() {
             ${showLabels ? "px-2.5 py-1.5 sm:px-3 sm:py-2 min-w-11 sm:min-w-12" : "p-2 sm:p-2.5"}
           `}
         >
-          <Icon
-            name={isDark ? "sun" : "moon"}
-            size={18}
-            className="transition-transform duration-200 hover:rotate-12"
-          />
+          {isDark ? (
+            <HiOutlineSun
+              size={18}
+              className="transition-transform duration-200 hover:rotate-12"
+            />
+          ) : (
+            <HiOutlineMoon
+              size={18}
+              className="transition-transform duration-200 hover:-rotate-12"
+            />
+          )}
 
           <span
             className={`
