@@ -53,7 +53,6 @@ export function AboutPage() {
 
   return (
     <div className="space-y-8 sm:space-y-12 animate-fade-in">
-      {/* Page Header */}
       <header className="flex flex-col sm:flex-row sm:items-stretch sm:justify-between gap-4">
         <div className="flex flex-col justify-center space-y-1">
           <h1 className="text-xl font-bold tracking-tight text-(--text-primary)">
@@ -66,7 +65,6 @@ export function AboutPage() {
           </p>
         </div>
 
-        {/* Segmented Pill Toggle */}
         <SegmentedToggle
           value={bioTab}
           onChange={handleTabChange}
@@ -77,7 +75,6 @@ export function AboutPage() {
         />
       </header>
 
-      {/* Developer Story vs Beyond Code View */}
       <section className="space-y-4">
         {bioTab === "developer" ? (
           <ul className="space-y-3 text-sm sm:text-base leading-relaxed text-(--text-secondary) font-sans">
@@ -100,13 +97,10 @@ export function AboutPage() {
         )}
       </section>
 
-      {/* Technical Sections: Only shown in Developer tab */}
       {bioTab === "developer" && (
         <>
-          {/* GitHub Contributions Activity */}
           <GitHubActivity />
 
-          {/* Categorized Tech Stack */}
           <section className="space-y-2.5">
             <div>
               <h2 className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-(--text-muted)">

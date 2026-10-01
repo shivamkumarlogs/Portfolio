@@ -3,7 +3,6 @@ import { blogs } from "../data/siteContent";
 export function WritingPage() {
   return (
     <div className="space-y-8 sm:space-y-12 animate-fade-in">
-      {/* Page Header */}
       <header className="space-y-1">
         <h1 className="text-xl font-bold tracking-tight text-(--text-primary)">
           Writing
@@ -13,7 +12,6 @@ export function WritingPage() {
         </p>
       </header>
 
-      {/* Pure Typographic List */}
       <div className="divide-y divide-dashed divide-(--border-soft)">
         {blogs.map((post) => (
           <a

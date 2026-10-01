@@ -80,7 +80,6 @@ export function GitHubActivity() {
     });
     mutationObserver.observe(el, { childList: true, subtree: true });
 
-    // Fallbacks for initial network payload arrival and font rendering
     const timers = [50, 150, 300, 600, 1200].map((d) =>
       setTimeout(scrollToLatest, d),
     );
@@ -131,7 +130,6 @@ export function GitHubActivity() {
           </a>
         </div>
 
-        {/* Responsive Calendar Container */}
         <div
           ref={calendarRef}
           className="w-full overflow-x-auto pb-1 scrollbar-none text-(--text-muted)"

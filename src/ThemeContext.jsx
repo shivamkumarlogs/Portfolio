@@ -8,17 +8,17 @@ function getStoredTheme() {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === "light" || stored === "dark") return stored;
+    return null;
   } catch {
-    // Storage may be restricted in private/sandboxed browsing contexts
+    return null;
   }
-  return null;
 }
 
 function setStoredTheme(value) {
   try {
     localStorage.setItem(STORAGE_KEY, value);
   } catch {
-    // Storage may be restricted in private/sandboxed browsing contexts
+    return;
   }
 }
 

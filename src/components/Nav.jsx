@@ -49,18 +49,15 @@ export function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Collapse labels strictly to only icons when scrolled down past 20px
       setIsScrolled(window.scrollY > 20);
     };
 
-    // Check immediately on mount in case page is restored with scroll offset
     handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // When scrolled down, strictly show only icons on all devices
   const showLabels = !isScrolled;
 
   return (
@@ -107,7 +104,6 @@ export function Nav() {
                     }`}
                   />
 
-                  {/* Collapsible Label */}
                   <span
                     className={`
                       font-display text-[10px] sm:text-[11px] font-medium tracking-tight leading-none
@@ -127,13 +123,11 @@ export function Nav() {
           </NavLink>
         ))}
 
-        {/* Subtle Divider */}
         <span
           className="mx-1 h-5 w-px shrink-0 bg-zinc-200 dark:bg-zinc-800 transition-colors"
           aria-hidden="true"
         />
 
-        {/* Theme Toggle Button */}
         <button
           type="button"
           onClick={toggleTheme}

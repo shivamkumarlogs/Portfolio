@@ -15,7 +15,6 @@ export function HomePage() {
 
   return (
     <div className="pt-12 sm:pt-24 space-y-12 sm:space-y-16 animate-fade-in">
-      {/* Top Header & Identity */}
       <section className="space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-2">
@@ -27,7 +26,6 @@ export function HomePage() {
             </p>
           </div>
 
-          {/* Live View Count */}
           <ViewCounter />
         </div>
 
@@ -35,7 +33,6 @@ export function HomePage() {
           {profile.summary}
         </p>
 
-        {/* Availability Status */}
         <div className="flex items-center gap-2 text-xs sm:text-sm text-(--text-muted) select-none">
           <span className="relative flex h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -47,9 +44,7 @@ export function HomePage() {
           </span>
         </div>
 
-        {/* Quick Actions & Social Handles */}
         <div className="w-full flex items-center gap-1.5 sm:gap-2.5 pt-1">
-          {/* Dual Action: Send Email + Copy Address */}
           <div className="flex-[1.3] sm:flex-[1.2] min-w-max h-9 sm:h-10 flex items-center justify-between rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium transition-all hover:border-(--border) hover:bg-(--surface-raised) shadow-2xs">
             <a
               href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
@@ -88,7 +83,6 @@ export function HomePage() {
             </button>
           </div>
 
-          {/* Resume Button */}
           <a
             href="/Shivam_Kumar_Resume.pdf"
             target="_blank"
@@ -109,7 +103,6 @@ export function HomePage() {
             />
           </a>
 
-          {/* Social Links (GitHub, X, LinkedIn) */}
           {socialLinks.map(({ label, href, icon: IconComponent }) => (
             <a
               key={label}

@@ -28,7 +28,6 @@ export function ProjectsPage() {
 
   return (
     <div className="space-y-8 sm:space-y-12 animate-fade-in">
-      {/* Page Header */}
       <header className="flex flex-col sm:flex-row sm:items-stretch sm:justify-between gap-4">
         <div className="flex flex-col justify-center space-y-1">
           <h1 className="text-xl font-bold tracking-tight text-(--text-primary)">
@@ -41,7 +40,6 @@ export function ProjectsPage() {
           </p>
         </div>
 
-        {/* Segmented Pill Toggle */}
         <SegmentedToggle
           value={activeTab}
           onChange={handleTabChange}
@@ -52,7 +50,6 @@ export function ProjectsPage() {
         />
       </header>
 
-      {/* Projects List */}
       <div className="space-y-6">
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project) => (
@@ -64,13 +61,11 @@ export function ProjectsPage() {
                 p-5 sm:p-7 transition-all duration-300
               "
             >
-              {/* Subtle top hairline highlight */}
               <div
                 className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--card-highlight) to-transparent"
                 aria-hidden="true"
               />
 
-              {/* Thumbnail preview if available */}
               {project.screenshot && (
                 <div className="w-full overflow-hidden rounded-xl mb-5 border border-(--border-soft)">
                   <img
@@ -81,7 +76,6 @@ export function ProjectsPage() {
                 </div>
               )}
 
-              {/* Header: Title + Live Badge */}
               <div className="flex items-center justify-between gap-4">
                 <h2 className="font-bold text-xl tracking-tight text-(--text-primary)">
                   {project.title}
@@ -95,12 +89,10 @@ export function ProjectsPage() {
                 )}
               </div>
 
-              {/* Description */}
               <p className="mt-3 text-sm leading-6 text-(--text-secondary)">
                 {project.description}
               </p>
 
-              {/* Bottom Row: Tags + Links */}
               <div className="mt-6 flex flex-row items-center justify-between gap-3 pt-2">
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (

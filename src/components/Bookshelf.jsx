@@ -128,14 +128,11 @@ export function Bookshelf() {
                           className="w-full h-full object-cover select-none pointer-events-none"
                           loading="eager"
                         />
-                        {/* Book spine hinge shadow on the left edge */}
                         <div className="absolute inset-y-0 left-0 w-3 bg-linear-to-r from-black/45 via-black/15 to-transparent pointer-events-none" />
-                        {/* Subtle tactile surface sheen */}
                         <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
                       </div>
                     </a>
 
-                    {/* Book Spine Anchor: Tilted hit-box matches visual spine geometry for 100% reliable hover */}
                     <a
                       href={book.link}
                       target="_blank"
@@ -153,7 +150,6 @@ export function Bookshelf() {
                           : "0 4px 10px -2px rgba(0, 0, 0, 0.3)",
                       }}
                       onClick={(e) => {
-                        // On first tap, reveal cover; on second tap, follow link
                         if (hoveredId !== book.title) {
                           e.preventDefault();
                           handleMouseEnter(book.title);
@@ -162,7 +158,6 @@ export function Bookshelf() {
                       onFocus={() => handleMouseEnter(book.title)}
                       onBlur={() => handleMouseLeave(book.title)}
                     >
-                      {/* Unified Spine Title: natural Title Case with optimal tracking & visibility */}
                       <div className="absolute inset-0 flex items-center justify-center py-5 px-1 overflow-hidden pointer-events-none">
                         <span
                           className="font-display font-bold text-[8.5px] sm:text-[14px] whitespace-nowrap text-center"
@@ -184,7 +179,6 @@ export function Bookshelf() {
               })}
             </div>
 
-            {/* Empty shelf space extending to the right inside the card */}
             <div className="flex-1 min-w-8 sm:min-w-10" />
           </div>
         </div>
