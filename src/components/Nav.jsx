@@ -49,6 +49,7 @@ export function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Condense dock into icon-only mode once the user starts reading down the page
       setIsScrolled(window.scrollY > 20);
     };
 

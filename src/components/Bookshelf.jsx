@@ -150,6 +150,7 @@ export function Bookshelf() {
                           : "0 4px 10px -2px rgba(0, 0, 0, 0.3)",
                       }}
                       onClick={(e) => {
+                        // On touchscreens without hover, first tap reveals the cover; second tap follows the link
                         if (hoveredId !== book.title) {
                           e.preventDefault();
                           handleMouseEnter(book.title);

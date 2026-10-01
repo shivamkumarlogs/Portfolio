@@ -19,6 +19,7 @@ export function GitHubActivity() {
     isScrollable: true,
   });
 
+  // Ensure overflowing calendars are anchored to the most recent weeks on the right
   const scrollToLatest = useCallback(() => {
     const el = calendarRef.current;
     if (!el) return;
@@ -49,6 +50,7 @@ export function GitHubActivity() {
     const el = calendarRef.current;
     if (!el) return;
 
+    // Dynamically scale 53 calendar columns to fill container on desktop, or scroll on mobile
     const updateSize = () => {
       const width = el.offsetWidth;
       if (width <= 0) return;
@@ -75,11 +77,13 @@ export function GitHubActivity() {
     });
     resizeObserver.observe(el);
 
+    // Watch for async SVG injection by the calendar library to immediately scroll right
     const mutationObserver = new MutationObserver(() => {
       scrollToLatest();
     });
     mutationObserver.observe(el, { childList: true, subtree: true });
 
+    // Fallbacks for initial network payload arrival and font rendering
     const timers = [50, 150, 300, 600, 1200].map((d) =>
       setTimeout(scrollToLatest, d),
     );

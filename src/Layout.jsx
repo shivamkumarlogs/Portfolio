@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Nav } from "./components/Nav";
 
+// Reset window scroll on client route changes immediately to prevent jarring smooth-scroll transitions
 function ScrollToTop() {
   const { pathname } = useLocation();
 

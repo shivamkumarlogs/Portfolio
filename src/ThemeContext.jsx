@@ -4,6 +4,7 @@ const ThemeContext = createContext(undefined);
 
 const STORAGE_KEY = "portfolio-theme";
 
+// Safely access localStorage: can throw SecurityError in private browsing or restricted iframes.
 function getStoredTheme() {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -30,10 +31,12 @@ export function ThemeProvider({ children }) {
     return prefersDark ? "dark" : "light";
   });
 
+  // Sync document root attribute for Tailwind variants and CSS variables
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
+  // Track OS color scheme changes only if the user hasn't explicitly chosen a preference
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = (e) => {

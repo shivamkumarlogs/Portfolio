@@ -9,6 +9,7 @@ export function ProjectsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get("tab") === "freelance" ? "freelance" : "personal";
 
+  // Sync tab selection with query params; use replace to avoid polluting browser history stack
   const handleTabChange = (newTab) => {
     const nextParams = new URLSearchParams(searchParams);
     if (newTab === "personal") {

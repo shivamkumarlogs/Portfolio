@@ -16,6 +16,7 @@ export function ViewCounter({ className = "" }) {
 
     async function syncViews() {
       try {
+        // Increment count once per browser session; subsequent visits in the same session only fetch the total
         const hasCounted = sessionStorage.getItem("portfolio_view_counted");
         const action = hasCounted ? "get" : "hit";
         const url = `https://countapi.mileshilliard.com/api/v1/${action}/shivamkumar-portfolio-views`;

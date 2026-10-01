@@ -4,6 +4,7 @@ import { Bookshelf } from "../components/Bookshelf";
 import { GitHubActivity } from "../components/GitHubActivity";
 import { profile, techStack } from "../data/siteContent";
 
+// Safely parse inline markdown bold tags (**text**) into <strong> without dangerouslySetInnerHTML
 function formatBioText(text) {
   return text.split(/(\*\*.*?\*\*)/g).map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) {
