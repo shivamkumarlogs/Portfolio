@@ -4,11 +4,11 @@ export const profile = {
   name: "Shivam Kumar",
   strapline: "Software Developer",
   summary:
-    "Crafting digital products where thoughtful interface design meets clean, scalable full-stack architecture. Building with React, Node.js, Express, and MongoDB.",
+    "Building full-stack products from idea to deployment with a focus on simplicity, performance, and usability.",
   about: [
-    "I'm a **Full-Stack Developer** passionate about crafting digital products where thoughtful design meets clean, scalable code.",
-    "I design and develop modern interfaces and robust backend APIs with **React**, **Node.js**, **Express**, and **MongoDB** focusing on usability, performance, and clean architecture.",
-    "I enjoy transforming ideas into polished products, refining interaction details, and creating intuitive, reliable experiences from database schema to UI.",
+    "I like to describe myself as a full-stack developer with a **product-first mindset**. For me, coding isn't just about syntax. it's about building tools that people actually find useful, fast, and pleasant to use.",
+    "When building, I care deeply about both sides of the coin: making sure the **backend is solid, secure, and reliable**, while ensuring the **interface feels effortless and responsive**. I prefer simple, dependable solutions over over-engineering.",
+    "I learn best by building from scratch, breaking down tricky problems, and refining the small details that make software feel alive.",
   ],
 };
 
@@ -111,7 +111,7 @@ export const socialLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shivamkumarlogs/",
-    icon: FaLinkedinIn ,
+    icon: FaLinkedinIn,
   },
 ];
 
@@ -199,7 +199,6 @@ export const blogs = [
 ];
 
 export const books = [
-
   {
     title: "The Great Gatsby",
     author: "F. Scott Fitzgerald",
@@ -230,7 +229,7 @@ export const books = [
     link: "https://www.amazon.com/dp/0486290301",
     cover: "/books/metamorphosis.png",
   },
-    {
+  {
     title: "Don't Believe Everything You Think",
     author: "Joseph Nguyen",
     color: "#f8f7f5",
@@ -260,7 +259,7 @@ export const books = [
     link: "https://www.amazon.com/dp/0593135202",
     cover: "/books/project-hail-mary.jpg",
   },
-    {
+  {
     title: "Siddhartha",
     author: "Hermann Hesse",
     color: "#055169",
@@ -270,5 +269,4 @@ export const books = [
     link: "https://www.amazon.com/dp/0553208845",
     cover: "/books/siddhartha.jpg",
   },
-    
 ];
