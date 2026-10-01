@@ -61,7 +61,7 @@ export function AboutPage() {
           </h1>
           <p className="text-sm text-(--text-secondary) leading-relaxed transition-opacity duration-200">
             {bioTab === "developer"
-              ? "Engineering background, technical craft, and full-stack architecture."
+              ? "A bit about how I build, my approach to engineering, and the tech I use."
               : "A few things that inspire and recharge me away from the screen."}
           </p>
         </div>
@@ -100,12 +100,10 @@ export function AboutPage() {
 
       {bioTab === "developer" && (
         <>
-          <GitHubActivity />
-
           <section className="space-y-2.5">
             <div>
               <h2 className="font-display text-[11px] font-medium uppercase tracking-[0.16em] text-(--text-muted)">
-                Technologies I Work With
+                Tech Stack
               </h2>
             </div>
 
@@ -165,6 +163,7 @@ export function AboutPage() {
               </div>
             </div>
           </section>
+          <GitHubActivity />
         </>
       )}
     </div>
