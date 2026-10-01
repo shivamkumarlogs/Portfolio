@@ -1,49 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { GrDocumentText } from "react-icons/gr";
 import { Icon } from "../components/Icon";
+import { ViewCounter } from "../components/ViewCounter";
 import { profile, socialLinks, EMAIL } from "../data/siteContent";
 
 export function HomePage() {
   const [copied, setCopied] = useState(false);
-  const [views, setViews] = useState(() => {
-    try {
-      const cached = localStorage.getItem("portfolio_views_count");
-      return cached !== null ? parseInt(cached, 10) : 0;
-    } catch {
-      return 0;
-    }
-  });
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function syncViews() {
-      try {
-        const hasCounted = sessionStorage.getItem("portfolio_view_counted");
-        const action = hasCounted ? "get" : "hit";
-        const url = `https://countapi.mileshilliard.com/api/v1/${action}/shivamkumar-portfolio-views`;
-
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Counter response not ok");
-        const data = await res.json();
-
-        if (mounted && typeof data?.value === "number") {
-          setViews(data.value);
-          localStorage.setItem("portfolio_views_count", data.value.toString());
-          if (!hasCounted) {
-            sessionStorage.setItem("portfolio_view_counted", "true");
-          }
-        }
-      } catch (err) {
-        console.warn("View counter fallback active:", err);
-      }
-    }
-
-    syncViews();
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(EMAIL);
@@ -66,15 +28,7 @@ export function HomePage() {
           </div>
 
           {/* Live View Count */}
-          <div
-            title="Portfolio Views"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full  text-xs font-mono text-(--text-muted) select-none"
-          >
-            <Icon name="eye" size={14} />
-            <span className="tabular-nums font-medium">
-              {views.toLocaleString()} views
-            </span>
-          </div>
+          <ViewCounter />
         </div>
 
         <p className="text-base sm:text-lg leading-relaxed text-(--text-secondary)">
