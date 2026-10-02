@@ -1,4 +1,9 @@
-import { FaGithub, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
+import {
+  FaGithub,
+  FaXTwitter,
+  FaLinkedin,
+  FaRegFileLines,
+} from "react-icons/fa6";
 
 export const profile = {
   name: "Shivam Kumar",
@@ -103,7 +108,7 @@ export const socialLinks = [
   },
 
   {
-    label: "X (Twitter)",
+    label: "Twitter",
     href: "https://x.com/shivamkumarlogs",
     icon: FaXTwitter,
   },
@@ -111,7 +116,13 @@ export const socialLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/shivamkumarlogs/",
-    icon: FaLinkedinIn,
+    icon: FaLinkedin,
+  },
+
+  {
+    label: "Resume",
+    href: "/Shivam_Kumar_Resume.pdf",
+    icon: FaRegFileLines,
   },
 ];
 

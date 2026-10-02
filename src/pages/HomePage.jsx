@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { GrDocumentText } from "react-icons/gr";
 import { Icon } from "../components/Icon";
 import { ViewCounter } from "../components/ViewCounter";
 import { profile, socialLinks, EMAIL } from "../data/siteContent";
@@ -17,7 +16,7 @@ export function HomePage() {
     <div className="pt-12 sm:pt-24 space-y-12 sm:space-y-16 animate-fade-in">
       <section className="space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-2">
+          <div className="space-y-1">
             <h1 className="font-bold text-2xl lg:text-3xl tracking-tight text-(--text-primary)">
               {profile.name}
             </h1>
@@ -44,19 +43,19 @@ export function HomePage() {
           </span>
         </div>
 
-        <div className="w-full flex items-center gap-1.5 sm:gap-2.5 pt-1">
-          <div className="flex-[1.3] sm:flex-[1.2] min-w-max h-9 sm:h-10 flex items-center justify-between rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium transition-all hover:border-(--border) hover:bg-(--surface-raised) shadow-2xs">
+        <div className="flex flex-wrap items-center gap-2 pt-1">
+          <div className="inline-flex items-center h-8 sm:h-9 rounded-lg border border-(--border-soft) bg-(--surface) hover:border-(--border) text-xs sm:text-sm font-medium transition-all shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
             <a
               href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center pl-3 sm:pl-3.5 pr-2 py-2 text-(--text-primary) whitespace-nowrap transition-colors"
+              className="flex items-center h-full px-3 sm:px-3.5 text-(--text-secondary) hover:text-(--text-primary) hover:bg-(--surface-raised) rounded-l-lg transition-colors whitespace-nowrap"
             >
               <span>Get in touch</span>
             </a>
 
             <span
-              className="h-4 w-px bg-(--border-soft) shrink-0"
+              className="h-3.5 w-px bg-(--border-soft) shrink-0"
               aria-hidden="true"
             />
 
@@ -65,43 +64,23 @@ export function HomePage() {
               onClick={handleCopyEmail}
               aria-label="Copy email address"
               title={copied ? "Copied to clipboard!" : `Copy ${EMAIL}`}
-              className="flex h-8 w-7 sm:w-8 shrink-0 items-center justify-center rounded-r-xl text-(--text-muted) hover:text-(--text-primary) hover:bg-(--bg-secondary)/60 active:scale-90 transition-all cursor-pointer"
+              className="flex h-full w-7 sm:w-8 shrink-0 items-center justify-center rounded-r-lg text-(--text-muted) hover:text-(--text-primary) hover:bg-(--surface-raised) active:scale-90 transition-all cursor-pointer"
             >
               {copied ? (
                 <Icon
                   name="check"
-                  size={14}
+                  size={13}
                   className="text-emerald-500 dark:text-emerald-400"
                 />
               ) : (
                 <Icon
                   name="copy"
-                  size={14}
+                  size={13}
                   className="transition-transform duration-200 hover:scale-110"
                 />
               )}
             </button>
           </div>
-
-          <a
-            href="/Shivam_Kumar_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex-1 min-w-0 h-9 sm:h-10 flex items-center justify-center gap-2 sm:gap-5 px-2.5 sm:px-3.5 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
-          >
-            <span className="inline-flex items-center gap-1.5">
-              <GrDocumentText
-                size={14}
-                className="text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:scale-110"
-              />
-              <span>Resume</span>
-            </span>
-            <Icon
-              name="arrow-up-right"
-              size={13}
-              className="text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
 
           {socialLinks.map(({ label, href, icon: IconComponent }) => (
             <a
@@ -109,22 +88,10 @@ export function HomePage() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              title={label}
-              aria-label={label}
-              className="group shrink-0 sm:shrink sm:flex-1 h-9 sm:h-10 w-9 sm:w-auto flex items-center justify-center gap-2 sm:gap-5 px-0 sm:px-3 py-2 rounded-xl border border-(--border-soft) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-primary) whitespace-nowrap hover:border-(--border) hover:bg-(--surface-raised) transition-all shadow-2xs"
+              className="group inline-flex items-center gap-2 h-8 sm:h-9 px-3 sm:px-3.5 rounded-lg border border-(--border-soft) bg-(--surface) hover:bg-(--surface-raised) hover:border-(--border) text-xs sm:text-sm font-medium text-(--text-secondary) hover:text-(--text-primary) shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap"
             >
-              <span className="inline-flex items-center gap-1.5">
-                <IconComponent
-                  size={14}
-                  className="shrink-0 text-(--text-secondary) group-hover:text-(--text-primary) transition-all duration-200 group-hover:scale-110"
-                />
-                <span className="hidden sm:inline">{label}</span>
-              </span>
-              <Icon
-                name="arrow-up-right"
-                size={13}
-                className="hidden sm:inline text-(--text-muted) shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
+              <IconComponent className="text-sm sm:text-[15px] shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-colors" />
+              <span>{label}</span>
             </a>
           ))}
         </div>
