@@ -100,17 +100,13 @@ export const GITHUB_USERNAME = "shivamkumarlogs";
 
 export const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`;
 
+export const RESUME_URL = "/Shivam_Kumar_Resume.pdf";
+
 export const socialLinks = [
   {
     label: "GitHub",
     href: GITHUB_URL,
     icon: FaGithub,
-  },
-
-  {
-    label: "Twitter",
-    href: "https://x.com/shivamkumarlogs",
-    icon: FaXTwitter,
   },
 
   {
@@ -120,9 +116,9 @@ export const socialLinks = [
   },
 
   {
-    label: "Resume",
-    href: "/Shivam_Kumar_Resume.pdf",
-    icon: FaRegFileLines,
+    label: "Twitter",
+    href: "https://x.com/shivamkumarlogs",
+    icon: FaXTwitter,
   },
 ];
 
