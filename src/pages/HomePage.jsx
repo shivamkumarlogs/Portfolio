@@ -11,11 +11,11 @@ export function HomePage() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(EMAIL);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 1000);
   };
 
   return (
-    <div className="pt-12 sm:pt-24 space-y-12 sm:space-y-16 animate-fade-in">
+    <div className="pt-28 sm:pt-38 space-y-12 sm:space-y-16 animate-fade-in">
       <section className="space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
@@ -46,7 +46,7 @@ export function HomePage() {
         </div>
 
         {/* 2-Tier Action Structure */}
-        <div className="space-y-6 ">
+        <div className="space-y-6">
           {/* Row 1: Primary (Get in touch) & Secondary (Resume) */}
           <div className="flex flex-wrap items-center gap-2.5">
             <div className="inline-flex items-center h-9 sm:h-10 rounded-lg border border-(--border-soft) bg-(--surface) hover:border-(--border) text-xs sm:text-sm font-medium transition-all shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
@@ -99,7 +99,7 @@ export function HomePage() {
           </div>
 
           {/* Row 2: Tier 3 Socials (GitHub, LinkedIn, Twitter) */}
-          <div className="space-y-1">
+          <div className="space-y-2">
             <span className="block text-xs font-medium text-(--text-muted)">
               Find me on
             </span>
