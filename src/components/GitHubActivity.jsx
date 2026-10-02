@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { FaGithub } from "react-icons/fa6";
+import { Button } from "./Button";
 import { useTheme } from "../ThemeContext";
 import { GITHUB_USERNAME } from "../data/siteContent";
+import { Icon } from "./Icon";
 
 const calendarTheme = {
   light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
@@ -120,18 +122,12 @@ export function GitHubActivity() {
             )}
           </div>
 
-          <a
+          <Button
             href={`https://github.com/${GITHUB_USERNAME}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-(--border-soft) bg-(--bg-secondary)/50 text-xs font-medium text-(--text-primary) hover:border-(--border) hover:bg-(--surface-raised) transition-all active:scale-95"
-          >
-            <FaGithub size={14} />
-            <span>View profile</span>
-            <span className="text-(--text-muted) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-              ↗
-            </span>
-          </a>
+            icon={FaGithub}
+            endIcon={<Icon name="arrow-up-right" size={12} />}
+            label="View profile"
+          />
         </div>
 
         <div

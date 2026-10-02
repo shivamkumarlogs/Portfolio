@@ -7,7 +7,8 @@ import { projects, EMAIL } from "../data/siteContent";
 
 export function ProjectsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get("tab") === "freelance" ? "freelance" : "personal";
+  const activeTab =
+    searchParams.get("tab") === "freelance" ? "freelance" : "personal";
 
   // Sync tab selection with query params; use replace to avoid polluting browser history stack
   const handleTabChange = (newTab) => {
@@ -36,8 +37,8 @@ export function ProjectsPage() {
           </h1>
           <p className="text-sm text-(--text-secondary) leading-relaxed transition-opacity duration-200">
             {activeTab === "personal"
-              ? "A few projects that capture how I design, build, and ship products."
-              : "Client projects, freelance builds, and contract engineering work."}
+              ? "A few projects that highlight how I think, build, and ship products."
+              : "Client projects, freelance builds, and contract work."}
           </p>
         </div>
 
@@ -83,8 +84,8 @@ export function ProjectsPage() {
                 </h2>
 
                 {project.spotlight && (
-                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/10 px-2.5 py-1 font-display text-[10px] font-medium uppercase tracking-[0.16em] text-green-600 dark:text-green-400">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+                  <span className="shrink-0 inline-flex items-center gap-1.5 rounded-full  bg-green-500/10 px-2.5 py-1 font-display text-[10px] font-medium uppercase tracking-[0.16em]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
                     {project.spotlight}
                   </span>
                 )}
@@ -125,23 +126,22 @@ export function ProjectsPage() {
         ) : (
           <div className="relative overflow-hidden rounded-xl border border-(--border-soft) bg-(--surface) p-8 sm:p-12 text-center transition-all">
             <h3 className="font-semibold text-base sm:text-lg text-(--text-primary) mb-1.5">
-              Open for Freelance & Contract Work
+              Have an idea or need an extra pair of hands?
             </h3>
             <p className="mx-auto text-xs sm:text-sm text-(--text-secondary) leading-relaxed mb-6">
-              I collaborate with founders, startups, and teams to build high-performance web applications, <br/>scalable backend APIs, and responsive interfaces from scratch.
+              Whether it's an MVP from scratch, a new feature rollout, or
+              scaling your stack, <br/> I'm currently open for new project
+              collaborations.
             </p>
-            <a
+            <Button
               href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-(--text-primary) text-(--bg-primary) text-xs sm:text-sm font-medium hover:opacity-90 active:scale-95 transition-all shadow-xs"
+              size="md"
             >
-                <span>Start a conversation</span>
-              </a>
+              Let's talk
+            </Button>
           </div>
         )}
       </div>
-
     </div>
   );
 }

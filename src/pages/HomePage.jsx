@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaRegFileLines } from "react-icons/fa6";
+import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import { ViewCounter } from "../components/ViewCounter";
 import { profile, socialLinks, RESUME_URL, EMAIL } from "../data/siteContent";
@@ -48,7 +49,7 @@ export function HomePage() {
         <div className="space-y-6 ">
           {/* Row 1: Primary (Get in touch) & Secondary (Resume) */}
           <div className="flex flex-wrap items-center gap-2.5">
-            <div className="inline-flex items-center h-9 sm:h-10 rounded-lg border border-(--border-soft) bg-(--surface) hover:border-(--border) text-xs sm:text-sm font-medium transition-all shadow-xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+            <div className="inline-flex items-center h-9 sm:h-10 rounded-lg border border-(--border-soft) bg-(--surface) hover:border-(--border) text-xs sm:text-sm font-medium transition-all shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
               <a
                 href={`https://mail.google.com/mail/u/0/?fs=1&to=${EMAIL}&tf=cm`}
                 target="_blank"
@@ -86,20 +87,15 @@ export function HomePage() {
               </button>
             </div>
 
-            <a
+            <Button
               href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 h-9 sm:h-10 px-3.5 sm:px-4 rounded-lg border border-(--border-soft) bg-(--surface) hover:bg-(--surface-raised) hover:border-(--border) text-xs sm:text-sm font-medium text-(--text-primary) shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap"
+              size="md"
+              icon={FaRegFileLines}
+              endIcon={<Icon name="arrow-up-right" size={12} />}
+              className="text-(--text-primary)"
             >
-              <FaRegFileLines className="text-sm shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-colors" />
-              <span>Resume</span>
-              <Icon
-                name="arrow-up-right"
-                size={12}
-                className="text-(--text-muted) group-hover:text-(--text-primary) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
+              Resume
+            </Button>
           </div>
 
           {/* Row 2: Tier 3 Socials (GitHub, LinkedIn, Twitter) */}
@@ -108,17 +104,13 @@ export function HomePage() {
               Find me on
             </span>
             <div className="flex flex-wrap items-center gap-2">
-              {socialLinks.map(({ label, href, icon: IconComponent }) => (
-                <a
+              {socialLinks.map(({ label, href, icon }) => (
+                <Button
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 h-8 sm:h-9 px-3 sm:px-3.5 rounded-lg border border-(--border-soft) bg-(--surface) hover:bg-(--surface-raised) hover:border-(--border) text-xs sm:text-sm font-medium text-(--text-secondary) hover:text-(--text-primary) shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)] transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap"
-                >
-                  <IconComponent className="text-sm sm:text-[15px] shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-colors" />
-                  <span>{label}</span>
-                </a>
+                  icon={icon}
+                  label={label}
+                />
               ))}
             </div>
           </div>

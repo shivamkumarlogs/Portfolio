@@ -1,32 +1,57 @@
+import React from "react";
+
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-full font-display text-sm font-medium tracking-wide transition-all duration-200 min-h-11 sm:min-h-0 hover:-translate-y-0.5 active:translate-y-0 active:scale-95";
+  "group inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap";
+
+const SIZES = {
+  sm: "h-8 sm:h-9 px-3 sm:px-3.5",
+  md: "h-9 sm:h-10 px-3.5 sm:px-4",
+  compact: "h-7 sm:h-8 px-2.5 sm:px-3 text-xs",
+};
 
 const VARIANT_CLASS = {
   primary:
-    "bg-(--accent) text-(--accent-fg) border border-transparent hover:opacity-90",
+    "rounded-lg bg-(--accent) text-(--accent-fg) border border-transparent hover:opacity-90 shadow-2xs",
   secondary:
-    "bg-transparent text-(--text-primary) border border-(--border) hover:bg-(--bg-secondary)",
+    "rounded-lg border border-(--border-soft) bg-(--surface) hover:bg-(--surface-raised) hover:border-(--border) text-(--text-secondary) hover:text-(--text-primary) shadow-2xs dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]",
 };
 
 const RESPONSIVE_ICON_CLASSES =
-  "min-h-0 h-10 w-10 text-(--text-secondary) hover:bg-(--bg-secondary) hover:text-(--text-primary) " +
-  "sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:border sm:border-(--border) sm:text-(--text-primary)";
+  "rounded-full min-h-0 h-10 w-10 text-(--text-secondary) hover:bg-(--bg-secondary) hover:text-(--text-primary) " +
+  "sm:rounded-lg sm:h-9 sm:w-auto sm:px-3.5 sm:border sm:border-(--border-soft) sm:bg-(--surface) sm:hover:bg-(--surface-raised) sm:hover:border-(--border) sm:text-(--text-secondary) sm:hover:text-(--text-primary) sm:shadow-2xs dark:sm:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]";
+
+function renderIcon(icon, size) {
+  if (!icon) return null;
+  if (React.isValidElement(icon)) return icon;
+  if (typeof icon === "function") {
+    try {
+      const rendered = icon(size);
+      if (React.isValidElement(rendered)) return rendered;
+    } catch {
+      // It's a React component
+    }
+    const IconComponent = icon;
+    return <IconComponent size={size} />;
+  }
+  return icon;
+}
 
 export function Button({
   children,
   href,
   onClick,
-  variant = "primary",
+  variant = "secondary",
+  size = "sm",
   className = "",
   compact = false,
   iconOnly = false,
   responsiveIcon = false,
   icon,
+  endIcon,
   label,
 }) {
-  const sizes = compact ? "min-h-10 px-4 py-2 text-xs sm:min-h-0" : "px-6 py-3";
-  const iconOnlySizes =
-    "h-11 w-11 p-0 sm:h-auto sm:w-auto sm:px-4 sm:py-2 sm:text-xs";
+  const chosenSize = compact ? SIZES.compact : SIZES[size] || SIZES.sm;
+  const iconOnlySizes = "h-8 w-8 sm:h-9 sm:w-9 p-0";
 
   let classes;
   let content;
@@ -35,22 +60,53 @@ export function Button({
     classes = `${BASE} ${RESPONSIVE_ICON_CLASSES} ${className}`;
     content = (
       <>
-        <span className="sm:hidden">{icon(24)}</span>
-        <span className="hidden sm:block">{icon(14)}</span>
-        <span className="hidden sm:inline">{label}</span>
+        <span className="sm:hidden flex items-center justify-center">
+          {renderIcon(icon, 22)}
+        </span>
+        <span className="hidden sm:inline-flex items-center gap-2">
+          {icon && (
+            <span className="text-sm sm:text-[15px] shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-colors flex items-center">
+              {renderIcon(icon, 14)}
+            </span>
+          )}
+          <span>{children || label}</span>
+          {endIcon && (
+            <span className="text-sm shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex items-center">
+              {endIcon}
+            </span>
+          )}
+        </span>
       </>
     );
   } else if (iconOnly) {
     classes = `${BASE} ${VARIANT_CLASS[variant]} ${iconOnlySizes} ${className}`;
     content = (
       <>
-        {icon(18)}
-        <span className="hidden sm:inline">{label}</span>
+        {icon && (
+          <span className="text-sm sm:text-[15px] shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-colors flex items-center">
+            {renderIcon(icon, 14)}
+          </span>
+        )}
+        {(label || children) && <span className="sr-only">{label || children}</span>}
       </>
     );
   } else {
-    classes = `${BASE} ${VARIANT_CLASS[variant]} ${sizes} ${className}`;
-    content = children;
+    classes = `${BASE} ${VARIANT_CLASS[variant]} ${chosenSize} ${className}`;
+    content = (
+      <>
+        {icon && (
+          <span className="text-sm sm:text-[15px] shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-colors flex items-center">
+            {renderIcon(icon, 14)}
+          </span>
+        )}
+        <span>{children || label}</span>
+        {endIcon && (
+          <span className="text-sm shrink-0 text-(--text-muted) group-hover:text-(--text-primary) transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex items-center">
+            {endIcon}
+          </span>
+        )}
+      </>
+    );
   }
 
   if (href) {
