@@ -130,7 +130,7 @@ export function ProjectsPage() {
             </h3>
             <p className="mx-auto text-xs sm:text-sm text-(--text-secondary) leading-relaxed mb-6">
               Whether it's an MVP from scratch, a new feature rollout, or
-              scaling your stack, <br/> I'm currently open for new project
+              scaling your stack, <br /> I'm currently open for new project
               collaborations.
             </p>
             <Button

@@ -139,7 +139,7 @@ export const projects = [
     screenshot: "/aicodereviewer.png",
     links: [
       {
-        label: "Live Demo",
+        label: "Live",
         href: "https://ai-code-reviewer-ecru-xi.vercel.app/",
       },
       {
@@ -157,9 +157,10 @@ export const projects = [
     tags: ["React.js", "Tailwind CSS"],
     spotlight: "Live",
     screenshot: "/recipefinder.png",
+    video: "/public/recipefinder-demovideo.mp4",
     links: [
       {
-        label: "Live Demo",
+        label: "Live",
         href: "https://recipe-finder-seven-opal.vercel.app/",
       },
       {
