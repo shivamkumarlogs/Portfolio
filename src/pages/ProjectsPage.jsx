@@ -69,11 +69,11 @@ export function ProjectsPage() {
               />
 
               {project.screenshot && (
-                <div className="w-full overflow-hidden rounded-xl mb-5 border border-(--border-soft)">
+                <div className="group/screenshot relative w-full overflow-hidden rounded-xl mb-5">
                   <img
                     src={project.screenshot}
                     alt={`${project.title} preview`}
-                    className="w-full h-auto block"
+                    className="w-full h-auto block transition-transform duration-500 ease-out group-hover/screenshot:scale-[1.025]"
                   />
                 </div>
               )}

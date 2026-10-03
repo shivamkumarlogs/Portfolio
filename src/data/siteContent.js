@@ -136,7 +136,7 @@ export const projects = [
       "Google Gemini",
     ],
     spotlight: "Live",
-    screenshot: "/aicodereviewer.png",
+    screenshot: "/projects-preview/aicodereviewer.png",
     links: [
       {
         label: "Live",
@@ -156,8 +156,7 @@ export const projects = [
       "A recipe discovery app integrating TheMealDB's API for instant search, detailed recipe views, and random discovery across 500+ recipes. Fully responsive mobile-first UI built with a custom Tailwind CSS v4 design system, custom data-fetching hooks, and an accessible modal recipe view with keyboard support and skeleton loading states.",
     tags: ["React.js", "Tailwind CSS"],
     spotlight: "Live",
-    screenshot: "/recipefinder.png",
-    video: "/public/recipefinder-demovideo.mp4",
+    screenshot: "/projects-preview/recipefinder.png",
     links: [
       {
         label: "Live",
@@ -215,7 +214,7 @@ export const books = [
     height: 254,
     width: 32,
     link: "https://www.amazon.com/dp/0743273567",
-    cover: "/books/great-gatsby.jpg",
+    cover: "/books-cover/great-gatsby.jpg",
   },
   {
     title: "The Old Man and the Sea",
@@ -225,7 +224,7 @@ export const books = [
     height: 220,
     width: 38,
     link: "https://www.amazon.com/dp/0684801221",
-    cover: "/books/old-man-sea.jpg",
+    cover: "/books-cover/old-man-sea.jpg",
   },
   {
     title: "Metamorphosis",
@@ -235,7 +234,7 @@ export const books = [
     height: 250,
     width: 34,
     link: "https://www.amazon.com/dp/0486290301",
-    cover: "/books/metamorphosis.png",
+    cover: "/books-cover/metamorphosis.png",
   },
   {
     title: "Don't Believe Everything You Think",
@@ -245,7 +244,7 @@ export const books = [
     height: 274,
     width: 30,
     link: "https://www.amazon.com/dp/B09TZ4LZF9",
-    cover: "/books/dont-believe-everything.jpg",
+    cover: "/books-cover/dont-believe-everything.jpg",
   },
   {
     title: "The Alchemist",
@@ -255,7 +254,7 @@ export const books = [
     height: 260,
     width: 46,
     link: "https://www.amazon.com/dp/0062315005",
-    cover: "/books/the-alchemist.png",
+    cover: "/books-cover/the-alchemist.png",
   },
   {
     title: "Project Hail Mary",
@@ -265,7 +264,7 @@ export const books = [
     height: 268,
     width: 42,
     link: "https://www.amazon.com/dp/0593135202",
-    cover: "/books/project-hail-mary.jpg",
+    cover: "/books-cover/project-hail-mary.jpg",
   },
   {
     title: "Siddhartha",
@@ -275,6 +274,6 @@ export const books = [
     height: 246,
     width: 38,
     link: "https://www.amazon.com/dp/0553208845",
-    cover: "/books/siddhartha.jpg",
+    cover: "/books-cover/siddhartha.jpg",
   },
 ];
